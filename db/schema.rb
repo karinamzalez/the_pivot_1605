@@ -11,10 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160816204058) do
+ActiveRecord::Schema.define(version: 20160816210637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "business_items", force: :cascade do |t|
+    t.integer "business_id"
+    t.integer "item_id"
+  end
+
+  add_index "business_items", ["business_id"], name: "index_business_items_on_business_id", using: :btree
+  add_index "business_items", ["item_id"], name: "index_business_items_on_item_id", using: :btree
+
+  create_table "businesses", force: :cascade do |t|
+    t.string   "name"
+    t.string   "location"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "businesses", ["user_id"], name: "index_businesses_on_user_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -62,6 +80,9 @@ ActiveRecord::Schema.define(version: 20160816204058) do
     t.string   "email"
   end
 
+  add_foreign_key "business_items", "businesses"
+  add_foreign_key "business_items", "items"
+  add_foreign_key "businesses", "users"
   add_foreign_key "items", "categories"
   add_foreign_key "order_items", "items"
   add_foreign_key "order_items", "orders"

@@ -1,4 +1,9 @@
 FactoryGirl.define do
+  factory :business do
+    name "MyString"
+    location "MyString"
+    user nil
+  end
   factory :user do
     username { Faker::Internet.user_name }
     password "password"
