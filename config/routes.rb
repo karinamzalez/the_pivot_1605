@@ -13,7 +13,6 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:index, :create, :show]
 
-
   get '/bucket' => "bucket#show"
   put '/bucket' => "bucket#update"
 

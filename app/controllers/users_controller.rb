@@ -14,20 +14,21 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
 
-      authy = Authy::API.register_user(
-       email: @user.email,
-       cellphone: @user.phone_number,
-       country_code: @user.country_code
-     )
-     @user.update(authy_id: authy.id)
+    #   authy = Authy::API.register_user(
+    #    email: @user.email,
+    #    cellphone: @user.phone_number,
+    #    country_code: @user.country_code
+    #  )
+    #  @user.update(authy_id: authy.id)
+     #
+    #   # flash[:notice] = "Logged in as #{current_user.username}."
+    #   # redirect_to dashboard_path
+     #
+    #   # Send an SMS to your user
+    #    Authy::API.request_sms(id: @user.authy_id)
 
-      # flash[:notice] = "Logged in as #{current_user.username}."
-      # redirect_to dashboard_path
-
-      # Send an SMS to your user
-       Authy::API.request_sms(id: @user.authy_id)
-
-       redirect_to verify_path
+      #  redirect_to verify_path
+      redirect_to dashboard_path
     else
       flash[:danger] = "Account creation failed. Try again."
       render :new
@@ -35,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   def show_verify
-    return redirect_to new_user_path unless session[:user_id]
+    redirect_to new_user_path unless session[:user_id]
   end
 
   def verify
@@ -77,7 +78,7 @@ class UsersController < ApplicationController
       :to => @user.country_code+@user.phone_number,
       :body => message
     )
-    puts message.to
+    message.to
   end
 
   def user_params
