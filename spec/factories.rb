@@ -4,22 +4,23 @@ FactoryGirl.define do
     location "MyString"
     user nil
   end
+  
   factory :user do
     username { Faker::Internet.user_name }
     password "password"
-    phone_number { Faker::PhoneNumber.cell_phone }
+    # phone_number { Faker::PhoneNumber.cell_phone }
     email { Faker::Internet.email }
-    country_code "1"
+    # country_code "1"
   end
 
-  factory :gnome do
-    name { Faker::Name.first_name }
-    price { Faker::Commerce.price }
-    desc { Faker::Lorem.sentence }
-    image_url { Faker::Placeholdit.image }
-    category
-    role 0
-  end
+  # factory :gnome do
+  #   name { Faker::Name.first_name }
+  #   price { Faker::Commerce.price }
+  #   desc { Faker::Lorem.sentence }
+  #   image_url { Faker::Placeholdit.image }
+  #   category
+  #   role 0
+  # end
 
   factory :category do
     name { Faker::Company.profession }
@@ -30,9 +31,9 @@ FactoryGirl.define do
     status 0
   end
 
-  factory :order_gnome do
-    gnome
-    order
-    quantity 1
-  end
+  # factory :order_gnome do
+  #   gnome
+  #   order
+  #   quantity 1
+  # end
 end
