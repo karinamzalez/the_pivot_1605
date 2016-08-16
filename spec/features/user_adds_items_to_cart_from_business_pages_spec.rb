@@ -1,10 +1,13 @@
 require 'rails_helper'
+require 'support/test_helper'
 
 RSpec.feature "Visitor cart functionality" do
   context "Multiple businesses and items exist" do
+    create_test_businesses
+    create_test_business_items
     scenario "visitor adds item to cart from Business #1" do
       # as a visitor, when I am on a business's page 
-      visit business_path(1)
+      visit business_path(Business.all.first)
       # and I click on an item's add-to-cart button
       click_button("Add to Cart")
       
@@ -16,7 +19,7 @@ RSpec.feature "Visitor cart functionality" do
     
     scenario "visitor adds item to cart from Business #2" do
       # and I visit another business's page
-      visit business_path(2)
+      visit business_path(Business.all.second)
       # and I click on another item's add-to-cart button
       click_button("Add to Cart")
       

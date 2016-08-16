@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   post "users/verify"
   post "users/resend"
 
-  get '/', to: 'gnomes#index'
+  get '/', to: 'businesses#index'
+  
+  resources :businesses, only: [:index, :show]
 
   resources :gnomes, only: [:index, :show]
 

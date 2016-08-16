@@ -1,7 +1,16 @@
 FactoryGirl.define do
+  city_names = [
+    "London",
+    "Paris",
+    "Shanghai", 
+    "Dubai",
+    "Sydney",
+    "San Francisco",
+    "New York"
+  ]
   factory :business do
-    name "MyString"
-    location "MyString"
+    name { Faker::Company.name }
+    location city_names.sample
     user nil
   end
   
