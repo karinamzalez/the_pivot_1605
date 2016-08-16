@@ -22,3 +22,10 @@ end
 Category.first.gnomes << Gnome.first(3)
 Category.second.gnomes << Gnome.all[3..5]
 Category.third.gnomes << Gnome.last(2)
+
+20.times do
+  Business.create(
+    name: Faker::Company.name,
+    location: Faker::Address.city
+  )
+end
