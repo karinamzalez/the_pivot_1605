@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post "users/resend"
 
   get '/', to: 'businesses#index'
-  
+
   resources :businesses, only: [:index, :show]
 
   resources :gnomes, only: [:index, :show]
@@ -28,7 +28,6 @@ Rails.application.routes.draw do
     get '/dashboard', to: 'users#show'
 
     resources :gnomes, except: [:destroy]
-
   end
 
   get '/:id' => 'categories#show'
