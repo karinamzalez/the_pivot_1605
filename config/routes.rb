@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
   root to: 'businesses#index'
 
-  resources :businesses, only: [:index, :show]
-  resources :businesses, only: [:index, :show]
-  resources :farmers_markets, only: [:index, :show]
+  resources :items
 
-  resources :bucket_gnomes, only: [:create, :update, :destroy]
+  resources :businesses, only: [:index, :show]
+
+  resources :cart_items, only: [:create, :update, :destroy]
   resources :users, only: [:new, :show, :create]
   resources :orders, only: [:index, :create, :show]
 
-  get '/bucket' => "bucket#show"
-  put '/bucket' => "bucket#update"
+  get '/cart' => "cart#show"
+  put '/cart' => "cart#update"
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/dashboard', to: 'users#show'
 
-    resources :gnomes, except: [:destroy]
+    resources :items, except: [:destroy]
   end
 
   get '/:id' => 'categories#show', as: :category

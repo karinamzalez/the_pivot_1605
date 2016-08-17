@@ -20,26 +20,32 @@ FactoryGirl.define do
     email { Faker::Internet.email }
   end
 
+  items = [
+    'apples',
+    'pears',
+    'bananas',
+    'asparagus',
+    'spinach',
+    'bok choy',
+    'pineapple',
+    'guava',
+    'dragon fruit'
+  ]
   factory :item do
-    name { Faker::Name.first_name }
+    name items.sample
     price { Faker::Commerce.price }
-    desc { Faker::Lorem.sentence }
+    description { Faker::Hipster.paragraph }
     image_url { Faker::Placeholdit.image }
     category
+    status true
   end
 
   factory :category do
-    name { Faker::Company.profession }
+    name { Faker::Color.color_name }
   end
 
   factory :order do
     user
     status 0
   end
-
-  # factory :order_gnome do
-  #   gnome
-  #   order
-  #   quantity 1
-  # end
 end
