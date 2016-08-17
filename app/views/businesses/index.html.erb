@@ -1,0 +1,13 @@
+<% @businesses.each do |business| %>
+  <p class= '<%= business.slug %>'>
+    <%= link_to "#{business.name}", business_path(business.slug) %>
+  </p>
+<% end %>
+<h1>Farmer's Markets</h1>
+
+<div class="btn-group">
+  <button type="button" class="btn btn-default" id="pending">All Markets</button>
+  <button type="button" class="btn btn-default" id="online">Some Markets</button>
+  <button type="button" class="btn btn-default" id="offline">Other Markets</button>
+  <button type="button" class="btn button-indigo active dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="administrators">Categories <span class="caret"></span> </button>
+</div>
