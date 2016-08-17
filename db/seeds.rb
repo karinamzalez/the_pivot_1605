@@ -1,17 +1,17 @@
 class Seed
-  def initialize
+  def self.start
     generate_categories
     generate_businesses
   end
 
-  def generate_categories
+  def self.generate_categories
     3.times do
       Category.create(name: Faker::Commerce.color.capitalize)
     end
     puts "categories created successfully!"
   end
 
-  def generate_businesses
+  def self.generate_businesses
     20.times do
       business = Business.create(
       name: Faker::Company.name,
@@ -21,3 +21,5 @@ class Seed
     puts "businesses created successfully!"
   end
 end
+
+Seed.start
