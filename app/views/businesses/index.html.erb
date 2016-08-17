@@ -1,0 +1,5 @@
+<% @businesses.each do |business| %>
+  <p class= '<%= business.slug %>'>
+    <%= link_to "#{business.name}", business_path(business.slug) %>
+  </p>
+<% end %>
