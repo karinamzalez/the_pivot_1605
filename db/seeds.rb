@@ -5,20 +5,35 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-4.times do
-  Gnome.create(name: Faker::GameOfThrones.character, price: Faker::Commerce.price,
-               desc: Faker::Lorem.sentence)
-end
-
-4.times do
-  Gnome.create(name: Faker::GameOfThrones.character, price: Faker::Commerce.price,
-               desc: Faker::Lorem.sentence, role: 1)
-end
+# 4.times do
+#   Gnome.create(name: Faker::GameOfThrones.character, price: Faker::Commerce.price,
+#                desc: Faker::Lorem.sentence)
+# end
+# 
+# 4.times do
+#   Gnome.create(name: Faker::GameOfThrones.character, price: Faker::Commerce.price,
+#                desc: Faker::Lorem.sentence, role: 1)
+# end
 
 3.times do
   Category.create(name: Faker::Commerce.color.capitalize)
 end
+# 
+# Category.first.gnomes << Gnome.first(3)
+# Category.second.gnomes << Gnome.all[3..5]
+# Category.third.gnomes << Gnome.last(2)
 
-Category.first.gnomes << Gnome.first(3)
-Category.second.gnomes << Gnome.all[3..5]
-Category.third.gnomes << Gnome.last(2)
+20.times do
+  business = Business.create(
+    name: Faker::Company.name,
+    location: Faker::Address.city
+  )
+  # 50.times do
+  #   business.items.create!(
+  #     name: Faker::Commerce.product_name,
+  #     price: Faker::Commerce.price,
+  #     description: Faker::Hipster.sentence,
+  #     status: true 
+  #   )
+  # end
+end

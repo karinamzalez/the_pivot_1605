@@ -3,16 +3,17 @@ Rails.application.routes.draw do
   post "users/verify"
   post "users/resend"
 
-  get '/', to: 'gnomes#index'
+  get '/', to: 'businesses#index'
 
-  resources :gnomes, only: [:index, :show]
+  resources :businesses, only: [:index, :show]
+
+  resources :farmers_markets, only: [:index, :show]
 
   resources :bucket_gnomes, only: [:create, :update, :destroy]
 
   resources :users, only: [:new, :show, :create]
 
   resources :orders, only: [:index, :create, :show]
-
 
   get '/bucket' => "bucket#show"
   put '/bucket' => "bucket#update"
