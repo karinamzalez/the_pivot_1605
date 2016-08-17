@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "Guest User Sees All Businesses" do
-  context "a guest user visits the root page" do
+RSpec.feature "Visitor Sees All Businesses" do
+  context "a visitor visits the root page" do
     scenario "they are able to view the charity index" do
       business_1, business_2, business_3 = create_list(:business, 3)
 
