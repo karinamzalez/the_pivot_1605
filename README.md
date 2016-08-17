@@ -1,41 +1,21 @@
 
-# Little Shop of Orders
+# The Pivot
 
 ***
 
-## Game of Gnomes
+## Worldwide Produce Marketplace
 
-* Patrick Wentz
-* Yoseph Anderson
+* Karina Gonzalez
 * Kris Sparks
+* Zach Forbing
+* Chris Concannon
 
 
-Production: https://game-of-gnomes-app.herokuapp.com/
+Production: 
 ***
 
-In this project we'll use Ruby on Rails to build an online commerce platform to facilitate online ordering.
+### Description
 
-Our commerce site sells gnomes. A visitor can browse items, but must login to checkout. A user can view items, purchase items and view order history. Items are divided up by categories.
-
-An admin can login and create and edit items.
-
-As an extension we added Authy gem, by Twilio, for 2 factor authentication. When a user creates an account they will enter their phone number and receive a text message with a unique code. The user will need to enter the code to create a new account.
-
-### Introduction
+The Pivot is a Module 3 assignment from the Turing School of Software and Design. The premise is that a team is given a code base from the final Module 2 project "Little Shop of Orders" and is required to "pivot" with the code base. Our new project involved building a marketplace of produce suppliers and items. The key requirements of the pivot are that no functionality can be lost from the original website, and layers of multitenancy are added. 
 
 ***
-
-#### Learning Goals
-
-* Use TDD to drive all layers of Rails development including unit and integration tests
-* Design a system of models which use one-to-one, one-to-many, and many-to-many relationships
-* Practice mixing HTML, CSS, and templates to create an inviting and usable User Interface
-* Differentiate responsibilities between components of the Rails stack
-* Build a logical user-flow that moves across multiple controllers and models
-* Practice an agile workflow and improve communication skills working within a team
-
-### Restrictions
-
-Project implementation may **not** use:
-
-* Any external library for authentication except `bcrypt`

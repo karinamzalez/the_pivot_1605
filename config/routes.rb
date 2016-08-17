@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   post "users/resend"
 
   resources :businesses, only: [:index, :show]
-  resources :gnomes, only: [:index, :show]
+  resources :businesses, only: [:index, :show]
+  resources :farmers_markets, only: [:index, :show]
+
   resources :bucket_gnomes, only: [:create, :update, :destroy]
   resources :users, only: [:new, :show, :create]
   resources :orders, only: [:index, :create, :show]
