@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+  root to: 'businesses#index'
+
   get "users/verify", to: 'users#show_verify', as: 'verify'
   post "users/verify"
   post "users/resend"
-
-  get '/', to: 'businesses#index'
 
   resources :businesses, only: [:index, :show]
 
