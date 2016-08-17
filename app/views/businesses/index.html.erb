@@ -1,13 +1,23 @@
-<% @businesses.each do |business| %>
-  <p class= '<%= business.slug %>'>
-    <%= link_to "#{business.name}", business_path(business.slug) %>
-  </p>
-<% end %>
-<h1>Farmer's Markets</h1>
+<div class="col-md-12 col-md-offset-4">
+  <h1>Farmer's Market</h1>
 
-<div class="btn-group">
-  <button type="button" class="btn btn-default" id="pending">All Markets</button>
-  <button type="button" class="btn btn-default" id="online">Some Markets</button>
-  <button type="button" class="btn btn-default" id="offline">Other Markets</button>
-  <button type="button" class="btn button-indigo active dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="administrators">Categories <span class="caret"></span> </button>
+  <div class="btn-group">
+    <button type="button" class="btn btn-default" id="online">All Businesses</button>
+    <button type="button" class="btn btn-default" id="pending">Some </button>
+    <button type="button" class="btn btn-default" id="offline">Other </button>
+    <button type="button" class="btn button-indigo active dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="administrators">Categories <span class="caret"></span>
+      <ul class="dropdown-menu">
+      </ul>
+    </button>
+  </div>
+
+  <div class="businesses hidden" id="all">
+    <div class="online">
+      <% @businesses.each do |business| %>
+      <p class= '<%= business.slug %>'>
+        <%= link_to "#{business.name}", business_path(business.slug) %>
+      </p>
+      <% end %>
+    </div>
+  </div>
 </div>
