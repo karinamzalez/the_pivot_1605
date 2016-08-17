@@ -1,18 +1,16 @@
 Rails.application.routes.draw do
+  root to: 'businesses#index'
+
   get "users/verify", to: 'users#show_verify', as: 'verify'
   post "users/verify"
   post "users/resend"
 
-  get '/', to: 'businesses#index'
-
   resources :businesses, only: [:index, :show]
-
+  resources :businesses, only: [:index, :show]
   resources :farmers_markets, only: [:index, :show]
 
   resources :bucket_gnomes, only: [:create, :update, :destroy]
-
   resources :users, only: [:new, :show, :create]
-
   resources :orders, only: [:index, :create, :show]
 
   get '/bucket' => "bucket#show"
@@ -28,7 +26,6 @@ Rails.application.routes.draw do
     get '/dashboard', to: 'users#show'
 
     resources :gnomes, except: [:destroy]
-
   end
 
   get '/:id' => 'categories#show'

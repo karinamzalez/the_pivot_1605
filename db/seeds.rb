@@ -1,39 +1,23 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-# 4.times do
-#   Gnome.create(name: Faker::GameOfThrones.character, price: Faker::Commerce.price,
-#                desc: Faker::Lorem.sentence)
-# end
-# 
-# 4.times do
-#   Gnome.create(name: Faker::GameOfThrones.character, price: Faker::Commerce.price,
-#                desc: Faker::Lorem.sentence, role: 1)
-# end
+class Seed
+  def initialize
+    generate_categories
+    generate_businesses
+  end
 
-3.times do
-  Category.create(name: Faker::Commerce.color.capitalize)
-end
-# 
-# Category.first.gnomes << Gnome.first(3)
-# Category.second.gnomes << Gnome.all[3..5]
-# Category.third.gnomes << Gnome.last(2)
+  def generate_categories
+    3.times do
+      Category.create(name: Faker::Commerce.color.capitalize)
+    end
+    puts "categories created successfully!"
+  end
 
-20.times do
-  business = Business.create(
-    name: Faker::Company.name,
-    location: Faker::Address.city
-  )
-  # 50.times do
-  #   business.items.create!(
-  #     name: Faker::Commerce.product_name,
-  #     price: Faker::Commerce.price,
-  #     description: Faker::Hipster.sentence,
-  #     status: true 
-  #   )
-  # end
+  def generate_businesses
+    20.times do
+      business = Business.create(
+      name: Faker::Company.name,
+      location: Faker::Address.city
+      )
+    end
+    puts "businesses created successfully!"
+  end
 end
