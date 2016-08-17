@@ -1,10 +1,10 @@
-class OrderGnomeSynthesizer
+class OrderItemsSynthesizer
   class << self
-    def generate_order_gnomes(session_contents)
+    def generate_order_items(session_contents)
       current_user = current_user(session_contents["user_id"])
-      session_contents['bucket'].each do |gnome_id, quantity|
-        most_recent_order(current_user).order_gnomes.create(
-          gnome_id: gnome_id.to_i,
+      session_contents['cart'].each do |item_id, quantity|
+        most_recent_order(current_user).order_items.create(
+          item_id: item_id.to_i,
           quantity: quantity
         )
       end
