@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
   root to: 'businesses#index'
 
-  get "users/verify", to: 'users#show_verify', as: 'verify'
-  post "users/verify"
-  post "users/resend"
-
   resources :businesses, only: [:index, :show]
   resources :businesses, only: [:index, :show]
   resources :farmers_markets, only: [:index, :show]
@@ -28,6 +24,6 @@ Rails.application.routes.draw do
     resources :gnomes, except: [:destroy]
   end
 
-  get '/:id' => 'categories#show'
+  get '/:id' => 'categories#show', as: :category
   get "*any", via: :all, to: "errors#not_found"
 end
