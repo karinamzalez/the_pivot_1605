@@ -7,7 +7,7 @@ RSpec.feature "Guest User Sees All Businesses" do
 
       visit root_path
 
-      click_on "See All Businesses"
+      click_on "See All Markets"
 
       expect(current_path).to eq(businesses_path)
 
