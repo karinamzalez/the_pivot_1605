@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   post "users/resend"
 
   get '/', to: 'businesses#index'
-  
+
   resources :businesses, only: [:index, :show]
 
-  resources :gnomes, only: [:index, :show]
+  resources :farmers_markets, only: [:index, :show]
 
   resources :bucket_gnomes, only: [:create, :update, :destroy]
 
