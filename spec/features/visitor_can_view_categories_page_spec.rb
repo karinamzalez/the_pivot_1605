@@ -2,11 +2,10 @@ require 'rails_helper'
 
 describe 'Visitor can view category pages', type: :feature do
   scenario 'visitor clicks link to category page from homepage' do
-    category_1 = FactoryGirl.create(:category)
-    category_2 = FactoryGirl.create(:category)
+    category_1, category_2 = FactoryGirl.create_list(:category, 2)
     # As a visitor
     # when I visit the home page
-    visit farmersmarket_path
+    visit farmers_market_path
     # and I click on the categories dropdown
     # I see a list of categories
     expect(page).to have_select("Categories", options: [category_1.name, category_2.name])
