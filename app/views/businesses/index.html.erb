@@ -1,21 +1,19 @@
-<% @businesses.each do |business| %>
-  <p class= '<%= business.slug %>'>
-    <%= link_to "#{business.name}", business_path(business.slug) %>
-  </p>
-<% end %>
-<h1>Farmer's Markets</h1>
+<div class="col-md-12 offset-md-4">
+  <h1>Farmer's Markets</h1>
 
-<div class="btn-group">
-  <button type="button" class="btn btn-default" id="pending">All Markets</button>
-  <button type="button" class="btn btn-default" id="online">Some Markets</button>
-  <button type="button" class="btn btn-default" id="offline">Other Markets</button>
-  <button type="button" class="btn button-indigo active dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="administrators">Categories <span class="caret"></span>
-    <ul class="dropdown-menu">
-      <li><a href="#">Action</a></li>
-      <li><a href="#">Another action</a></li>
-      <li><a href="#">Something else here</a></li>
-      <li role="separator" class="divider"></li>
-      <li><a href="#">Separated link</a></li>
-    </ul>
-  </button>
+  <div class="btn-group">
+    <button type="button" class="btn btn-default" id="online">All Markets</button>
+    <button type="button" class="btn btn-default" id="pending">Some Markets</button>
+    <button type="button" class="btn btn-default" id="offline">Other Markets</button>
+    <button type="button" class="btn button-indigo active dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="administrators">Categories <span class="caret"></span>
+      <ul class="dropdown-menu">
+      </ul>
+    </button>
+  </div>
 </div>
+
+<% @businesses.each do |business| %>
+<p class= '<%= business.slug %>'>
+  <%= link_to "#{business.name}", business_path(business.slug) %>
+</p>
+<% end %>
