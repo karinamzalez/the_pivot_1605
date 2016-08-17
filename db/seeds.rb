@@ -7,27 +7,25 @@ class Seed
 
   def self.generate_categories
     3.times do
-      Category.create(name: Faker::Commerce.color.capitalize)
+      FactoryGirl.create(:category)
     end
     puts "categories created successfully!"
   end
 
   def self.generate_businesses
     20.times do
-      business = Business.create(
-        name: Faker::Company.name,
-        location: Faker::Address.city
-      )
+      FactoryGirl.create(:business)
     end
     puts "businesses created successfully!"
   end
 
   def self.generate_users
+    User.create(
+    username: "hollagonzalla",
+    password: "password"
+    )
     2.times do
-      User.create(
-        username: "hollagonzalla",
-        password: "password"
-      )
+      FactoryGirl.create(:user)
     end
     puts "users created successfully!"
   end
