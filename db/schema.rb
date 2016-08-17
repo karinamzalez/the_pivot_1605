@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -19,10 +18,9 @@ ActiveRecord::Schema.define(version: 20160816210637) do
   create_table "business_items", force: :cascade do |t|
     t.integer "business_id"
     t.integer "item_id"
+    t.index ["business_id"], name: "index_business_items_on_business_id", using: :btree
+    t.index ["item_id"], name: "index_business_items_on_item_id", using: :btree
   end
-
-  add_index "business_items", ["business_id"], name: "index_business_items_on_business_id", using: :btree
-  add_index "business_items", ["item_id"], name: "index_business_items_on_item_id", using: :btree
 
   create_table "businesses", force: :cascade do |t|
     t.string   "name"
@@ -30,9 +28,8 @@ ActiveRecord::Schema.define(version: 20160816210637) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_businesses_on_user_id", using: :btree
   end
-
-  add_index "businesses", ["user_id"], name: "index_businesses_on_user_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -47,19 +44,17 @@ ActiveRecord::Schema.define(version: 20160816210637) do
     t.integer "category_id"
     t.string  "image_url"
     t.boolean "status",      default: false
+    t.index ["category_id"], name: "index_items_on_category_id", using: :btree
   end
-
-  add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
 
   create_table "order_items", force: :cascade do |t|
     t.integer "order_id"
     t.integer "quantity"
     t.decimal "subtotal"
     t.integer "item_id"
+    t.index ["item_id"], name: "index_order_items_on_item_id", using: :btree
+    t.index ["order_id"], name: "index_order_items_on_order_id", using: :btree
   end
-
-  add_index "order_items", ["item_id"], name: "index_order_items_on_item_id", using: :btree
-  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.decimal  "total_price"
@@ -67,9 +62,8 @@ ActiveRecord::Schema.define(version: 20160816210637) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "status",      default: 0
+    t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
-
-  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username"

@@ -32,6 +32,7 @@ group :development, :test do
   gem 'launchy'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
+  gem 'nyan-cat-formatter'
 end
 
 group :development do
