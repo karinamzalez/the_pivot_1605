@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
   belongs_to :user
-  has_many :order_gnomes
-  has_many :gnomes, through: :order_gnomes
+  has_many :order_items
+  has_many :items, through: :order_items
   enum status: %w(ordered paid completed cancelled)
 
   def updated?
@@ -9,7 +9,6 @@ class Order < ActiveRecord::Base
   end
 
   def total
-    order_gnomes.to_a.sum { |order_gnome| order_gnome.subtotal.to_f }.round(2)
+    order_items.to_a.sum { |order_item| order_item.subtotal.to_f }.round(2)
   end
-
 end

@@ -22,7 +22,7 @@ class Seed
     puts "businesses created successfully!"
   end
 
-  def generate_users
+  def self.generate_users
     2.times do
       User.create(
         username: "hollagonzalla",
