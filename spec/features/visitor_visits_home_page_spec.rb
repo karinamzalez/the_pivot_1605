@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Visitor Sees All Businesses" do
   context "a visitor visits the root page" do
-    scenario "they are able to view the charity index" do
+    scenario "they are able to view the index" do
       business_1, business_2, business_3 = create_list(:business, 3)
 
       visit root_path
