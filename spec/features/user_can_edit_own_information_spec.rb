@@ -12,6 +12,7 @@ describe 'User can edit own information', type: :feature do
       click_link 'Edit Account Info'
 
       fill_in 'Username', with: 'Alan'
+      fill_in 'Password', with: 'password'
       fill_in 'Email', with: 'new_email@email.com'
 
       click_on 'Update Account Info'
