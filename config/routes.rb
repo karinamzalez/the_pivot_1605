@@ -16,8 +16,6 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'users#show'
 
-  get ':business_slug', to: 'businesses#show', as: :business
-
   namespace :admin do
     get '/dashboard', to: 'users#show'
 
@@ -25,5 +23,6 @@ Rails.application.routes.draw do
   end
 
   get '/:id' => 'categories#show', as: :category
+  get ':business_slug', to: 'businesses#show', as: :business
   get "*any", via: :all, to: "errors#not_found"
 end
