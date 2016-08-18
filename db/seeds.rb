@@ -23,10 +23,6 @@ class Seed
   end
 
   def self.generate_users
-    User.create(
-    username: "hollagonzalla",
-    password: "password"
-    )
     2.times do
       FactoryGirl.create(:user)
     end

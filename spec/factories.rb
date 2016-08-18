@@ -48,4 +48,10 @@ FactoryGirl.define do
     user
     status 0
   end
+
+  factory :order_item do
+    item
+    order
+    quantity 1
+  end
 end

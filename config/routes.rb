@@ -2,8 +2,7 @@ Rails.application.routes.draw do
   root to: 'businesses#index'
 
   resources :items
-
-  resources :businesses, only: [:index, :show]
+  resources :businesses, only: [:index]
 
   resources :cart_items, only: [:create, :update, :destroy]
   resources :users, only: [:new, :show, :create]
@@ -17,6 +16,8 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   get '/dashboard', to: 'users#show'
+
+  get ':business_slug', to: 'businesses#show', as: :business
 
   namespace :admin do
     get '/dashboard', to: 'users#show'
