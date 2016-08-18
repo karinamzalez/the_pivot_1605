@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :items, except: [:destroy]
   end
 
-  get '/:id' => 'categories#show', as: :category
-  get ':business_slug', to: 'businesses#show', as: :business
+  get '/category/:id' => 'categories#show', as: :category
+  get '/:business_slug', to: 'businesses#show', as: :business
   get "*any", via: :all, to: "errors#not_found"
 end

@@ -9,7 +9,7 @@
       <ul class="dropdown-menu">
         <% @categories.each do |category| %>
         <li>
-          <%= link_to "#{category.name}", category_path(category) %>
+          <%= link_to "#{category.name}", category_path(category.id) %>
         </li>
         <% end %>
       </ul>
