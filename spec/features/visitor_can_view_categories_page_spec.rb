@@ -8,7 +8,7 @@ describe 'Visitor can view category pages', type: :feature do
     visit root_path
     # and I click on the categories dropdown
     # I see a list of categories
-    # expect(page).to have_select('categories', options: [category_1.name, category_2.name])
+    expect(page).to have_select('categories', options: [category_1.name, category_2.name])
     # when I select a category
     select "#{category_1.name}", from: 'categories'
     # I am taken to the category page
