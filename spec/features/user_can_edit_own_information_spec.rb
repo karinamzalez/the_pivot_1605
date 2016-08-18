@@ -16,7 +16,6 @@ describe 'User can edit own information', type: :feature do
       fill_in 'Email', with: 'new_email@email.com'
 
       click_on 'Update Account Info'
-
       expect(page).to have_content('Alan')
     end
   end
