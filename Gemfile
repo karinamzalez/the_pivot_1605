@@ -8,6 +8,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'twilio-ruby'
 gem 'authy'
 gem 'figaro'
+gem 'factory_girl_rails'
 
 gem 'jquery-rails'
 gem 'rack_session_access'
@@ -30,7 +31,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'launchy'
-  gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'nyan-cat-formatter'
 end
