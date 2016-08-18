@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
   def destroy
     session.clear
     flash[:success] = "Successfully logged out!"
-    redirect_to gnomes_path
+    redirect_to root_path
   end
 
   private
@@ -26,6 +26,8 @@ class SessionsController < ApplicationController
   def user_admin_redirect
     if current_admin?
       admin_dashboard_path
+    elsif session[:cart]
+      return cart_path
     else
       dashboard_path
     end

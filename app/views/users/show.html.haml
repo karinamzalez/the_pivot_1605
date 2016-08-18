@@ -1,14 +1,6 @@
 %h5.user-greeting= current_user.username
-%p.greeting
-  Account Status:
-  - if current_user.verified?
-    Verified
-  - else
-    Not Verified
-    %p
-      = link_to "Verify your account now.", verify_path
 
 %div.wrap-button
-  %h3= link_to "Buy some gnomes!", gnomes_path, class: "button success hollow button"
+  %h3= link_to "Buy some veggies!", businesses_path, class: "button success hollow button"
 
 = render partial: 'shared/dashboard'
