@@ -1,6 +1,5 @@
 class Category < ActiveRecord::Base
-  has_many :gnomes
-  validates_format_of :name, with: /^[a-zA-Z\d ]+$/, :multiline => true
+  has_many :items
 
   def to_param
     self.name.parameterize
