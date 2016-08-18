@@ -15,7 +15,7 @@
     <div class="online">
       <% @businesses.each do |business| %>
       <p class= '<%= business.slug %>'>
-        <%= link_to "#{business.name}", business_path(business.slug) %>
+        <%= link_to "#{business.name}", business_path(slug: business.slug) %>
       </p>
       <% end %>
     </div>

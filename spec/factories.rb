@@ -36,7 +36,7 @@ FactoryGirl.define do
     price { Faker::Commerce.price }
     description { Faker::Hipster.paragraph }
     image_url { Faker::Placeholdit.image }
-    category 
+    category
     status true
   end
 
@@ -47,5 +47,11 @@ FactoryGirl.define do
   factory :order do
     user
     status 0
+  end
+
+  factory :order_item do
+    item
+    order
+    quantity 1
   end
 end

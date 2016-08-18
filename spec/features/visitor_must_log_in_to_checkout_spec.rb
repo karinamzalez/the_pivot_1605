@@ -37,10 +37,9 @@ describe 'Visitor must log in to checkout', type: :feature do
   scenario 'and when logged in does not button to log in to be able to checkout' do
     user = create(:user)
     item_one, item_two = create_list(:item, 2)
-    page.set_rack_session(:user_id => user.id,
-                          :cart => { item_one.id => 1,
-                                     item_two.id => 2
-    })
+    page.set_rack_session(user_id: user.id,
+                          cart: {item_one.id => 1,
+                                 item_two.id => 2})
 
     visit cart_path
 
