@@ -6,6 +6,6 @@ class BusinessesController < ApplicationController
   end
 
   def show
-    @business = Business.find_by(slug: params[:business_slug])
+    @business = Business.find_by(slug: params[:slug])
   end
 end
