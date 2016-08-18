@@ -1,0 +1,55 @@
+.row.column.text-center
+  %h2#item-banner Your cart
+  %hr/
+  .item_cart
+    %table.hover
+      %thead
+        %tr
+          %th.cart-header Image
+          %th.cart-header Item
+          %th.cart-header Price
+          %th.cart-header Quantity
+          %th.cart-header Decrease Quantity
+          %th.cart-header Increase Quantity
+          %th.cart-header Remove
+          %th.cart-header Subtotal
+      %tbody
+        - @cart.populated_contents.each do | item |
+          %tr
+            %td
+              %div{:id => "item_#{item.id}"}
+                %img.item-image{:alt => "...", :src => "images/item.png"}/
+                = image_tag(item.image_url)
+            %td
+              = link_to item.name, item_path(item)
+            %td
+              %p $#{item.price}
+            %td
+              %p Quantity: #{item.quantity}
+            %td
+              = link_to "Decrease quantity", cart_item_path(item.id, :adjustment => "decrease"), method: :put
+            %td
+              = link_to "Increase quantity", cart_item_path(item.id, :adjustment => "increase"), method: :put
+            %td
+              = link_to "Remove from cart", cart_item_path(item.id), method: :delete
+            %td
+              %p $#{item.subtotal}
+        %tr
+          %td
+          %td
+          %td
+          %td
+          %td
+          %td
+          %td#total-price Total Price:
+          %td $#{@cart.total}
+
+  - if current_user && !@cart.empty?
+    = button_to 'Checkout', orders_path, class: 'checkout-button button success hollow'
+  -elsif current_user && @cart.empty?
+    %p Your cart is empty!
+    = link_to "Get some items!", items_path, class: 'button alert'
+  - else
+    %p#checkout_button
+      = link_to 'Login', login_path
+      or #{link_to 'Create Account', new_user_path} to checkout

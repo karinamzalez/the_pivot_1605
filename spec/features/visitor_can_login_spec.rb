@@ -4,7 +4,7 @@ describe 'Visitor can login', type: :feature do
   scenario 'and is redirected to the users dashboard' do
     user = create(:user)
 
-    visit farmers_markets_path
+    visit businesses_path
     within('.navbar') do
       click_on 'Login'
     end
