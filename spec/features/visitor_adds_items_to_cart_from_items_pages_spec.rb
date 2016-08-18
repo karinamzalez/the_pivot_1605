@@ -3,7 +3,7 @@ require 'support/test_helper'
 
 RSpec.feature "Visitor cart additions" do
   context "Multiple items are available for purchase" do
-    create_test_items
+    seed_test_data
     scenario "visitor views item #1 and adds it to their cart" do
       # as a visitor
       # when I view an item's page
