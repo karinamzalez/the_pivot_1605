@@ -1,0 +1,10 @@
+%h5
+  Hi, #{@user.username}
+
+%h5 Edit account info
+= form_for(@user) do |f|
+  =f.text_field :username, :class => 'form-control', :placeholder =>'Username'
+  =f.password_field :password, :class => 'form-control', :placeholder =>'Password'
+  =f.text_field :email, :class => 'form-control', :placeholder =>'Email'
+  %br/
+  =f.submit 'Update Account Info', :class => 'button success hollow button'
