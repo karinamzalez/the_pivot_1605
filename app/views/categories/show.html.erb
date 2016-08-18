@@ -1,0 +1,7 @@
+<h1><%= @category.name %></h1>
+<br>
+<% @category.items.each do |item| %>
+  <%= item.name %> - <%= item.price %>
+  Sold By <%= item.business.name %>
+  <br>
+<% end %>

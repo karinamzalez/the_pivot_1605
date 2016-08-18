@@ -64,20 +64,23 @@ class Seed
     100.times do |i|
       user  = User.find(rand(1..100))
       order = Order.create!(user_id: user.id)
-      # add_items(order)
+      add_items(order)
       puts "Order #{i}: Order for #{user.username} created!"
     end
   end
 
   private
 
-  # def add_items(order)
-  #   10.times do |i|
-  #     item = Item.find(rand(1..500))
-  #     order.items << item
-  #     puts "#{i}: Added item #{item.name} to order #{order.id}."
-  #   end
-  # end
+  def add_items(order)
+    10.times do |i|
+      item = Item.find(rand(1..500))
+      order.items << item
+      order.order_items.each do |order_item|
+        order_item.quantity = rand(1..10)
+      end
+      puts "#{i}: Added item #{item.name} to order #{order.id}."
+    end
+  end
 end
 
 Seed.start
