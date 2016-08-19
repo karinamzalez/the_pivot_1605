@@ -10,6 +10,7 @@ describe 'Visitor can view category pages', type: :feature do
     # I see a list of categories
     click_on 'Categories'
     # when I select a category
+    save_and_open_page
     within(:css, "div#more") do
       click_on category_1.name
     end
