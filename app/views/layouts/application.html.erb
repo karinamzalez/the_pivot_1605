@@ -12,7 +12,7 @@
   </head>
 
   <body>
-    <%= render partial: 'shared/nav_bar' %>
+    <%= render partial: 'shared/nav_bar', locals: { businesses: @businesses, categories: @categories } %>
 
   <section class="main">
     <% flash.each do |type, message| %>

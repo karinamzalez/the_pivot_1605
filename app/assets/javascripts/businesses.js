@@ -1,10 +1,11 @@
 $(document).ready(function () {
 
-  function toggleBusiness (marketID, boothID){
-    $(marketID).on("click", function(){
-      $(boothID).toggleClass("hidden")
+  function toggleMenu (buttonID, listID){
+    $(buttonID).on("click", function(){
+      $(listID).toggleClass("hidden")
     });
   };
 
-  toggleBusiness("#online", "#all")
+  toggleMenu("#online", "#all")
+  toggleMenu("#categories", "#more")
 });

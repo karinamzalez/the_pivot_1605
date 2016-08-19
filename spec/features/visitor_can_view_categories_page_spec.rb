@@ -8,14 +8,19 @@ describe 'Visitor can view category pages', type: :feature do
     visit root_path
     # and I click on the categories dropdown
     # I see a list of categories
-    click_link 'Categories'
+    click_on 'Categories'
     # when I select a category
-    click_link "#{category_1.name}"
+    within(:css, "div#more") do
+      click_on category_1.name
+    end
     # I am taken to the category page
     expect(current_path).to eq category_path(category_1)
     expect(page).to have_content("#{category_1.name}")
 
-    select "#{category_2.name}", from: 'Categories'
+    click_on 'Categories'
+    within(:css, "div#more") do
+      click_on category_2.name
+    end
 
     expect(current_path).to eq category_path(category_2)
     expect(page).to have_content("#{category_2.name}")

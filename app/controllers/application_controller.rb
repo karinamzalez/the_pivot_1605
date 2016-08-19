@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   helper_method :current_user, :time_format, :current_admin?
-  before_action :get_categories, :set_cart
+  before_action :populate_nav, :set_cart
 
   def set_cart
     @cart = Cart.new(session[:cart])
@@ -21,7 +21,8 @@ class ApplicationController < ActionController::Base
     current_user && current_user.admin?
   end
 
-  def get_categories
+  def populate_nav
     @categories = Category.all unless Category.all.empty?
+    @businesses = Business.all unless Business.all.empty?
   end
 end
