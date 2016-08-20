@@ -4,7 +4,13 @@ class Item < ActiveRecord::Base
   has_many :business_items
   has_many :businesses, through: :business_items
 
+  def to_param
+    slug
+  end
+
+  private
+
   def item_slug
-    self.slug = name.parameterize
+    self.slug = name.parameterize if name 
   end
 end
