@@ -1,7 +1,9 @@
 require 'rails_helper'
+require 'support/test_helper'
 
 describe 'Visitor must log in to checkout', type: :feature do
   scenario 'and sees button to log in to be able to checkout' do
+    seed_test_data
     visit cart_path
 
     expect(page).to have_content('Login or Create Account to checkout')
@@ -10,6 +12,7 @@ describe 'Visitor must log in to checkout', type: :feature do
 
   context 'visitor already has item in cart' do
     scenario 'and is redirected to the cart view once logged in' do
+      seed_test_data
       user = create(:user)
       item_one, item_two = create_list(:item, 2)
       page.set_rack_session(cart: {item_one.id => 1,
@@ -35,6 +38,7 @@ describe 'Visitor must log in to checkout', type: :feature do
   end
 
   scenario 'and when logged in does not button to log in to be able to checkout' do
+    seed_test_data
     user = create(:user)
     item_one, item_two = create_list(:item, 2)
     page.set_rack_session(user_id: user.id,

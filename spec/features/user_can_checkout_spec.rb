@@ -1,8 +1,10 @@
 require 'rails_helper'
+require 'support/test_helper'
 
 describe 'User can checkout', type: :feature do
   context 'user already has items in cart' do
     scenario 'and can view order summary' do
+      seed_test_data
       user = create(:user)
       item_one, item_two = create_list(:item, 2)
       page.set_rack_session(user_id: user.id,
@@ -15,7 +17,7 @@ describe 'User can checkout', type: :feature do
       expect(page).to have_content('Order was successfully placed.')
       expect(page).to have_content(item_one.name)
       expect(page).to have_content(item_two.name)
-      
+
       within('table') do
         expect(page).to have_content(item_one.price)
       end

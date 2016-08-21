@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  helper_method :current_user, :time_format, :current_admin?
+  helper_method :current_user, :time_format
   before_action :populate_nav, :set_cart
 
   def set_cart
@@ -16,10 +16,6 @@ class ApplicationController < ActionController::Base
 
   def time_format(raw_time)
     raw_time.strftime("%b %e, %l:%M %p")
-  end
-
-  def current_admin?
-    current_user && current_user.admin?
   end
 
   def populate_nav
