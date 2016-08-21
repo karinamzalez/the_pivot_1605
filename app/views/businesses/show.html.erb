@@ -4,9 +4,7 @@
 
 <% @business.items.each do |item| %>
   <div class="container col-md-4 item-wrapper">
-    <p class= '<%= item.slug %>'>
-      <%= link_to item.name, item_path(item.slug) %>, <%= item.price %></h4>
-    </p>
+    <h4><%= link_to item.name, item_path(item) %>, <%= item.price %></h4>
     <%= button_to "Add to Cart", cart_items_path({item_id: item.id}) %>
   </div>
 <% end %>
