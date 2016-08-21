@@ -1,9 +1,7 @@
 require 'rails_helper'
-require 'support/test_helper'
 
 describe 'Visitor can view category pages', type: :feature do
   scenario 'visitor clicks link to category page from homepage' do
-    seed_test_data
     category_1, category_2 = create_list(:category, 2)
     # As a visitor
     # when I visit the home page

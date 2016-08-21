@@ -1,9 +1,7 @@
 require 'rails_helper'
-require 'support/test_helper'
 
 describe 'Visitor can login', type: :feature do
   scenario 'and is redirected to the users dashboard' do
-    seed_test_data
     user = create(:user)
 
     visit businesses_path
@@ -24,7 +22,6 @@ describe 'Visitor can login', type: :feature do
   end
 
   scenario 'and when the password is incorrect visitor sees the login page' do
-    seed_test_data
     user = create(:user, password: 'password')
 
     visit login_path

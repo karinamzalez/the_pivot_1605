@@ -1,10 +1,8 @@
 require 'rails_helper'
-require 'support/test_helper'
 
 describe 'User can edit own information', type: :feature do
   context 'user is logged in' do
     scenario 'and when they edit username they view their dashboard and updated information' do
-      seed_test_data
       user = User.create(username: 'Tim', password: 'password', email: 'tim@email.com')
       page.set_rack_session(user_id: user.id)
 
