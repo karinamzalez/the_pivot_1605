@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
-  before_action :require_current_user, only: [:show, :update]
-
+  # before_action :require_current_user, only: [:show, :update]
   def new
     @user = User.new
   end
 
   def show
+    @user = current_user
     @top_three_orders = current_user.orders.first(3) unless current_user.orders.empty?
   end
 
@@ -15,22 +15,29 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to dashboard_path
     else
-      flash[:danger] = "Account creation failed. Try again."
+      flash[:danger] = "Account creation failed. Please try again."
       render :new
     end
+  end
+
+  def update
+    @user = current_user
+    if @user.update_attributes(user_params)
+      redirect_to dashboard_path
+      flash[:notice] = 'yes'
+    else
+      redirect_to edit_user_path(@user)
+      flash[:notice] = 'no'
+    end
+  end
+
+  def edit
+    @user = User.find(params[:id])
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :email, :country_code, :phone_number, :role)
-  end
-
-  def require_current_user
-    render file: "/public/404" unless current_user?
-  end
-
-  def current_user?
-    current_user && current_user.default?
+    params.require(:user).permit(:username, :password, :email, :role)
   end
 end

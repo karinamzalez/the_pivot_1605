@@ -30,11 +30,7 @@
               <a><i class="foundicon-thumbnails"></i><%= current_user.username %></a>
               <ul class="menu">
                 <li>
-                  <% if current_admin? %>
-                    <%= link_to 'Dashboard', admin_dashboard_path %>
-                  <% else %>
-                    <%= link_to 'Dashboard', dashboard_path %>
-                  <% end %>
+                  <%= link_to 'Dashboard', dashboard_path %>
                 </li>
                 <li><%= link_to "Logout", logout_path, method: :delete %></li>
               </ul>
