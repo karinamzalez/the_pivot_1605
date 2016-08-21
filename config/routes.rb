@@ -22,7 +22,11 @@ Rails.application.routes.draw do
     resources :items, except: [:destroy]
   end
 
+  namespace :business_admin do
+    get '/dashboard', to: 'businesses#show'
+  end
+
   get '/category/:id' => 'categories#show', as: :category
-  get '/:business_slug', to: 'businesses#show', as: :business
+  get '/:business_slug', to: 'businesses#show'
   get "*any", via: :all, to: "errors#not_found"
 end

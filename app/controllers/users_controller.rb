@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @user.check_role
   end
 
   def create
