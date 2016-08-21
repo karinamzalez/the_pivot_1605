@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @user ||= User.find(session[:user_id]) if session[:user_id]
+    rescue ActiveRecord::RecordNotFound
   end
 
   def time_format(raw_time)
