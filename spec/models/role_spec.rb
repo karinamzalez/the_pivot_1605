@@ -1,5 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Role, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should validate_uniqueness_of(:name) }
+
+  it do
+    should have_many(:user_roles)
+  end
+
+  it do
+    should have_many(:roles).
+      through(:user_roles).
+      class_name('Role')
+  end
 end
