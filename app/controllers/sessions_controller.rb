@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
       flash[:success] = "Successfully logged in!"
-      redirect_to user_admin_redirect
+      redirect_to check_cart
     else
       flash[:danger] = "Invalid login!"
       render :new
@@ -23,10 +23,8 @@ class SessionsController < ApplicationController
 
   private
 
-  def user_admin_redirect
-    if current_admin?
-      admin_dashboard_path
-    elsif session[:cart]
+  def check_cart
+    if session[:cart]
       return cart_path
     else
       dashboard_path

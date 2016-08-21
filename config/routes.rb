@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :cart_items, only: [:create, :update, :destroy]
   resources :users, only: [:new, :create, :edit, :update]
   resources :orders, only: [:index, :create, :show]
+  resources :categories, only: [:show]
 
   get '/cart' => "cart#show"
   put '/cart' => "cart#update"
@@ -22,7 +23,6 @@ Rails.application.routes.draw do
     resources :items, except: [:destroy]
   end
 
-  get '/category/:id' => 'categories#show', as: :category
   get '/:business_slug', to: 'businesses#show', as: :business
   get "*any", via: :all, to: "errors#not_found"
 end
