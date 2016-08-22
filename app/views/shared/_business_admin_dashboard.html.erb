@@ -12,9 +12,9 @@
 </div>
 
 <div class='menu hidden' id='items'>
-  <% businesses.each do |business| %>
-    <p class= '<%= business.slug %>'>
-      <%= link_to business.name, business_slug_path(business.slug) %>
+  <% business.items.each do |item| %>
+    <p class= '<%= item.name %>'>
+      <li>item.name</li>
     </p>
   <% end %>
 </div>
