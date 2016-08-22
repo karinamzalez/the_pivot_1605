@@ -2,7 +2,7 @@
   %h4
     = "Order ##{@order.id}"
     (#{current_user.username})
-  %h5= "Ordered at: #{time_format(@order.created_at)}"
+  %h5.date= "Ordered at: #{time_format(@order.created_at)}"
   - if @order.updated?
     %h5= "Order updated at: #{time_format(@order.created_at)}"
   %h5= "Order status: #{@order.status}"
