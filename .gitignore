@@ -17,5 +17,5 @@
 \\
 
 # SimpleCov
-coverage
-coverage.data
+/coverage
+/coverage.data
