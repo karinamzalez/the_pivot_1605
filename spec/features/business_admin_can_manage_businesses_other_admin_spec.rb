@@ -12,16 +12,8 @@ describe 'Business admin can manage businesses other admins', type: :feature do
     visit dashboard_path
 
     click_link 'Manage Business Admins'
-
     expect(page).to have_content(admin_1.username)
     expect(page).to have_content(admin_2.username)
-    page.set_rack_session(user_id: User.first.id)
-
-    visit dashboard_path
-    click_link 'Update Business Info'
-
-    expect(page).to have_content(admin_two.name)
-    expect(page).to have_content(admin_three.name)
   end
 
   scenario 'and when user is updated to admin they show up in the admin list' do
@@ -58,6 +50,6 @@ describe 'Business admin can manage businesses other admins', type: :feature do
     within('#business_admin_1') do
       click_button 'Demote'
     end
-    expect(page).not_to have_content(admin_to_remove.name)
+    expect(page).not_to have_content(admin_to_remove.username)
   end
 end
