@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160821181720) do
+ActiveRecord::Schema.define(version: 20160821231222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,11 +25,9 @@ ActiveRecord::Schema.define(version: 20160821181720) do
   create_table "businesses", force: :cascade do |t|
     t.string   "name"
     t.string   "location"
-    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text     "slug"
-    t.index ["user_id"], name: "index_businesses_on_user_id", using: :btree
   end
 
   create_table "categories", force: :cascade do |t|
@@ -85,19 +83,20 @@ ActiveRecord::Schema.define(version: 20160821181720) do
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "password_digest"
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "email"
-    t.string   "role",            default: "registered_user"
+    t.integer  "businesses_id"
+    t.index ["businesses_id"], name: "index_users_on_businesses_id", using: :btree
   end
 
   add_foreign_key "business_items", "businesses"
   add_foreign_key "business_items", "items"
-  add_foreign_key "businesses", "users"
   add_foreign_key "items", "categories"
   add_foreign_key "order_items", "items"
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
+  add_foreign_key "users", "businesses", column: "businesses_id"
 end

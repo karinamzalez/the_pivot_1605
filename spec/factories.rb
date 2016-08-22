@@ -18,7 +18,6 @@ FactoryGirl.define do
   factory :business do
     name { Faker::Company.name }
     location city_names.sample
-    user nil
   end
 
   factory :user do

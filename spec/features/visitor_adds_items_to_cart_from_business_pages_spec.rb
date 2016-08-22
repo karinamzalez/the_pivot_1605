@@ -7,7 +7,7 @@ RSpec.feature "Visitor cart functionality" do
     scenario "visitor adds item to cart from Business #1" do
       seed_test_data
       # as a visitor, when I am on a business's page
-      visit business_path(Business.first.slug)
+      visit business_slug_path(Business.first.slug)
       # and I click on an item's add-to-cart button
       first('.item-wrapper').click_button("Add to Cart")
 
@@ -20,11 +20,11 @@ RSpec.feature "Visitor cart functionality" do
     scenario "visitor adds item to cart from Business #2" do
       seed_test_data
       # as a visitor, when I am on a business's page
-      visit business_path(Business.first.slug)
+      visit business_slug_path(Business.first.slug)
       # and I click on an item's add-to-cart button
       first('.item-wrapper').click_button("Add to Cart")
       # and I visit another business's page
-      visit business_path(Business.second.slug)
+      visit business_slug_path(Business.second.slug)
       # and I click on another item's add-to-cart button
       first('.item-wrapper').click_button("Add to Cart")
 
