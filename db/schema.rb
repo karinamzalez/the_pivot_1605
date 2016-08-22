@@ -86,8 +86,8 @@ ActiveRecord::Schema.define(version: 20160821231222) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "email"
-    t.integer  "businesses_id"
-    t.index ["businesses_id"], name: "index_users_on_businesses_id", using: :btree
+    t.integer  "business_id"
+    t.index ["business_id"], name: "index_users_on_business_id", using: :btree
   end
 
   add_foreign_key "business_items", "businesses"
@@ -98,5 +98,5 @@ ActiveRecord::Schema.define(version: 20160821231222) do
   add_foreign_key "orders", "users"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
-  add_foreign_key "users", "businesses", column: "businesses_id"
+  add_foreign_key "users", "businesses"
 end

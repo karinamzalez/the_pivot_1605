@@ -46,19 +46,19 @@ module TestHelper
       username: "business_admin_1",
       email: "businessadmin1@turing.io",
       password: "password",
-      businesses_id: Business.first.id
+      business_id: Business.first.id
     )
     admin_2 = User.create(
       username: "business_admin_2",
       email: "businessadmin2@turing.io",
       password: "password",
-      businesses_id: Business.first.id
+      business_id: Business.first.id
     )
     admin_3 = User.create(
       username: "business_admin_3",
       email: "businessadmin3@turing.io",
       password: "password",
-      businesses_id: Business.first.id
+      business_id: Business.first.id
     )
     admin_1.roles << Role.find_by(name: "business_admin")
     admin_2.roles << Role.find_by(name: "business_admin")
