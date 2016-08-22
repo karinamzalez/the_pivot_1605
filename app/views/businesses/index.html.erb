@@ -1,27 +1,2 @@
-<div class="col-md-12 col-md-offset-4">
+<div class='col-md-12 col-md-offset-4'>
   <h1>Farmer's Market</h1>
-
-  <div class="btn-group">
-    <button type="button" class="btn btn-default" id="online">All Businesses</button>
-    <button type="button" class="btn btn-default" id="pending">Some </button>
-    <button type="button" class="btn btn-default" id="offline">Other </button>
-    <span class="btn button-indigo active dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="categories">Categories<span class="caret"></span></span>
-      <ul class="dropdown-menu">
-        <% @categories.each do |category| %>
-        <li>
-          <%= link_to "#{category.name}", category_path(category) %>
-        </li>
-        <% end %>
-      </ul>
-  </div>
-
-  <div class="businesses hidden" id="all">
-    <div class="online">
-      <% @businesses.each do |business| %>
-      <p class= '<%= business.slug %>'>
-        <%= link_to "#{business.name}", business_slug_path(business.slug) %>
-      </p>
-      <% end %>
-    </div>
-  </div>
-</div>

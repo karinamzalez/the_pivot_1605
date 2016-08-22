@@ -59,7 +59,7 @@ class Seed
   end
 
   private
-  
+
   def mock_session(user)
     session = {"cart" => {}, "user_id" => user.id}
     rand(1..10).times do
@@ -68,13 +68,16 @@ class Seed
     session
   end
 
-  # def add_items(order)
-  #   10.times do |i|
-  #     item = Item.find(rand(1..500))
-  #     order.items << item
-  #     puts "#{i}: Added item #{item.name} to order #{order.id}."
-  #   end
-  # end
+  def add_items(order)
+    10.times do |i|
+      item = Item.find(rand(1..500))
+      order.items << item
+      order.order_items.each do |order_item|
+        order_item.quantity = rand(1..10)
+      end
+      puts "#{i}: Added item #{item.name} to order #{order.id}."
+    end
+  end
 end
 
 Seed.start

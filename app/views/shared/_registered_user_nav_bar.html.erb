@@ -1,23 +1,36 @@
 <div class="top-bar navbar">
   <div class="wrap">
     <div class="top-bar-left">
-      <ul class="menu">
-        <li class="menu-text">
-          <%= link_to "Businesses", businesses_path %>
-        </li>
-      </ul>
     </div>
     <div class="top-bar-right">
       <ul class="dropdown menu" data-dropdown-menu>
-        <li class="category-dropdown" id='categories'>
-          <a>Categories</a>
-          <ul class="menu" id='categories'>
-            <% if @categories %>
-              <% @categories.each do |category| %>
-                <li><%= link_to "#{category.name}", "/#{category.to_param}" %></li>
+        <li>
+          <div class='btn-group'>
+            <button type='button' class='btn btn-default' id='online'>All Businesses</button>
+            <button type='button' class='btn btn-default' id='pending'>Some </button>
+            <button type='button' class='btn btn-default' id='offline'>Other </button>
+            <button type='button' class='btn btn-default' id='categories' value='Categories'>Categories</span>&nbsp;<span class='caret'></button>
+          </div>
+
+          <div class='menu hidden' id='all'>
+            <% if businesses %>
+              <% businesses.each do |business| %>
+                <p class= '<%= business.slug %>'>
+                  <%= link_to business.name, business_path(business.slug) %>
+                </p>
               <% end %>
             <% end %>
-          </ul>
+          </div>
+
+          <div class='menu hidden' id='more'>
+            <% if categories %>
+              <% categories.each do |category| %>
+                <p>
+                  <%= link_to category.name, category_path(category) %>
+                </p>
+              <% end %>
+            <% end %>
+          </div>
         </li>
         <li id="bucket-link">
           <%= link_to "Cart: ", cart_path %>
