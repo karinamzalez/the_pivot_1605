@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @user.check_role
+    @business = Business.find(@user.businesses_id) if @user.businesses_id
   end
 
   def create

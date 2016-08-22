@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def authorize?
+  def authorized?
     PermissionsService.new(current_user).allow?(params[:controller])
   end
 

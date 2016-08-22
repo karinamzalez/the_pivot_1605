@@ -9,4 +9,9 @@
   %h3= link_to "Edit Account Info", edit_user_path(@user.id), class: "button success hallow button"
   %h3= link_to "Buy something!", businesses_path, class: "button success hollow button"
 
-= render partial: 'shared/dashboard'
+- if current_user.platform_admin?
+  = render partial: 'platform_admin_dashboard'
+- elsif current_user.business_admin?
+  = render partial: 'business_admin_dashboard', locals: { business: @business }
+- else
+  = render partial: 'dashboard'

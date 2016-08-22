@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'businesses#index'
 
   resources :items
-  resources :businesses, only: [:index]
+  resources :businesses, only: [:index, :edit, :update]
   resources :cart_items, only: [:create, :update, :destroy]
   resources :users, only: [:new, :create, :edit, :update]
   resources :orders, only: [:index, :create, :show]
@@ -16,17 +16,7 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'users#show'
 
-  namespace :admin do
-    get '/dashboard', to: 'users#show'
-
-    resources :items, except: [:destroy]
-  end
-
-  namespace :business_admin do
-    get '/dashboard', to: 'businesses#show'
-  end
-
   get '/category/:id' => 'categories#show', as: :category
-  get '/:business_slug', to: 'businesses#show'
+  get '/:business_slug', to: 'businesses#show', as: :business_slug 
   get "*any", via: :all, to: "errors#not_found"
 end
