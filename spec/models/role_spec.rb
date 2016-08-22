@@ -8,8 +8,8 @@ describe Role, type: :model do
   end
 
   it do
-    should have_many(:roles).
+    should have_many(:users).
       through(:user_roles).
-      class_name('Role')
+      class_name('User')
   end
 end

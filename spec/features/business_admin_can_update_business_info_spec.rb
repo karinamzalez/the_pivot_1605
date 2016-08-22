@@ -4,7 +4,7 @@ describe 'Business admin can update business information', type: :feature do
   scenario 'and sees the updated information on the users dashboard' do
     business = create(:business)
     role = Role.create(name: 'business_admin')
-    user = create(:user, businesses_id: business.id)
+    user = create(:user, business_id: business.id)
     user.roles << role
     updated_business_name = 'New Business Name'
     updated_business_address = '123 New Street'

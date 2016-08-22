@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :edit, :update]
   resources :orders, only: [:index, :create, :show]
   resources :categories, only: [:show]
+  resources :business_admins, only: [:edit, :update]
 
   get '/cart' => "cart#show"
   put '/cart' => "cart#update"

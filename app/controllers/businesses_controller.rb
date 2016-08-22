@@ -9,11 +9,11 @@ class BusinessesController < ApplicationController
   end
 
   def edit
-    @business = Business.find(current_user.businesses_id)
+    @business = Business.find(current_user.business_id)
   end
 
   def update
-    business = Business .find(current_user.businesses_id)
+    business = Business .find(current_user.business_id)
     if business.update(business_params)
       redirect_to dashboard_path
       flash[:notice] = 'Business information updated successfully!'

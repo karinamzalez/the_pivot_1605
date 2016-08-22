@@ -10,8 +10,8 @@
   %h3= link_to "Buy something!", businesses_path, class: "button success hollow button"
 
 - if current_user.platform_admin?
-  = render partial: 'platform_admin_dashboard'
+  = render partial: 'shared/platform_admin_dashboard'
 - elsif current_user.business_admin?
-  = render partial: 'business_admin_dashboard', locals: { business: @business }
+  = render partial: 'shared/business_admin_dashboard', locals: { business: @business }
 - else
-  = render partial: 'dashboard'
+  = render partial: 'shared/dashboard'

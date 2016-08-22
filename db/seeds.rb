@@ -6,6 +6,7 @@ class Seed
     seed.generate_users
     seed.generate_business_items
     seed.generate_orders
+    seed.generate_roles
   end
 
   def generate_categories
@@ -44,8 +45,23 @@ class Seed
       puts "User #{i}: #{user.username} - #{user.email} created!"
     end
 
-    User.create!(username: 'jorge', email: 'jorge@turing.io', password: "password", businesses_id: 1)
+    User.create!(username: 'jorge', email: 'jorge@turing.io', password: "password", business_id: 1)
     puts "jorge created!"
+  end
+
+  def generate_business_admin
+    jorge = User.find_or_create_by(
+      username: "jorge",
+      email: "jorge@turing.io",
+      password: "password"
+    )
+
+  end
+
+  def generate_roles
+    Role.create!(name: "registered_user")
+    Role.create!(name: "business_admin")
+    Role.create!(name: "platform_admin")
   end
 
   def generate_orders

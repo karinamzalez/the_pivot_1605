@@ -1,0 +1,3 @@
+- @business_admins.each do |admin|
+  = "#{admin.username}"
+  = button_to 'Demote Admin', business_admin_path(admin), class: 'button success hollow button' 
