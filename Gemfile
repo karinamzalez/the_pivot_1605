@@ -23,7 +23,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'foundation-rails'
 gem 'unicorn'
 gem "paperclip", "~> 5.0.0"
-
+gem 'simplecov', :require => false, :group => :test
 
 group :development, :test do
   gem 'byebug'
