@@ -38,17 +38,14 @@ describe 'Business admin can manage businesses other admins', type: :feature do
   end
 
   scenario 'and when admin is demoted to user they no longer appear in the admin list' do
-    pending
     create_business_admins
     admin_to_remove = User.first
-    page.set_rack_session(user_id: User.first.id)
+    page.set_rack_session(user_id: User.last.id)
 
     visit dashboard_path
 
     click_link 'Manage Business Admins'
-    within('#business_admin_1') do
-      click_button 'Demote'
-    end
+    first('.admin').click_link('Demote Admin')
     expect(page).not_to have_content(admin_to_remove.username)
   end
 end

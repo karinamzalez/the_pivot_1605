@@ -25,4 +25,11 @@ class User < ActiveRecord::Base
     self.business_id = business.id
     self.save
   end
+  
+  def remove_business_admin
+    role = self.roles.find_by(name: 'business_admin')
+    UserRole.where(user_id: self.id, role_id: role.id).destroy_all
+    self.business_id = nil
+    self.save
+  end
 end
