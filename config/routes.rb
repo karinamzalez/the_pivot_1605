@@ -17,7 +17,6 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'users#show'
 
-  get '/category/:id' => 'categories#show', as: :category
   get '/:business_slug', to: 'businesses#show', as: :business_slug
   get "*any", via: :all, to: "errors#not_found"
 end
