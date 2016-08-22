@@ -21,5 +21,6 @@ describe 'Businesss admin can edit own business items', type: :feature do
     click_on("View #{business.name} Items")
 
     expect(page).to have_content(business.items.first.name)
+    expect(page).to have_content(business.items.last.name)
   end
 end

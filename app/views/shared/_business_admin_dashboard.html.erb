@@ -13,8 +13,8 @@
 
 <div class='menu hidden' id='items'>
   <% business.items.each do |item| %>
-    <p class= '<%= item.name %>'>
-      <li>item.name</li>
+    <p class='<%= item.slug %>'>
+      <li> <%= item.name %> </li>
     </p>
   <% end %>
 </div>
