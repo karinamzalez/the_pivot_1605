@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :user_roles
   has_many :roles, through: :user_roles
   validates :username, presence: true
-  validates :password, presence: true
+  validates :password, length: { minimum: 5 }, allow_nil: true
 
   def platform_admin?
     roles.exists?(name: 'platform_admin')
@@ -21,7 +21,8 @@ class User < ActiveRecord::Base
   end
 
   def set_business_admin(business)
-    self.roles << Role.find_by(name: 'business_admin')
+    roles << Role.find_by(name: 'business_admin')
     self.business_id = business.id
+    self.save
   end
 end
