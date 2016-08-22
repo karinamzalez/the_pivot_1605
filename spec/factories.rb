@@ -1,4 +1,11 @@
 FactoryGirl.define do
+  factory :user_role do
+    user nil
+    role nil
+  end
+  factory :role do
+    name "MyString"
+  end
   city_names = [
     "London",
     "Paris",
@@ -11,7 +18,6 @@ FactoryGirl.define do
   factory :business do
     name { Faker::Company.name }
     location city_names.sample
-    user nil
   end
 
   factory :user do

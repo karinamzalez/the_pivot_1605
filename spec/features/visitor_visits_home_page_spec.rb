@@ -27,7 +27,7 @@ RSpec.feature "Visitor Sees All Businesses" do
         click_link business_1.name
       end
 
-      expect(current_path).to eq(business_path(business_1.slug))
+      expect(current_path).to eq(business_slug_path(business_1.slug))
       expect(page).to have_content(business_1.location)
     end
   end

@@ -15,7 +15,7 @@ describe 'User can checkout', type: :feature do
       expect(page).to have_content('Order was successfully placed.')
       expect(page).to have_content(item_one.name)
       expect(page).to have_content(item_two.name)
-      
+
       within('table') do
         expect(page).to have_content(item_one.price)
       end

@@ -1,0 +1,57 @@
+<div class="top-bar navbar">
+  <div class="wrap">
+    <div class="top-bar-left">
+    </div>
+    <div class="top-bar-right">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li>
+          <div class='btn-group'>
+            <button type='button' class='btn btn-default' id='online'>All Businesses</button>
+            <button type='button' class='btn btn-default' id='pending'>Some </button>
+            <button type='button' class='btn btn-default' id='offline'>Other </button>
+            <button type='button' class='btn btn-default' id='categories' value='Categories'>Categories</span>&nbsp;<span class='caret'></button>
+          </div>
+
+          <div class='menu hidden' id='all'>
+            <% if businesses %>
+              <% businesses.each do |business| %>
+                <p class= '<%= business.slug %>'>
+                  <%= link_to business.name, business_slug_path(business.slug) %>
+                </p>
+              <% end %>
+            <% end %>
+          </div>
+
+          <div class='menu hidden' id='more'>
+            <% if categories %>
+              <% categories.each do |category| %>
+                <p>
+                  <%= link_to category.name, category_path(category) %>
+                </p>
+              <% end %>
+            <% end %>
+          </div>
+        </li>
+        <li id="bucket-link">
+          <%= link_to "Cart: ", cart_path %>
+          <span class="label"><%= @cart.total_quantity %></span>
+        </li>
+        <li>
+          <% if current_user %>
+            <li>
+              <a><i class="foundicon-thumbnails"></i><%= current_user.username %></a>
+              <ul class="menu">
+                <li>
+                  <%= link_to 'Dashboard', dashboard_path %>
+                </li>
+                <li><%= link_to "Logout", logout_path, method: :delete %></li>
+              </ul>
+            </li>
+          <% else %>
+            <%= link_to "Login", login_path %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,9 +1,9 @@
 class Seed
   def self.start
     seed = Seed.new
-    seed.generate_users
     seed.generate_categories
     seed.generate_businesses
+    seed.generate_users
     seed.generate_business_items
     seed.generate_orders
   end
@@ -44,8 +44,8 @@ class Seed
       puts "User #{i}: #{user.username} - #{user.email} created!"
     end
 
-    User.create!(username: 'Jorge', email: 'jorge@turing.io', password: "password")
-    puts "Jorge created!"
+    User.create!(username: 'jorge', email: 'jorge@turing.io', password: "password", businesses_id: 1)
+    puts "jorge created!"
   end
 
   def generate_orders
@@ -59,7 +59,7 @@ class Seed
   end
 
   private
-  
+
   def mock_session(user)
     session = {"cart" => {}, "user_id" => user.id}
     rand(1..10).times do
@@ -68,13 +68,16 @@ class Seed
     session
   end
 
-  # def add_items(order)
-  #   10.times do |i|
-  #     item = Item.find(rand(1..500))
-  #     order.items << item
-  #     puts "#{i}: Added item #{item.name} to order #{order.id}."
-  #   end
-  # end
+  def add_items(order)
+    10.times do |i|
+      item = Item.find(rand(1..500))
+      order.items << item
+      order.order_items.each do |order_item|
+        order_item.quantity = rand(1..10)
+      end
+      puts "#{i}: Added item #{item.name} to order #{order.id}."
+    end
+  end
 end
 
 Seed.start

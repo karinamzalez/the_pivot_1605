@@ -12,7 +12,13 @@
   </head>
 
   <body>
-    <%= render partial: 'shared/nav_bar' %>
+    <% if platform_admin? %>
+      <%= render partial: 'shared/registered_user_nav_bar', locals: { businesses: @businesses, categories: @categories } %>
+    <% elsif business_admin? %>
+      <%= render partial: 'shared/registered_user_nav_bar', locals: { businesses: @businesses, categories: @categories } %>
+    <% else %>
+      <%= render partial: 'shared/registered_user_nav_bar', locals: { businesses: @businesses, categories: @categories } %>
+    <% end %>
 
   <section class="main">
     <% flash.each do |type, message| %>

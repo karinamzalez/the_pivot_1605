@@ -16,13 +16,11 @@ RSpec.feature "Visitor cart functionality" do
     end
 
     scenario "visitor adds item to cart from Business #2" do
-
       visit business_path(Business.first.slug)
 
       first('.item-wrapper').click_button("Add to Cart")
 
       visit business_path(Business.second.slug)
-
       first('.item-wrapper').click_button("Add to Cart")
 
       expect(page).to have_content(" has been added to your cart")
