@@ -1,5 +1,6 @@
 require 'rails_helper'
-require 'support/test_helper'
+
+include TestHelper
 
 RSpec.feature "Visitor cart functionality" do
   context "Multiple businesses and items exist" do
