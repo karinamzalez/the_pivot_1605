@@ -1,0 +1,20 @@
+<h4>Current Business Information:</h4>
+<p class='name'>Business name: <%= business.name %></p>
+<p class='location'> Email address: <%= business.location %></p>
+
+<div class='wrap-button'>
+  <h3> <%= link_to "Update Business Info", edit_business_path(business), class: "button success hollow button" %></h3>
+  <h3> <%= link_to "Manage Business Admins", edit_business_admin_path(business), class: "button success hollow button" %></h3>
+</div>
+
+<div class='btn-group'>
+  <button type='button' class='btn btn-default' id='business'>View <%= business.name %> Items</button>
+</div>
+
+<div class='menu hidden' id='items'>
+  <% businesses.each do |business| %>
+    <p class= '<%= business.slug %>'>
+      <%= link_to business.name, business_slug_path(business.slug) %>
+    </p>
+  <% end %>
+</div>

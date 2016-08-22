@@ -1,9 +1,0 @@
-%h4 Current Business Information:
-%p.name Business name: #{business.name}
-%p.location Email address: #{business.location}
-
-%div.wrap-button
-  %h3= link_to "Update Business Info", edit_business_path(business), class: "button success hollow button"
-  %h3= link_to "Manage Business Admins", edit_business_admin_path(business), class: "button success hollow button"
-
-= link_to "View #{business.name} Items", items_path(business)
