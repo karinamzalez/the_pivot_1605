@@ -1,46 +1,55 @@
-# require 'rails_helper'
-#
-# describe 'Business admin can manage businesses other admins', type: :feature do
-#   scenario 'and sees a list of current admins' do
-#     business = create(:business)
-#     primary_admin, admin_two, admin_three = create_list(:user, businesses_id: business.id)
-#     page.set_rack_session(primary_admin: primary_admin.id)
-#
-#     visit dashboard_path
-#
-#     click_link 'Manage Business Admins'
-#
-#     expect(page).to have_content(admin_two.name)
-#     expect(page).to have_content(admin_three.name)
-#   end
-#
-#   # scenario 'and when user is updated to admin they show up in the admin list'
-#   #   business = create(:business)
-#   #   admin = create(:user, role: 'business_admin', businesses_id: business.id)
-#   #   user = create(:user)
-#   #   page.set_rack_session(primary_admin: primary_admin.id)
-#   #
-#   #   visit dashboard_path
-#   #
-#   #   click_link 'Manage Business Admins'
-#   #   click_link 'Add Business Admin'
-#   #   fill_in 'Email Address', with: user.email
-#   #   click_button 'Add Business Admin'
-#   #
-#   #   expect(page).to have_content(user.name)
-#   # end
-#   #
-#   # scenario 'and when admin is demoted to user they no longer appear in the admin list'
-#   #   business = create(:business)
-#   #   primary_admin, admin_two = create_list(:user, 2, role: 'business_admin', businesses_id: business.id)
-#   #   page.set_rack_session(primary_admin: primary_admin.id)
-#   #
-#   #   visit dashboard_path
-#   #
-#   #   click_link 'Manage Business Admins'
-#   #   within('#admin_two.name') do
-#   #     click_button 'Demote'
-#   #   end
-#   #   expect(page).not_to have_content(admin_two.name)
-#   # end
-# end
+require 'rails_helper'
+require 'support/test_helper'
+
+include TestHelper
+
+describe 'Business admin can manage businesses other admins', type: :feature do
+  scenario 'and sees a list of current admins' do
+    create_business_admins
+    page.set_rack_session(user_id: User.first.id)
+
+    visit dashboard_path
+    save_and_open_page
+    click_link 'Update Business Info'
+
+    expect(page).to have_content(admin_two.name)
+    expect(page).to have_content(admin_three.name)
+  end
+
+  scenario 'and when user is updated to admin they show up in the admin list' do
+    pending
+    create_business_admins
+    admin = User.first
+    user = User.create(
+      username: "new_admin",
+      email: "newkidontheblock@turing.io",
+      password: "password"
+    )
+    user.roles << Role.find_by(name: "registered user")
+    page.set_rack_session(user_id: admin.id)
+  
+    visit dashboard_path
+  
+    click_link 'Update Business Info'
+    click_link 'Add Business Admin'
+    fill_in 'Email Address', with: user.email
+    click_button 'Add Business Admin'
+  
+    expect(page).to have_content(user.username)
+  end
+  
+  scenario 'and when admin is demoted to user they no longer appear in the admin list' do
+    pending
+    create_business_admins
+    admin_to_remove = User.first
+    page.set_rack_session(user_id: User.first.id)
+  
+    visit dashboard_path
+  
+    click_link 'Update Business Info'
+    within('#business_admin_1') do
+      click_button 'Demote'
+    end
+    expect(page).not_to have_content(admin_to_remove.name)
+  end
+end

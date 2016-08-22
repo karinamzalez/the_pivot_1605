@@ -11,14 +11,14 @@ class User < ActiveRecord::Base
   validates :password, presence: true
 
   def platform_admin?
-    roles.exists?(name: 'platform_admin')
+    roles.exists?(name: 'platform admin')
   end
 
   def business_admin?
-    roles.exists?(name: 'business_admin')
+    roles.exists?(name: 'business admin')
   end
 
   def registered_user?
-    roles.exists?(name: 'registered_user')
+    roles.exists?(name: 'registered user')
   end
 end

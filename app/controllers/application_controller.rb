@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  add_flash_types :success, :info, :warning, :danger
   helper_method :current_user, :time_format
   before_action :populate_nav, :set_cart
 
@@ -25,7 +26,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorized?
-    PermissionsService.new(current_user).allow?(params[:controller])
+    PermissionsService.new(current_user).allow?(params[:controller], params[:action])
   end
 
   def time_format(raw_time)
