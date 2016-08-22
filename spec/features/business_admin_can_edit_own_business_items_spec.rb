@@ -8,13 +8,18 @@ describe 'Businesss admin can edit own business items', type: :feature do
     admin = create(:user, business_id: business.id)
     create_roles
     admin.set_business_admin
+    create_test_categories
     create_test_business_items
     page.set_rack_session(user_id: admin.id)
 
     visit dashboard_path
 
-    within("p") do
+    within("p.name") do
       expect(page).to have_content(business.name)
     end
+
+    click_on("View #{business.name} Items")
+
+    expect(page).to have_content(business.items.first.name)
   end
 end

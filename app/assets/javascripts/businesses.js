@@ -1,6 +1,7 @@
 $(document).ready(function () {
   toggleMenu("#online", "#all");
   toggleMenu("#categories", "#more");
+  
 });
 
 function toggleMenu (buttonID, listID){
