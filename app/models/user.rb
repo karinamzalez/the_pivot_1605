@@ -19,4 +19,9 @@ class User < ActiveRecord::Base
   def registered_user?
     roles.exists?(name: 'registered_user')
   end
+
+  def set_business_admin(business)
+    self.roles << Role.find_by(name: 'business_admin')
+    self.business_id = business.id
+  end
 end

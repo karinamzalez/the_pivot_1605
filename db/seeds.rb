@@ -4,9 +4,10 @@ class Seed
     seed.generate_categories
     seed.generate_businesses
     seed.generate_users
+    seed.generate_roles
+    seed.generate_business_admin
     seed.generate_business_items
     seed.generate_orders
-    seed.generate_roles
   end
 
   def generate_categories
@@ -44,18 +45,16 @@ class Seed
       user = FactoryGirl.create(:user)
       puts "User #{i}: #{user.username} - #{user.email} created!"
     end
-
-    User.create!(username: 'jorge', email: 'jorge@turing.io', password: "password", business_id: 1)
-    puts "jorge created!"
   end
 
   def generate_business_admin
-    jorge = User.find_or_create_by(
+    jorge = User.create(
       username: "jorge",
       email: "jorge@turing.io",
-      password: "password"
-    )
-
+      password: "password",
+      business_id: 1
+      )
+      jorge.roles << Role.find_by(name: "business_admin")
   end
 
   def generate_roles
