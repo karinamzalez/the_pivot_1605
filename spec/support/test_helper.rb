@@ -64,4 +64,16 @@ module TestHelper
     admin_2.roles << Role.find_by(name: "business_admin")
     admin_3.roles << Role.find_by(name: "business_admin")
   end
+  
+  def create_platform_admin
+    create_test_businesses
+    create_roles
+    platform_admin = User.create(
+      username: "platform_admin",
+      email: "platform_admin@turing.io",
+      password: "password"
+    )
+    platform_admin.roles << Role.find_by(name: "platform_admin")
+    platform_admin
+  end
 end
