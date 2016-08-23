@@ -23,7 +23,7 @@ describe User, type: :model do
     expect(user.business_admin?).to eq(true)
   end
 
-  it 'checks registered user ' do
+  it 'checks registered user' do
     user = create(:user, :as_registered_user)
     expect(user.registered_user?).to eq(true)
   end
@@ -44,13 +44,10 @@ describe User, type: :model do
     expect(user.business.name).to eq(business.name)
   end
 
-<<<<<<< HEAD
-=======
   it 'sets registered_user' do
     user = create(:user)
     create_roles
     user.set_registered_user
     expect(user.roles.first.name).to eq('registered_user')
   end
->>>>>>> c995fff4cf8fde3af91f56a130cf90ba43bbb700
 end
