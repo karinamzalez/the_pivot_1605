@@ -36,14 +36,14 @@ RSpec.feature "Business Admin Sees All Business Items" do
 
       within("tr.#{@business.items.first.slug}") do
         click_on("Edit")
-
-        expect(current_path).to eq("/admin/items/#{@business.items.first.slug}/edit")
-
-        fill_in "item_name",  with: 'apple'
-        click_on("Update Item")
-
-        expect(@business.items.first.name).to eq("apple")
       end
+
+      expect(current_path).to eq("/admin/items/#{@business.items.first.slug}/edit")
+
+      fill_in "Name",  with: 'apple'
+      click_on("Update Item")
+
+      expect(@business.items.first.name).to eq("apple")
     end
 
     scenario "business admin can delete business items" do
