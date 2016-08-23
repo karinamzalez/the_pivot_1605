@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :user_roles
   has_many :roles, through: :user_roles
   validates :username, presence: true
-  validates :password, presence: true
+  validates :password, length: { minimum: 5 }, allow_nil: true
 
   def platform_admin?
     roles.exists?(name: 'platform_admin')
@@ -34,5 +34,12 @@ class User < ActiveRecord::Base
   def set_registered_user
     self.roles << Role.find_by(name: 'registered_user')
     self.save
- end
+  end
+
+  def remove_business_admin
+    role = self.roles.find_by(name: 'business_admin')
+    UserRole.where(user_id: self.id, role_id: role.id).destroy_all
+    self.business_id = nil
+    self.save
+  end
 end

@@ -8,7 +8,6 @@ describe User, type: :model do
   it { should have_many(:user_roles) }
   it { should have_many(:roles).through(:user_roles) }
 
-
   it 'checks platform admin' do
     user = create(:user)
     create_roles
@@ -18,7 +17,7 @@ describe User, type: :model do
 
   it 'checks business admin' do
     user = create(:user)
-    business = Business.create(name: 'A Buisiness')
+    business = create(:business)
     create_roles
     user.set_business_admin(business)
     expect(user.business_admin?).to eq(true)
@@ -33,7 +32,7 @@ describe User, type: :model do
 
   it 'sets business admin' do
     user = create(:user)
-    business = Business.create(name: 'A Buisiness')
+    business = create(:business)
     create_roles
     user.set_business_admin(business)
     expect(user.roles.first.name).to eq('business_admin')

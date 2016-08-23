@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.feature "user sees past orders" do
   scenario "user see list of previous orders" do
-    user = create(:user)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return( user )
+    user = create(:user, :as_registered_user)
+    page.set_rack_session(user_id: user.id)
 
     order_1 = create(:order, user_id: user.id)
     item_1  = create(:item)
@@ -24,6 +24,6 @@ RSpec.feature "user sees past orders" do
     within("h5.date") do
       expect(page).to have_content("Ordered at:")
     end
-    #find a way to make this more versatile 
+    #find a way to make this more versatile
   end
 end

@@ -19,7 +19,7 @@ class BusinessesController < ApplicationController
       flash[:notice] = 'Business information updated successfully!'
     else
       flash[:danger] = 'Business information not updated successfully.'
-      render edit_business_path
+      redirect_to edit_business_path(business)
     end
   end
 
