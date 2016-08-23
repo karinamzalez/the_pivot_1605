@@ -46,3 +46,43 @@ farmers_markets:
         Mixed Greens,
         Red Leaf Lettuce,
         Cabbage]
+      home_good: [
+        Handmade Soap,
+        Handmade Cutting Board,
+        Wine Rack,
+        Hand Painted Flower Pot,
+        Bouquet of Flowers,
+        Painted Rock,
+        Hand Sewn Accent Curtain,
+        Crocheted Towelette]
+      location: [
+        Los Angeles,
+        Mexico City,
+        Rio de Janeiro,
+        Sao Paulo,
+        Buenos Aires,
+        Chicago,
+        New York City,
+        London,
+        Paris,
+        Rome,
+        Istanbul,
+        Tehran,
+        Dubai,
+        Cairo,
+        Johannesburg,
+        St. Petersburg,
+        Moscow,
+        New Delhi,
+        Shanghai,
+        Sydney,
+        Tokyo,
+        Kyoto,
+        Bangkok,
+        Seoul,
+        Hong Kong,
+        Singapore]
+        
+        
+        
+        
