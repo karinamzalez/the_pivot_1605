@@ -28,6 +28,7 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
+      @item.set_business(current_user)
       flash[:success] = "Item with name, #{@item.name} successfully created!"
       redirect_to dashboard_path
     else

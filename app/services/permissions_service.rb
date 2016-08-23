@@ -51,7 +51,7 @@ class PermissionsService
     return true if controller == 'orders'
     return true if controller == 'sessions'
     return true if controller == 'users'
-    return true if controller == 'admin/items' && action.in?(%w(edit update destroy create))
+    return true if controller == 'admin/items' && action.in?(%w(edit update destroy create new))
   end
 
   def registered_user_permissions(controller)

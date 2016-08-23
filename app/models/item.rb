@@ -12,6 +12,10 @@ class Item < ActiveRecord::Base
     deactivate
   end
 
+  def set_business(current_user)
+    self.businesses << Business.find(current_user.business_id)
+  end
+
   private
 
   def deactivate

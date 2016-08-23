@@ -65,11 +65,9 @@ RSpec.feature "Business Admin Sees All Business Items" do
 
       click_on("View #{@business.name} Items")
 
-      within("tr.#{@business.items.first.slug}") do
-        click_on("Remove")
-      end
+      click_on("New Item")
 
-      expect(page).not_to have_content(@business.items.first.name)
+      expect(current_path).to eq("/admin/items/")
     end
   end
 end
