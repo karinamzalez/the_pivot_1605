@@ -56,7 +56,7 @@ RSpec.feature "Business Admin Sees All Business Items" do
         click_on("Remove")
       end
 
-      expect(page).to include(@business.items.first.name)
+      expect(page).not_to have_content(@business.items.first.name)
     end
   end
 end

@@ -1,7 +1,7 @@
 class Category < ActiveRecord::Base
   has_many :items
 
-  validates_uniqueness_of :name
+  # validates_uniqueness_of :name
 
   def to_param
     self.name.parameterize
