@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'User can checkout', type: :feature do
   context 'user already has items in cart' do
     scenario 'and can view order summary' do
-      user = create(:user)
+      user = create(:user, :as_registered_user)
       item_one, item_two, item_three = create_list(:item, 3)
       page.set_rack_session(user_id: user.id,
                             cart: {item_one.id => 1,

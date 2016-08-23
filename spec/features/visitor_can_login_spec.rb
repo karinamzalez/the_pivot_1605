@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Visitor can login', type: :feature do
   scenario 'and is redirected to the users dashboard' do
-    user = create(:user)
+    user = create(:user, :as_registered_user)
 
     visit businesses_path
     within('.navbar') do
