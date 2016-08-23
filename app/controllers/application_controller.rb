@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorized?
-    current_permission.allow?
+    current_permission.allow?(params[:controller])
   end
 
   def current_permission
