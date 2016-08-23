@@ -14,6 +14,13 @@ class Admin::ItemsController < ApplicationController
    end
  end
 
+ def destroy
+  @item = User.find(params[:id])
+  @item.remove_business
+  flash[:success] = "Successfully removed #{@item.name}"
+  redirect_to dashboard_path
+end
+
 private
 
   def item_params
