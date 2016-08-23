@@ -1,5 +1,5 @@
 class Admin::ItemsController < ApplicationController
   def edit
-    #add
+    @item = Item.find_by(slug: params[:id])
   end
 end
