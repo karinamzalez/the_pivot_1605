@@ -1,5 +1,5 @@
 class BusinessesController < ApplicationController
-  
+
   def index
     @businesses = Business.all
     @categories = Category.all
@@ -10,10 +10,10 @@ class BusinessesController < ApplicationController
   end
 
   def create
-    @business = Business.new(business_params)
-    if @business.save
-      flash[:notice] = 'Thank you for applying to Worldwide Farmers Market! We will let you know if you have been approved shortly.'
-      redirect_to dashboard_path
+    # @business = Business.new(business_params)
+    # if @business.save
+    #   flash[:notice] = 'Thank you for applying to Worldwide Farmers Market! We will let you know if you have been approved shortly.'
+    #   redirect_to dashboard_path
   end
 
   def show

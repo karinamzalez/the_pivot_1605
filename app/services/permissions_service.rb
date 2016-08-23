@@ -4,13 +4,13 @@ class PermissionsService
     @user = user || User.new
   end
 
-  def allow?(controller, action)
+  def allow?(_controller, _action)
     @controller = _controller
     @action = _action
-    return platform_admin_permissions(controller, action) if user.platform_admin?
-    return business_admin_permissions(controller, action) if user.business_admin?
-    return registered_user_permissions(controller, action) if user.registered_user?
-    return visitor_permissions(controller, action)
+    return platform_admin_permissions if user.platform_admin?
+    return business_admin_permissions if user.business_admin?
+    return registered_user_permissions if user.registered_user?
+    return visitor_permissions
   end
 
   private
