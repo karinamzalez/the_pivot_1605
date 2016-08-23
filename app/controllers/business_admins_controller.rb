@@ -11,7 +11,8 @@ class BusinessAdminsController < ApplicationController
   end
 
   def edit
-    @business_admins = User.where(business_id: current_user.business_id)
+    target_business = current_user.business_id || params[:target_business]
+    @business_admins = User.where(business_id: target_business)
   end
   
   def destroy
