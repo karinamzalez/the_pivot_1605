@@ -31,7 +31,7 @@
             %td
               = link_to "Increase quantity", cart_item_path(item.id, :adjustment => "increase"), method: :put
             %td
-              = link_to "Remove from cart", cart_item_path(item.id), method: :delete
+              = link_to "Remove from cart", cart_item_path(item.id), method: :delete, class: item.name
             %td
               %p $#{item.subtotal}
         %tr

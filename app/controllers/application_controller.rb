@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   add_flash_types :success, :info, :warning, :danger
   helper_method :current_user, :time_format
-  before_action :populate_nav, :set_cart
+  before_action :populate_nav, :set_cart, :authorize!
 
   def set_cart
     @cart = Cart.new(session[:cart])
@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorized?
-    PermissionsService.new(current_user).allow?(params[:controller], params[:action])
+    PermissionsService.new(current_user).allow?(params[:controller])
   end
 
   def time_format(raw_time)
@@ -36,5 +36,13 @@ class ApplicationController < ActionController::Base
   def populate_nav
     @categories = Category.all unless Category.all.empty?
     @businesses = Business.all unless Business.all.empty?
+  end
+
+  def check_cart
+    if session[:cart]
+      return cart_path
+    else
+      dashboard_path
+    end
   end
 end
