@@ -50,12 +50,4 @@ describe User, type: :model do
     user.set_registered_user
     expect(user.roles.first.name).to eq('registered_user')
   end
-
-  # it 'removes business admin' do
-  #   user = create(:user, :as_business_admin)
-  #   user.remove_business_admin
-  #
-  #   expect(user.roles).to eq(nil)
-  #   expect(user.business_id).to eq(nil)
-  # end
 end
