@@ -43,10 +43,8 @@ RSpec.feature "Business Admin Sees All Business Items" do
 
         expect(current_path).to eq("/admin/items/#{business.items.first.slug}/edit")
 
-        within(".panel-body") do
-          fill_in "name",  with: "apple"
-          click_on("Update Item")
-        end
+        fill_in "price",  with: "apple"
+        click_on("Update Item")
 
         expect(business.items.first.name).to eq("apple")
       end
