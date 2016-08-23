@@ -28,6 +28,7 @@ module TestHelper
           description: Faker::Hipster.paragraph,
           category_id: Category.all.shuffle.pop.id,
           image_url: "http://kingofwallpapers.com/apple/apple-015.jpg",
+          status: true
         )
       end
     end

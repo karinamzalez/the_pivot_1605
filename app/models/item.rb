@@ -8,13 +8,15 @@ class Item < ActiveRecord::Base
     slug
   end
 
-  def remove_business
-    if businesses?
-      
-    end
+  def deactivate_item
+    deactivate 
   end
 
   private
+
+  def deactivate
+    self.status = false
+  end
 
   def item_slug
     self.slug = name.parameterize if name

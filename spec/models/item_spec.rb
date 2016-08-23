@@ -8,8 +8,10 @@ describe Item, type: :model do
     item = create(:item)
     business.items << item
 
-    item.remove_business
+    (item.status).should eq(true)
 
-    (item.businesses).should eq("")
+    item.deactivate_item
+
+    (item.status).should eq(false)
   end
 end
