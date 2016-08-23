@@ -15,10 +15,6 @@ class ApplicationController < ActionController::Base
     rescue ActiveRecord::RecordNotFound
   end
 
-  def current_permission
-    @current_permission ||= Permission.new(current_user)
-  end
-
   def authorize!
     unless authorized?
       redirect_to root_url, danger: "You are not authorized to visit this page."
