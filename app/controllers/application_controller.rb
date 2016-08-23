@@ -15,19 +15,6 @@ class ApplicationController < ActionController::Base
     rescue ActiveRecord::RecordNotFound
   end
 
-  def current_permission
-    @current_permission ||= Permission.new(current_user)
-  end
-
-  def authorize!
-    unless authorized?
-      redirect_to root_url, danger: "You are not authorized to visit this page."
-    end
-  end
-
-  def authorized?
-    PermissionsService.new(current_user).allow?(params[:controller])
-  end
 
   def time_format(raw_time)
     raw_time.strftime("%b %e, %l:%M %p")
@@ -44,5 +31,19 @@ class ApplicationController < ActionController::Base
     else
       dashboard_path
     end
+  end
+
+  private
+
+  def authorize!
+    redirect_to(root_url, danger: "You are not authorized.") unless authorized?
+  end
+
+  def authorized?
+    current_permission.allow?
+  end
+
+  def current_permission
+    @current_permission ||= PermissionsService.new(current_user, params[:controller], params[:action])
   end
 end
