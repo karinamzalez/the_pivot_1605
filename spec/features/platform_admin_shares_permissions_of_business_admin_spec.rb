@@ -12,13 +12,11 @@ describe "Platform admin can manage any business's admins", type: :feature do
     
     visit dashboard_path
     first(".business").click_on("Manage Business Admins")
-    save_and_open_page
     expect(page).to have_content(admin_1.username)
     expect(page).to have_content(admin_2.username)
   end
   
   scenario 'and when user is updated to admin they show up in the admin list' do
-    pending
     platform_admin = create_platform_admin
     user = User.create(
       username: "new_admin",
@@ -39,7 +37,6 @@ describe "Platform admin can manage any business's admins", type: :feature do
   end
   
   scenario 'and when admin is demoted to user they no longer appear in the admin list' do
-    pending
     create_business_admins
     admin_to_remove = User.first
     platform_admin = create_platform_admin
@@ -55,7 +52,6 @@ end
 
 describe "Platform admin can update any business's information", type: :feature do
   scenario "and sees the updated information on the dashboard" do
-    pending
     create_test_businesses
     business_to_update = Business.first
     platform_admin = create_platform_admin
@@ -74,7 +70,6 @@ describe "Platform admin can update any business's information", type: :feature 
   end
   
   scenario 'platform admin cannot update info with blank fields' do
-    pending
     create_test_businesses
     platform_admin = create_platform_admin
     page.set_rack_session(user_id: platform_admin.id)

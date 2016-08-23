@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
 
   def set_business_admin(business)
     self.roles << Role.find_by(name: 'business_admin')
-    self.business_id = business.id
+    self.business_id = business.id 
     self.save
  end
 
