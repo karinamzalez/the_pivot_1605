@@ -27,7 +27,7 @@ module TestHelper
           price: Faker::Number.decimal(2),
           description: Faker::Hipster.paragraph,
           category_id: Category.all.shuffle.pop.id,
-          image_url: "http://kingofwallpapers.com/apple/apple-015.jpg"
+          image_url: "http://kingofwallpapers.com/apple/apple-015.jpg",
         )
       end
     end

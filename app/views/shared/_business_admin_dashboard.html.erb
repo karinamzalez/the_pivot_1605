@@ -13,8 +13,9 @@
 
 <div class='menu hidden' id='items'>
   <% business.items.each do |item| %>
-    <p class='<%= item.slug %>'>
-      <li> <%= item.name %> </li>
-    </p>
+    <tr class= "<%= item.slug %>" >
+      <td> <%= item.name %>  </td>
+      <td> <%= button_to "Edit", edit_admin_item_path(item), method: :get, class: "btn btn-warning btn-xs" %> </td>
+    </tr>
   <% end %>
 </div>

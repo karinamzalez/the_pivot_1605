@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root to: 'businesses#index'
 
+  namespace :admin do
+    resources :items, only: [:update, :edit, :show]
+  end
+
   resources :items
   resources :businesses, only: [:index, :edit, :update]
   resources :cart_items, only: [:create, :update, :destroy]
