@@ -45,7 +45,7 @@ RSpec.feature "Business Admin Sees All Business Items" do
 
         fill_in "name", with: "apple"
 
-        click_on("Submit")
+        click_on("Update Item")
 
         expect(business.items.first.name).to eq("apple")
       end
