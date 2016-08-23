@@ -73,7 +73,7 @@ FactoryGirl.define do
   end
 
   factory :category do
-    name { Faker::Color.color_name }
+    name { Faker::Color.color_name + "#{rand(100)}" }
   end
 
   factory :order do
