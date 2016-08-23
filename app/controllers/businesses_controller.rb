@@ -1,7 +1,19 @@
 class BusinessesController < ApplicationController
+  
   def index
     @businesses = Business.all
     @categories = Category.all
+  end
+
+  def new
+    @business = Business.new
+  end
+
+  def create
+    @business = Business.new(business_params)
+    if @business.save
+      flash[:notice] = 'Thank you for applying to Worldwide Farmers Market! We will let you know if you have been approved shortly.'
+      redirect_to dashboard_path
   end
 
   def show
@@ -26,6 +38,6 @@ class BusinessesController < ApplicationController
   private
 
   def business_params
-    params.require(:business).permit(:name, :location)
+    params.require(:business).permit(:name, :location, :status)
   end
 end
