@@ -26,6 +26,5 @@ RSpec.feature "user sees past orders" do
     within("h5.date") do
       expect(page).to have_content("Ordered at:")
     end
-    #find a way to make this more versatile
   end
 end
