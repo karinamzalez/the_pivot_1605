@@ -53,20 +53,6 @@ class Seed
     puts "jorge created!"
   end
 
-=======
-  end
-
-  def generate_business_admin
-    jorge = User.create(
-      username: "jorge",
-      email: "jorge@turing.io",
-      password: "password",
-      business_id: 1
-      )
-      jorge.roles << Role.find_by(name: "business_admin")
-  end
-
->>>>>>> 9c929462a52c2bbf69d75d3d27d5a659cbb4c603
   def generate_roles
     Role.create!(name: "registered_user")
     Role.create!(name: "business_admin")
