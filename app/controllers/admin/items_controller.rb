@@ -16,8 +16,8 @@ class Admin::ItemsController < ApplicationController
 
  def destroy
   @item = User.find(params[:id])
-  @item.remove_business
-  flash[:success] = "Successfully removed #{@item.name}"
+  @item.deactivate_item
+  flash[:success] = "Successfully deactivated #{@item.name}"
   redirect_to dashboard_path
 end
 

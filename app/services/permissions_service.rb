@@ -1,7 +1,7 @@
 class PermissionsService
-  attr_reader :user
+
   def initialize(user)
-    @user = user || User.new
+    @_user = user || User.new
   end
 
   def allow?(controller)
@@ -37,6 +37,7 @@ class PermissionsService
     return true if controller == 'orders'
     return true if controller == 'sessions'
     return true if controller == 'users'
+    return true if controller == 'admin/items' && action.in? (%w(edit update destroy create))
   end
 
   def registered_user_permissions(controller)
@@ -60,5 +61,11 @@ class PermissionsService
     return true if controller == 'items'
     return true if controller == 'sessions'
     return true if controller == 'users'
+  end
+
+  private
+
+  def user
+    @_user
   end
 end

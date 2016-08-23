@@ -9,13 +9,13 @@ class Item < ActiveRecord::Base
   end
 
   def deactivate_item
-    deactivate 
+    deactivate
   end
 
   private
 
   def deactivate
-    self.status = false
+    self.status = false if status
   end
 
   def item_slug

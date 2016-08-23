@@ -48,16 +48,15 @@ RSpec.feature "Business Admin Sees All Business Items" do
 
     scenario "business admin can delete business items" do
       page.set_rack_session(user_id: @admin.id)
-      visit dashboard_path  
+      visit dashboard_path
 
       click_on("View #{@business.name} Items")
 
       within("tr.#{@business.items.first.slug}") do
         click_on("Remove")
-
-
-        expect(page).not_to have_content(@business.items.first.name)
       end
+      
+      expect(page).not_to have_content(@business.items.first.name)
     end
   end
 end
