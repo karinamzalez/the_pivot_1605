@@ -2,4 +2,4 @@
   .admin
     = "#{admin.username}"
     = link_to 'Demote Admin', business_admin_path(removed_admin: "#{admin.username}"), method: :delete
-= link_to 'Add Business Admin', new_business_admin_path
+= link_to 'Add Business Admin', new_business_admin_path(id: params[:id])

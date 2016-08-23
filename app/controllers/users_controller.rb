@@ -1,12 +1,15 @@
 class UsersController < ApplicationController
-  # before_action :require_current_user, only: [:show, :update]
   def new
     @user = User.new
   end
 
   def show
     @user = current_user
-    @business = Business.find(@user.business_id) if @user.business_id
+    if @user.business_admin?
+      @business = Business.find(@user.business_id)
+    elsif @user.platform_admin?
+      @businesses = Business.all
+    end
   end
 
   def create
@@ -24,15 +27,14 @@ class UsersController < ApplicationController
     @user = current_user
     if @user.update_attributes(user_params)
       redirect_to dashboard_path
-      flash[:notice] = 'yes'
+      flash[:notice] = 'Account information updated successfully!'
     else
       redirect_to edit_user_path(@user)
-      flash[:notice] = 'no'
+      flash[:notice] = 'Account information update failed. Please try again.'
     end
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   private
