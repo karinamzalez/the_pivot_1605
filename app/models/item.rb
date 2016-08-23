@@ -15,7 +15,7 @@ class Item < ActiveRecord::Base
   private
 
   def deactivate
-    self.status = false if status
+    self.status = false if self.status
   end
 
   def item_slug

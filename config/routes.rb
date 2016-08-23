@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'businesses#index'
 
   namespace :admin do
-    resources :items, only: [:update, :edit, :show, :destroy]
+    resources :items, only: [:update, :edit, :show, :destroy, :create]
   end
 
   resources :items

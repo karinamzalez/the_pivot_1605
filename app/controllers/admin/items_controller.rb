@@ -14,12 +14,27 @@ class Admin::ItemsController < ApplicationController
    end
  end
 
- def destroy
-  @item = Item.find_by(slug: params[:id])
-  @item.deactivate_item
-  flash[:success] = "Successfully deactivated #{@item.name}"
-  redirect_to dashboard_path
-end
+  def destroy
+    @item = Item.find_by(slug: params[:id])
+    @item.deactivate_item
+    flash[:success] = "Successfully deactivated #{@item.name}"
+    redirect_to dashboard_path
+  end
+
+  def new
+    @item = Item.new
+  end
+
+  def create
+    @item = Item.new(item_params)
+    if @item.save
+      flash[:success] = "Item with name, #{@item.name} successfully created!"
+      redirect_to dashboard_path
+    else
+      flash.now[:warning]= @item.errors.full_messages.join(", ")
+      render :new
+    end
+  end
 
 private
 

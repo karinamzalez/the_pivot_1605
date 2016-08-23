@@ -58,5 +58,18 @@ RSpec.feature "Business Admin Sees All Business Items" do
 
       expect(page).not_to have_content(@business.items.first.name)
     end
+
+    scenario "business admin can create new business item" do
+      page.set_rack_session(user_id: @admin.id)
+      visit dashboard_path
+
+      click_on("View #{@business.name} Items")
+
+      within("tr.#{@business.items.first.slug}") do
+        click_on("Remove")
+      end
+
+      expect(page).not_to have_content(@business.items.first.name)
+    end
   end
 end
