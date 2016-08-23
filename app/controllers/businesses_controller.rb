@@ -9,11 +9,11 @@ class BusinessesController < ApplicationController
   end
 
   def edit
-    @business = Business.find(target_business)
+    @business = Business.find(target_business.id)
   end
 
   def update
-    business = Business.find(target_business)
+    business = Business.find(target_business.id)
     if business.update(business_params)
       redirect_to dashboard_path
       flash[:notice] = 'Business information updated successfully!'
@@ -28,11 +28,11 @@ class BusinessesController < ApplicationController
   def business_params
     params.require(:business).permit(:name, :location)
   end
-  
+
   def target_business
     if current_user.business_admin?
-      Business.find(current_user.business)
-    else 
+      Business.find(current_user.business.id)
+    else
       Business.find(params[:id])
     end
   end

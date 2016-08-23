@@ -27,7 +27,8 @@ module TestHelper
           price: Faker::Number.decimal(2),
           description: Faker::Hipster.paragraph,
           category_id: Category.all.shuffle.pop.id,
-          image_url: "http://kingofwallpapers.com/apple/apple-015.jpg"
+          image_url: "http://kingofwallpapers.com/apple/apple-015.jpg",
+          status: 1
         )
       end
     end
@@ -64,7 +65,7 @@ module TestHelper
     admin_2.roles << Role.find_by(name: "business_admin")
     admin_3.roles << Role.find_by(name: "business_admin")
   end
-  
+
   def create_platform_admin
     create_test_businesses
     create_roles
@@ -75,5 +76,12 @@ module TestHelper
     )
     platform_admin.roles << Role.find_by(name: "platform_admin")
     platform_admin
+  end
+
+  def create_new_business_applications
+    create_test_businesses
+    Business.all.take(5).each do |business|
+      business.status = 0
+    end
   end
 end
