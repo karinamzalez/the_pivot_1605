@@ -55,6 +55,7 @@ describe "Platform admin can update any business's information", type: :feature 
     create_test_businesses
     business_to_update = Business.first
     platform_admin = create_platform_admin
+    page.set_rack_session(user_id: platform_admin.id)
     updated_business_name = 'New Business Name'
     updated_business_address = '123 New Street'
     
@@ -71,6 +72,7 @@ describe "Platform admin can update any business's information", type: :feature 
   
   scenario 'platform admin cannot update info with blank fields' do
     create_test_businesses
+    business = Business.first
     platform_admin = create_platform_admin
     page.set_rack_session(user_id: platform_admin.id)
 
@@ -78,7 +80,7 @@ describe "Platform admin can update any business's information", type: :feature 
 
     first(".business").click_on('Update Business Info')
     fill_in 'Business Name', with: 'blah incorporated'
-        fill_in 'Location', with: ''
+    fill_in 'Location', with: ''
     click_button 'Update Business Info'
     expect(page).to have_content('Business information not updated successfully.')
     expect(current_path).to eq (edit_business_path(business))

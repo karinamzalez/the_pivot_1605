@@ -6,8 +6,11 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @business = Business.find(@user.business_id) if @user.business_id
-    @businesses = Business.all
+    if @user.business_admin?
+      @business = Business.find(@user.business_id)
+    elsif @user.platform_admin?
+      @businesses = Business.all
+    end
   end
 
   def create
