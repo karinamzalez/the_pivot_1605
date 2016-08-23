@@ -25,4 +25,9 @@ describe 'Visitor can view category pages', type: :feature do
     expect(current_path).to eq category_path(category_2)
     expect(page).to have_content("#{category_2.name}")
   end
+
+  scenario 'visitor cannot go to category that does not exist' do
+    visit category_path("Enron Inc.")
+    expect(page).to have_css('.user-greeting')
+  end
 end
