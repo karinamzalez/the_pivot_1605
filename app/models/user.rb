@@ -19,4 +19,20 @@ class User < ActiveRecord::Base
   def registered_user?
     roles.exists?(name: 'registered_user')
   end
+
+  def set_business_admin(business)
+    self.roles << Role.find_by(name: 'business_admin')
+    self.business_id = business.id
+    self.save
+ end
+
+  def set_platform_admin
+    self.roles << Role.find_by(name: 'platform_admin')
+    self.save
+ end
+
+  def set_registered_user
+    self.roles << Role.find_by(name: 'registered_user')
+    self.save
+ end
 end
