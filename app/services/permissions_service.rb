@@ -1,7 +1,9 @@
 class PermissionsService
 
-  def initialize(user)
-    @_user = user || User.new
+  def initialize(user, controller, action)
+    @_user       = user || User.new
+    @_controller = controller
+    @_action     = action
   end
 
   def allow?(controller)
@@ -12,6 +14,18 @@ class PermissionsService
   end
 
   private
+
+  def user
+    @_user
+  end
+
+  def controller
+    @_controller
+  end
+
+  def action
+    @_action
+  end
 
   def platform_admin_permissions(controller)
     return true if controller == 'businesses'
@@ -61,11 +75,5 @@ class PermissionsService
     return true if controller == 'items'
     return true if controller == 'sessions'
     return true if controller == 'users'
-  end
-
-  private
-
-  def user
-    @_user
   end
 end
