@@ -37,4 +37,12 @@ class ApplicationController < ActionController::Base
     @categories = Category.all unless Category.all.empty?
     @businesses = Business.all unless Business.all.empty?
   end
+
+  def check_cart
+    if session[:cart]
+      return cart_path
+    else
+      dashboard_path
+    end
+  end
 end

@@ -59,5 +59,6 @@ class PermissionsService
     return true if controller == 'errors'
     return true if controller == 'items'
     return true if controller == 'sessions'
+    return true if controller == 'users'
   end
 end

@@ -10,7 +10,7 @@ describe 'Visitor must log in to checkout', type: :feature do
 
   context 'visitor already has item in cart' do
     scenario 'and is redirected to the cart view once logged in' do
-      user = create(:user)
+      user = create(:user, :as_registered_user)
       item_one, item_two = create_list(:item, 2)
       page.set_rack_session(cart: {item_one.id => 1,
                                    item_two.id => 2})
@@ -29,13 +29,36 @@ describe 'Visitor must log in to checkout', type: :feature do
         click_on 'Login'
       end
 
+      expect(current_path).to eq(cart_path)
+      expect(page).to have_content(item_one.name)
+      expect(page).to have_content(item_two.price)
+    end
+
+    scenario 'and is redirected to the cart view once account is created' do
+      item_one, item_two = create_list(:item, 2)
+      page.set_rack_session(cart: {item_one.id => 1,
+                                   item_two.id => 2})
+
+      visit cart_path
+
+      expect(page).to have_content(item_one.name)
+      expect(page).to have_content(item_two.price)
+      within('#checkout_button') do
+        click_on 'Create Account'
+      end
+      fill_in 'Username', with: 'Skip'
+      fill_in 'Password', with: 'password'
+      fill_in 'Email Address', with: 'email@email.com'
+      click_on 'Create Account'
+
+      expect(current_path).to eq(cart_path)
       expect(page).to have_content(item_one.name)
       expect(page).to have_content(item_two.price)
     end
   end
 
   scenario 'and when logged in does not button to log in to be able to checkout' do
-    user = create(:user)
+    user = create(:user, :as_registered_user)
     item_one, item_two = create_list(:item, 2)
     page.set_rack_session(user_id: user.id,
                           cart: {item_one.id => 1,

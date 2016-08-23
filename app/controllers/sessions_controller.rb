@@ -20,14 +20,4 @@ class SessionsController < ApplicationController
     flash[:success] = "Successfully logged out!"
     redirect_to root_path
   end
-
-  private
-
-  def check_cart
-    if session[:cart]
-      return cart_path
-    else
-      dashboard_path
-    end
-  end
 end
