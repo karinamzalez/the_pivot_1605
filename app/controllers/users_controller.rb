@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to dashboard_path
+      redirect_to check_cart
     else
       flash[:danger] = "Account creation failed. Please try again."
       render :new
