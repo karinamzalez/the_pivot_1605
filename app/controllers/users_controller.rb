@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @business = Business.find(@user.business_id) if @user.business_id
+    @businesses = Business.all
   end
 
   def create

@@ -4,7 +4,6 @@ include TestHelper
 
 describe "Platform admin can manage any business's admins", type: :feature do
   scenario 'visits a business admin edit page and sees a list of current business admins' do
-    pending
     create_business_admins
     admin_1 = User.first
     admin_2 = User.second
@@ -12,8 +11,8 @@ describe "Platform admin can manage any business's admins", type: :feature do
     page.set_rack_session(user_id: platform_admin.id)
     
     visit dashboard_path
-    
     first(".business").click_on("Manage Business Admins")
+    save_and_open_page
     expect(page).to have_content(admin_1.username)
     expect(page).to have_content(admin_2.username)
   end

@@ -11,7 +11,7 @@ class BusinessAdminsController < ApplicationController
   end
 
   def edit
-    target_business = current_user.business_id || params[:target_business]
+    target_business = current_user.business_id || params[:id]
     @business_admins = User.where(business_id: target_business)
   end
   
