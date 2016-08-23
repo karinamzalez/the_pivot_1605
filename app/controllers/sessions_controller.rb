@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-  # helper_method :user_admin_redirect
   def new
   end
 
