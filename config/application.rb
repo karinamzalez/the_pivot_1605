@@ -15,8 +15,10 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module GameOfGnomes
+module WorldWideFarmersMarket
   class Application < Rails::Application
+    Faker::Config.locale = :farmers_markets
+
     config.exceptions_app = self.routes
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
