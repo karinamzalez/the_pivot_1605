@@ -20,7 +20,6 @@ class Item < ActiveRecord::Base
 
   def deactivate
     self.status = false
-    self.save
   end
 
   def item_slug
