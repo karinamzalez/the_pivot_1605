@@ -31,6 +31,7 @@ class BusinessesController < ApplicationController
 
   def update
     business = Business.find(target_business.id)
+    User.find_by(business_id: business.id).roles << Role.find_by(name: "business_admin") if params[:business][:add_business_admin]
     if business.update(business_params)
       flash[:notice] = 'Business information updated successfully!'
       redirect_to dashboard_path
