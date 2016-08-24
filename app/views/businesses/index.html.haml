@@ -8,5 +8,4 @@
         %p
           %img(src="http://lorempixel.com/400/400/food/#{rand(10)}")
         .span
-          =link_to "Shop Here", business_path(business.slug), class: "button"
-        
+          =link_to "Shop Here", business_slug_path(business.slug), class: "button"

@@ -14,13 +14,7 @@
   </head>
 
   <body class="row">
-    <% if platform_admin? %>
-      <%= render partial: 'shared/nav_bar'%>
-    <% elsif business_admin? %>
-      <%= render partial: 'shared/nav_bar'%>
-    <% else %>
-      <%= render partial: 'shared/nav_bar'%>
-    <% end %>
+    <%= render partial: 'shared/nav_bar'%>
 
   <section class="main">
     <% flash.each do |type, message| %>
