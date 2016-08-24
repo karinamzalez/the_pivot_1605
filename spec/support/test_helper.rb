@@ -77,10 +77,21 @@ module TestHelper
     platform_admin
   end
 
-  def create_new_business_applications
-    create_test_businesses
-    Business.all.take(5).each do |business|
+  def create_new_businesses
+    5.times do
+      create_test_businesses
+    end
+    Business.all.last(5).each do |business|
       business.update_attribute(:status, 0)
+    end
+  end
+
+  def create_offline_businesses
+    5.times do
+      create_test_businesses
+    end
+    Business.all.first(5).each do |business|
+      business.update_attribute(:status, 2)
     end
   end
 end

@@ -22,7 +22,7 @@ class Seed
 
   def generate_new_businesses
     generate_businesses
-    Business.all[-20..-1].each do |business|
+    Business.all.last(20).each do |business|
       business.update_attribute(:status, 0)
     end
     puts "new businesses created successfully!"
@@ -30,7 +30,7 @@ class Seed
 
   def generate_offline_businesses
     generate_businesses
-    Business.all[0..19].each do |business|
+    Business.all.first(20).each do |business|
       business.update_attribute(:status, 2)
     end
     puts "offline businesses created successfully!"
