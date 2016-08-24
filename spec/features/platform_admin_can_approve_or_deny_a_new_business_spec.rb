@@ -5,7 +5,7 @@ describe 'Platform admin can approve or deny a new business', type: :feature do
   context 'platform admin is logged in and businesses exists' do
     scenario 'and sees the approved business in a list of current businesses' do
       platform_admin = create(:user, :as_platform_admin)
-      create_new_business_applications
+      create_new_businesses
       create_test_businesses
       page.set_rack_session(user_id: platform_admin.id)
 
@@ -18,7 +18,7 @@ describe 'Platform admin can approve or deny a new business', type: :feature do
     end
     scenario 'and no longer sees the declined business in a list of current businesses' do
       platform_admin = create(:user, :as_platform_admin)
-      create_new_business_applications
+      create_new_businesses
       create_test_businesses
       business = Business.find_by(status: 'new_business')
       page.set_rack_session(user_id: platform_admin.id)
