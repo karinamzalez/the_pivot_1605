@@ -3,13 +3,13 @@ class Seed
     seed = Seed.new
     seed.generate_categories
     seed.generate_businesses
-    seed.generate_new_businesses
     seed.generate_offline_businesses
     seed.generate_roles
     seed.generate_users
     seed.generate_platform_admin
     seed.generate_business_items
     seed.generate_orders
+    seed.generate_new_businesses
   end
 
   def generate_categories
@@ -37,7 +37,7 @@ class Seed
 
   def generate_new_businesses
     generate_businesses
-    Business.all[0..19].each do |business|
+    Business.all[-20..-1].each do |business|
       business.update_attribute(:status, 0)
     end
     puts "new businesses created successfully!"
@@ -45,7 +45,7 @@ class Seed
 
   def generate_offline_businesses
     generate_businesses
-    Business.all[-20..-1].each do |business|
+    Business.all[0..19].each do |business|
       business.update_attribute(:status, 2)
     end
     puts "offline businesses created successfully!"
