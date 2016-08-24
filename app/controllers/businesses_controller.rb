@@ -25,18 +25,15 @@ class BusinessesController < ApplicationController
   end
 
   def edit
-    @business = Business.find(target_business)
+    @business = Business.find(target_business.id)
   end
 
   def update
-<<<<<<< HEAD
+    require "pry"; binding.pry
     business = Business.find(target_business.id)
-=======
-    business = Business.find(target_business)
->>>>>>> dev_branch
     if business.update(business_params)
-      redirect_to dashboard_path
       flash[:notice] = 'Business information updated successfully!'
+      redirect_to dashboard_path
     else
       flash[:danger] = 'Business information not updated successfully.'
       redirect_to edit_business_path(business)
@@ -48,18 +45,8 @@ class BusinessesController < ApplicationController
   def business_params
     params.require(:business).permit(:name, :location)
   end
-<<<<<<< HEAD
 
   def target_business
     target_business = current_user.business || Business.find(params[:id])
-=======
-  
-  def target_business
-    if current_user.business_admin?
-      Business.find(current_user.business)
-    else 
-      Business.find(params[:id])
-    end
->>>>>>> dev_branch
   end
 end
