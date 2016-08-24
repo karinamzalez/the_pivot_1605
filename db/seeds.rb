@@ -23,7 +23,7 @@ class Seed
     # puts "category Drinks created!"
     # Category.create!(name: "Plants")
     # puts "category Plants created!"
-    # Category.create!(name: "Jewlery")
+    # Category.create!(name: "Jewelry")
     # puts "category Jewlery created!"
     # Category.create!(name: "Crafts")
     # puts "category Crafts created!"
