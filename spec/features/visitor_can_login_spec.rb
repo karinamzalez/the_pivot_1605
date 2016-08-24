@@ -19,6 +19,11 @@ describe 'Visitor can login', type: :feature do
     expect(page).to have_content('Successfully logged in!')
     expect(page).not_to have_content('Login.')
     expect(page).not_to have_content('Invalid login!')
+
+    click_on "Logout"
+
+    expect(page).to have_content('Successfully logged out!')
+    expect(current_path).to eq root_path
   end
 
   scenario 'and when the password is incorrect visitor sees the login page' do
