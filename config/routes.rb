@@ -19,5 +19,8 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'users#show'
 
   get '/:business_slug', to: 'businesses#show', as: :business_slug
+  
+  get '/auth/:provider/callback', to: 'sessions#create'
+  
   get "*any", via: :all, to: "errors#not_found"
 end
