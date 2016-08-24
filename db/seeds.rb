@@ -5,12 +5,7 @@ class Seed
     seed.generate_businesses
     seed.generate_roles
     seed.generate_users
-    seed.generate_roles
-<<<<<<< HEAD
-=======
-    seed.generate_business_admin
     seed.generate_platform_admin
->>>>>>> c995fff4cf8fde3af91f56a130cf90ba43bbb700
     seed.generate_business_items
     seed.generate_orders
   end

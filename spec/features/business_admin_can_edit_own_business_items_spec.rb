@@ -5,7 +5,7 @@ include TestHelper
 RSpec.feature "Business Admin Sees All Business Items" do
   context "business admin visits dashboard" do
 
-    before :all do
+    before :each do
       @business = create(:business)
       @admin = create(:user, business_id: @business.id)
       create_roles
