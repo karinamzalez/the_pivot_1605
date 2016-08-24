@@ -15,9 +15,9 @@ class Admin::ItemsController < ApplicationController
  end
 
   def destroy
-    @item = Item.find_by(slug: params[:id])
-    @item.deactivate_item
-    flash[:success] = "Successfully deactivated #{@item.name}"
+    item = Item.find_by(slug: params[:id])
+    item.update_attribute("status", false)
+    flash[:success] = "Successfully deactivated item"
     redirect_to dashboard_path
   end
 

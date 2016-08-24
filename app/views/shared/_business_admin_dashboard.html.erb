@@ -12,9 +12,9 @@
 </div>
 
 <div class='menu hidden' id='items'>
-  <%= button_to "New Item", new_admin_item_path, method: :get, class: "btn btn-success btn-xs" %> 
+  <%= button_to "New Item", new_admin_item_path, method: :get, class: "btn btn-success btn-xs" %>
   <% business.items.each do |item| %>
-    <% if item.status == true %>
+    <% if item.status %>
       <tr class= "<%= item.slug %>" >
           <td> <%= item.name %>  </td>
           <td> <%= button_to "Edit", edit_admin_item_path(item), method: :get, class: "btn btn-warning btn-xs" %> </td>

@@ -7,20 +7,12 @@ class Item < ActiveRecord::Base
   def to_param
     slug
   end
-
-  def deactivate_item
-    deactivate
-  end
-
+  
   def set_business(current_user)
     self.businesses << Business.find(current_user.business_id)
   end
 
   private
-
-  def deactivate
-    self.status = false
-  end
 
   def item_slug
     self.slug = name.parameterize if name
