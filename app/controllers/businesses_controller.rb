@@ -39,12 +39,11 @@ class BusinessesController < ApplicationController
     end
   end
 
-  def approve_new_business(business)
-    if business.update_attributes(status: 1)
-      redirect_to user_dashboard
-    else
-      render user_dashboard
-    end
+  def destroy
+    @business = Business.find(params[:id])
+    @business.destroy
+    flash[:notice] = "#{@business.name} declined."
+    redirect_to dashboard_path
   end
 
   private
