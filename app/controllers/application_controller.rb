@@ -19,11 +19,6 @@ class ApplicationController < ActionController::Base
     raw_time.strftime("%b %e, %l:%M %p")
   end
 
-  def populate_nav
-    @categories = Category.all unless Category.all.empty?
-    @businesses = Business.all unless Business.all.empty?
-  end
-
   def check_cart
     if session[:cart]
       return cart_path

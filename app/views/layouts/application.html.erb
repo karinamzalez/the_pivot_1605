@@ -13,11 +13,11 @@
 
   <body>
     <% if platform_admin? %>
-      <%= render partial: 'shared/registered_user_nav_bar', locals: { businesses: @businesses, categories: @categories } %>
+      <%= render partial: 'shared/nave_bar', locals: { businesses: @businesses, categories: @categories } %>
     <% elsif business_admin? %>
-      <%= render partial: 'shared/registered_user_nav_bar', locals: { businesses: @businesses, categories: @categories } %>
+      <%= render partial: 'shared/nave_bar', locals: { businesses: @businesses, categories: @categories } %>
     <% else %>
-      <%= render partial: 'shared/registered_user_nav_bar', locals: { businesses: @businesses, categories: @categories } %>
+      <%= render partial: 'shared/nave_bar', locals: { businesses: @businesses, categories: @categories } %>
     <% end %>
 
   <section class="main">
