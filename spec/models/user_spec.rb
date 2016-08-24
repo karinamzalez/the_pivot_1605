@@ -23,11 +23,7 @@ describe User, type: :model do
     expect(user.business_admin?).to eq(true)
   end
 
-<<<<<<< HEAD
   it 'checks registered user' do
-=======
-  it 'checks registered user ' do
->>>>>>> dev_branch
     user = create(:user, :as_registered_user)
     expect(user.registered_user?).to eq(true)
   end
