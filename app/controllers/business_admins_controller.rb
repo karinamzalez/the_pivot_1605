@@ -12,7 +12,7 @@ class BusinessAdminsController < ApplicationController
   end
 
   def edit
-    @business_admins = User.where(business_id: target_business)
+    @business_admins = User.where(business_id: target_business.id)
   end
 
   def destroy
@@ -21,7 +21,7 @@ class BusinessAdminsController < ApplicationController
     removed_admin.remove_business_admin
     redirect_to edit_business_admin_path(@business)
   end
-  
+
   private
 
   def target_business

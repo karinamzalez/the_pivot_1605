@@ -61,6 +61,7 @@ describe "Platform admin can update any business's information", type: :feature 
 
     visit dashboard_path
 
+    visit dashboard_path
     first(".business").click_on('Update Business Info')
     fill_in 'Business Name', with: updated_business_name
     fill_in 'Location', with: updated_business_address

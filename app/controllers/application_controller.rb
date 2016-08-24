@@ -22,7 +22,11 @@ class ApplicationController < ActionController::Base
   end
 
   def authorized?
-    PermissionsService.new(current_user).allow?(params[:controller])
+    current_permission.allow?
+  end
+
+  def current_permission
+    @current_permission ||= PermissionsService.new(current_user, params[:controller], params[:action])
   end
 
   def time_format(raw_time)
