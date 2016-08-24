@@ -298,9 +298,24 @@ li a {
   color: white;
   margin-top: 80px;
   margin-left: 40px;
+  margin-right: 20px;
+}
+
+.login {
+  text-transform: uppercase;
+  font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  margin-top: 80px;
+  margin-right: 20px;
 }
 
 .link:hover {
+    color: grey;
+}
+
+.login:hover {
     color: grey;
 }
 
