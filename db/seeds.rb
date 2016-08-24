@@ -3,6 +3,8 @@ class Seed
     seed = Seed.new
     seed.generate_categories
     seed.generate_businesses
+    seed.generate_new_businesses
+    seed.generate_offline_businesses
     seed.generate_users
     seed.generate_roles
     seed.generate_business_admin
@@ -16,6 +18,29 @@ class Seed
       FactoryGirl.create(:category)
     end
     puts "categories created successfully!"
+  end
+
+  def generate_new_businesses
+    generate_businesses
+    Business.all[0..19].each do |business|
+      business.update_attribute(:status, 0)
+    end
+    puts "new businesses created successfully!"
+  end
+
+  def generate_offline_businesses
+    generate_businesses
+    Business.all[-20..-1].each do |business|
+      business.update_attribute(:status, 2)
+    end
+    puts "offline businesses created successfully!"
+  end
+
+  def generate_businesses
+    20.times do
+      FactoryGirl.create(:business)
+    end
+    puts "businesses created successfully!"
   end
 
   def generate_businesses
@@ -57,7 +82,7 @@ class Seed
     )
       jorge.roles << Role.find_by(name: "business_admin")
   end
-  
+
   def generate_platform_admin
     platform_admin = User.create(
       username: "platform_admin",

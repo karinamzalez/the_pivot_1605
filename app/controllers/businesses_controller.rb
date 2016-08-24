@@ -23,6 +23,14 @@ class BusinessesController < ApplicationController
     end
   end
 
+  def approve_new_business(business)
+    if business.update_attributes(status: 1)
+      redirect_to user_dashboard
+    else
+      render user_dashboard
+    end
+  end
+
   private
 
   def business_params

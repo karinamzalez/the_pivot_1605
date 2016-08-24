@@ -14,7 +14,7 @@ class BusinessAdminsController < ApplicationController
   def edit
     @business_admins = User.where(business_id: target_business)
   end
-  
+
   def destroy
     @business = target_business
     removed_admin = User.find_by(username: params[:removed_admin])
@@ -23,7 +23,7 @@ class BusinessAdminsController < ApplicationController
   end
   
   private
-  
+
   def target_business
     target_business = current_user.business || Business.find(params[:id])
   end
