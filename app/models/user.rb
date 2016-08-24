@@ -20,12 +20,22 @@ class User < ActiveRecord::Base
     roles.exists?(name: 'registered_user')
   end
 
+  def set_platform_admin
+    self.roles << Role.find_by(name: 'platform_admin')
+    self.save
+  end
+
   def set_business_admin(business)
-    roles << Role.find_by(name: 'business_admin')
+    self.roles << Role.find_by(name: 'business_admin')
     self.business_id = business.id
     self.save
   end
-  
+
+  def set_registered_user
+    self.roles << Role.find_by(name: 'registered_user')
+    self.save
+  end
+
   def remove_business_admin
     role = self.roles.find_by(name: 'business_admin')
     UserRole.where(user_id: self.id, role_id: role.id).destroy_all

@@ -10,10 +10,14 @@ class BusinessesController < ApplicationController
   end
 
   def create
-    # @business = Business.new(business_params)
-    # if @business.save
-    #   flash[:notice] = 'Thank you for applying to Worldwide Farmers Market! We will let you know if you have been approved shortly.'
-    #   redirect_to dashboard_path
+    @business = Business.new(business_params)
+    if @business.save
+      flash[:notice] = 'Thank you for applying to Worldwide Farmers Market! We will let you know if you have been approved shortly.'
+      redirect_to dashboard_path
+    else
+      flash[:danger] = 'You must fill out all fields.'
+      redirect_to new_business_path
+    end
   end
 
   def show

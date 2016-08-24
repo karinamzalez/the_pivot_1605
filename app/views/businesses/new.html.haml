@@ -1,7 +1,5 @@
-%h3 Apply to add your business to our page:
-= form_tag(@business) do |f|
-  %h5 'New Admin Email'
-  = text_field_tag :email, nil, placeholder: "New Admin Email", class: 'button success hollow button'
+= form_for(@business) do |f|
+  = f.text_field :name, :class => "form-control", :placeholder => "Business Name"
+  = f.text_field :location, :class => "form-control", :placeholder => "Location"
   %br/
-  = submit_tag 'Submit New Business Admin', class: 'button success hollow button'
-%h5 'New Business Admin must already be a User with a valid email.'
+  = f.submit "Submit Your Business for Approval", :class => "button success"
