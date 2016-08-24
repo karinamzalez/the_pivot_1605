@@ -1,0 +1,379 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require bootstrap.min
+ *= require foundation_and_overrides
+
+ */
+body {
+  background-image: url('https://snapshootergeb.files.wordpress.com/2012/06/dscn2089.jpg');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover !important;
+}
+.navbar {
+  background-color: transparent;;
+  transition: all 1.0s ease;
+  width: 100%;
+}
+.label {
+  display: none;
+  background-color: #86b300;
+  color: white;
+}
+#bucket-link {
+
+}
+.greeting {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.navbar-inner {
+    background-color:transparent;
+}
+
+.order-information {
+  margin: 0 auto;
+  width: 350px;
+  text-align: center;
+  margin-top: 25px;
+}
+
+.order-table {
+  margin: 0 auto;
+  width: 1000px;
+}
+
+.order-info {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.table {
+  margin-bottom: 45px;
+  margin-top: 15px;
+}
+
+.gnome-image {
+  height: 100px;
+  width: 75px;
+}
+.checkout-button {
+  margin-bottom: 25px;
+}
+
+.thumbnail {
+  height: 250px;
+}
+.gnome_bucket {
+  background-color: white;
+}
+.gnome-data {
+  font-family: fantasy;
+  text-align: center;
+}
+.buttons {
+  text-align: center;
+}
+.radius {
+  margin-top: 20px;
+}
+
+.panel {
+ margin-bottom: 20px;
+ background-color: rgba(255, 255, 255, 0.75);
+ border: 1px solid transparent;
+ border-radius: 4px;
+ -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+ box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+ }
+
+.vertical-offset-100 {
+ padding-top: 100px;
+}
+
+.login {
+  margin: 0 auto;
+  width: 350px;
+}
+
+.panel-login {
+  text-align: center;
+}
+.login-buttons {
+  margin: 0 auto;
+  width: 100px;
+  text-align: center
+}
+.form-signin input[type="text"] {
+    margin-bottom: 5px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.form-signin .form-control {
+    position: relative;
+    font-size: 16px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    height: auto;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.img-responsive {
+  height: 180px;
+  width: 180px;
+  margin: auto;
+}
+
+.user-greeting {
+  font-family: fantasy;
+  margin: auto;
+  margin-top: 10px;
+  padding: 100;
+  text-align: center;
+}
+
+.gnome-details {
+  width: 650px;
+}
+#price {
+  text-align: left;
+}
+#gnome-image{
+  margin-right: 25px;
+}
+.gnome-box {
+  margin: 0 auto;
+  width: 800px;
+  margin-top: 50px;
+  margin-bottom: 35px;
+}
+
+#mushroom {
+  margin-left: 75px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+}
+
+.hero{
+  background-color: #999;
+  padding: 80px 0px;
+  height: 480px;
+  background-image: url(garden-gnome.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 2px outset;
+  border-color: black;
+}
+
+.wrap {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1100px;
+}
+
+.wrap-button {
+  text-align: center;
+  margin: auto;
+  padding: 25px;
+}
+
+.bottom-margin {
+  padding: 100px;
+}
+
+footer {
+  background-color: #222;
+  padding: 80px 0px;
+}
+
+footer a {
+  display: block;
+}
+
+footer h4 {
+  color: white;
+}
+
+.admin-page-wrap {
+  margin: 0px;
+  padding: 40px;
+}
+
+footer {
+  padding: 50px;
+}
+
+.top-bar {
+  padding: 0;
+  border-color: red;
+  border-bottom-width: thick;
+}
+
+.menu > li > a {
+  display: inline-block;
+}
+
+.top-bar-right {
+  padding: 5px;
+  height: 75px;
+}
+
+.top-bar-left {
+  padding: 5px;
+  top-padding: 15px;
+  height: 75px;
+}
+
+.minify {
+  padding: 5px;
+  background-color: maroon;
+  line-height: 48px;
+  height: 48px;
+}
+
+.minify .dropdown {
+  padding-top: 0;
+  color: maroon;
+  background-color: maroon;
+  line-height: 40px;
+  height: 40px;
+}
+.minify li {
+  background-color: maroon;
+  text-align: center;
+}
+
+.minify li a {
+  color: white;
+  background-color: maroon;
+  font-size: 16px;
+}
+
+.menu-text {
+  padding: 0px;
+}
+
+.top-bar ul {
+  background-color: white;
+}
+
+li a {
+  color: black;
+  font-family: fantasy;
+  font-size: 20px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  line-height: 48px;
+  height: 48px;
+  background-color: maroon;
+}
+.homepage-text {
+  font-family: fantasy;
+  font-size: 40px;
+  color: white;
+  margin-top: 80px;
+}
+
+#error {
+  margin-top: 50px;
+}
+
+.gnomes-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.horror_gnomes {
+  margin-left: auto;
+  margin-right: auto;
+  width: 750px;
+}
+
+.flash_success {
+  background-color: #43AC6A;
+  text-align: center;
+  color: white;
+  width: 350px;
+  margin: 0 auto;
+  padding: 5px;
+}
+.flash_success a{
+  color: maroon;
+}
+
+.flash_danger {
+  background-color: #f04124;
+  text-align: center;
+  color: white;
+  width: 350px;
+  margin: 0 auto;
+  padding: 5px;
+}
+.flash_notice {
+  background-color: #1892ac;
+  text-align: center;
+  color: white;
+  width: 350px;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+#more-button {
+  display: none;
+}
+
+#gnome-banner {
+  font-family: fantasy;
+  margin: auto;
+  margin-top: 10px;
+}
+.bucket-header {
+  width: 300px;
+}
+
+#total-price {
+  width: 400px;
+}
+
+.add-item-link {
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 35px;
+  margin-top: 25px;
+}
+.order-header {
+  text-align: left;
+}
+
+.button-indigo {
+  background-color: #87b7b8;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
