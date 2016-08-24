@@ -73,7 +73,7 @@ class Seed
     Business.all.each do |business|
       rand(0..8).times do
         business.items << Item.create!(
-          name: [Faker::Commerce.color, Faker::Name.home_good].join(" "),
+          name: [Faker::Commerce.color.capitalize, Faker::Name.home_good].join(" "),
           description: Faker::Lorem.paragraph,
           image_url: "http://loremflickr.com/400/400/market",
           category_id: Category.find_by(name: "Home Goods"),
@@ -84,7 +84,7 @@ class Seed
       end
       rand(0..15).times do
         business.items << Item.create!(
-          name: [Faker::Commerce.color, Faker::Name.fruit].join(" "),
+          name: [Faker::Commerce.color.capitalize, Faker::Name.fruit].join(" "),
           description: Faker::Lorem.paragraph,
           image_url: "http://loremflickr.com/400/400/fruit",
           category_id: Category.find_by(name: "Fruits"),
@@ -95,7 +95,7 @@ class Seed
       end
       rand(0..15).times do
         business.items << Item.create!(
-          name: [Faker::Commerce.color, Faker::Name.vegetable].join(" "),
+          name: [Faker::Commerce.color.capitalize, Faker::Name.vegetable].join(" "),
           description: Faker::Lorem.paragraph,
           image_url: "http://loremflickr.com/400/400/vegetable",
           category_id: Category.find_by(name: "Vegetables"),
