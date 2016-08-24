@@ -1,0 +1,5 @@
+= form_for(@business) do |f|
+  = f.text_field :name, :class => "form-control", :placeholder => "Business Name"
+  = f.text_field :location, :class => "form-control", :placeholder => "Location"
+  %br/
+  = f.submit "Submit Your Business for Approval", :class => "button success"

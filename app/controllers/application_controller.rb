@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     @user ||= User.find(session[:user_id]) if session[:user_id]
     rescue ActiveRecord::RecordNotFound
   end
-  
+
   def time_format(raw_time)
     raw_time.strftime("%b %e, %l:%M %p")
   end
@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorized?
-    current_permission.allow?(params[:controller])
+    current_permission.allow?
   end
 
   def current_permission
