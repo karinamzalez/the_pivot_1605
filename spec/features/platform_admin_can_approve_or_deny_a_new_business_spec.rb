@@ -18,15 +18,3 @@ describe 'Platform admin can approve or deny a new business', type: :feature do
     end
   end
 end
-
-# # # as an authenticated platform admin
-# # # when I view my user dashboard
-# # # and I click on "New Businesses"
-# # # I should see a list of new businesses
-# # # and when I click on a business
-# # # I should see that business's info
-# # # and when I click on Approve Business
-# # # I should see the list of current businesses containing the one I just approved
-# # #
-# # # if instead I click on Decline Business
-# # # I should see the list of new businesses without the business I just declined

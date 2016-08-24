@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root to: 'businesses#index'
 
+  namespace :admin do
+    resources :items, only: [:update, :edit, :destroy, :create, :new]
+  end
+
   resources :items
   resources :businesses, only: [:index, :new, :create, :edit]
   patch '/businesses/:id', to: 'businesses#update', as: :business 

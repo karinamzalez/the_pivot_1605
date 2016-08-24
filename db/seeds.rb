@@ -5,19 +5,34 @@ class Seed
     seed.generate_businesses
     seed.generate_new_businesses
     seed.generate_offline_businesses
-    seed.generate_users
     seed.generate_roles
-    seed.generate_business_admin
+    seed.generate_users
     seed.generate_platform_admin
     seed.generate_business_items
     seed.generate_orders
   end
 
   def generate_categories
-    10.times do
-      FactoryGirl.create(:category)
-    end
-    puts "categories created successfully!"
+    Category.create!(name: "Produce")
+    puts "category Produce created!"
+    Category.create!(name: "Drinks")
+    puts "category Drinks created!"
+    Category.create!(name: "Plants")
+    puts "category Plants created!"
+    Category.create!(name: "Jewlery")
+    puts "category Jewlery created!"
+    Category.create!(name: "Crafts")
+    puts "category Crafts created!"
+    Category.create!(name: "Dairy")
+    puts "category Dairy created!"
+    Category.create!(name: "Baked Goods")
+    puts "category Baked Goods created!"
+    Category.create!(name: "Meats")
+    puts "category Meats created!"
+    Category.create!(name: "Herbs")
+    puts "category Herbs created!"
+    Category.create!(name: "Caffeine")
+    puts "category Caffeine created!"
   end
 
   def generate_new_businesses
@@ -58,7 +73,8 @@ class Seed
           description: Faker::Lorem.paragraph,
           image_url: "http://robohash.org/#{rand(500)}.png?set=set2&bgset=bg1&size=200x200",
           category_id: rand(1..Category.all.count),
-          price: Faker::Commerce.price
+          price: Faker::Commerce.price,
+          status: true
         )
         puts "Item #{Item.last.id}: #{Item.last.name} created!"
       end
@@ -71,16 +87,9 @@ class Seed
       user = FactoryGirl.create(:user)
       puts "User #{i}: #{user.username} - #{user.email} created!"
     end
-  end
-
-  def generate_business_admin
-    jorge = User.create(
-      username: "jorge",
-      email: "jorge@turing.io",
-      password: "password",
-      business_id: 1
-    )
-      jorge.roles << Role.find_by(name: "business_admin")
+    jorge = User.create!(username: 'jorge', email: 'jorge@turing.io', password: "password", business_id: 1)
+    jorge.set_business_admin(Business.find(1))
+    puts "jorge created!"
   end
 
   def generate_platform_admin
@@ -94,8 +103,11 @@ class Seed
 
   def generate_roles
     Role.create!(name: "registered_user")
+    puts "Role, registered user created successfully!"
     Role.create!(name: "business_admin")
+    puts "Role, business admin created successfully!"
     Role.create!(name: "platform_admin")
+    puts "Role, platform admin created successfully!"
   end
 
   def generate_orders

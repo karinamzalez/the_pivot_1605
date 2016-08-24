@@ -4,11 +4,7 @@ class SessionsController < ApplicationController
 
   def create
     @user = find_user || nil
-    if params[:session]
-      authenticate_with_password
-    else
-      authenticate_with_twitter
-    end
+    authenticate_user
   end
 
   def destroy
@@ -16,17 +12,17 @@ class SessionsController < ApplicationController
     flash[:success] = "Successfully logged out!"
     redirect_to root_path
   end
-  
+
   private
-  
+
   def find_user
     if request.env['omniauth.auth']
       user = User.find_by(username: request.env['omniauth.auth']['info']['nickname'])
-    else 
+    else
       user = User.find_by(username: params[:session][:username])
     end
   end
-  
+
   def authenticate_user
     if params[:session]
       authenticate_with_password
@@ -34,7 +30,7 @@ class SessionsController < ApplicationController
       authenticate_with_twitter
     end
   end
-  
+
   def authenticate_with_password
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
@@ -44,7 +40,7 @@ class SessionsController < ApplicationController
       invalid_login
     end
   end
-  
+
   def authenticate_with_twitter
     if @user && request.env['omniauth.auth']['info']
       session[:user_id] = @user.id
@@ -54,7 +50,7 @@ class SessionsController < ApplicationController
       invalid_login
     end
   end
-  
+
   def invalid_login
     flash[:danger] = "Invalid login!"
     render :new

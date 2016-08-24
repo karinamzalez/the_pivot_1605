@@ -1,9 +1,9 @@
 class PermissionsService
-  attr_reader :user
-  def initialize(user, _controller, _action)
-    @user = user || User.new
-    @controller = _controller
-    @action = _action
+
+  def initialize(user, controller, action)
+    @_user       = user || User.new
+    @_controller = controller
+    @_action     = action
   end
 
   def allow?
@@ -14,12 +14,17 @@ class PermissionsService
   end
 
   private
+
+  def user
+    @_user
+  end
+
   def controller
-    @controller
+    @_controller
   end
 
   def action
-    @action
+    @_action
   end
 
   def platform_admin_permissions
@@ -33,6 +38,7 @@ class PermissionsService
     return true if controller == 'orders' && action.in?(%w(index show create))
     return true if controller == 'sessions' && action.in?(%w(new create destroy))
     return true if controller == 'users' && action.in?(%w(show new create edit update))
+    return true if controller == 'admin/items' && action.in?(%w(edit update destroy create new))
   end
 
   def business_admin_permissions
@@ -46,6 +52,7 @@ class PermissionsService
     return true if controller == 'orders' && action.in?(%w(index show create))
     return true if controller == 'sessions' && action.in?(%w(new create destroy))
     return true if controller == 'users' && action.in?(%w(show new create edit update))
+    return true if controller == 'admin/items' && action.in?(%w(edit update destroy create new))
   end
 
   def registered_user_permissions
