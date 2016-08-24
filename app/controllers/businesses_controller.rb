@@ -39,10 +39,18 @@ class BusinessesController < ApplicationController
     end
   end
 
+  def approve_new_business(business)
+    if business.update_attributes(status: 1)
+      redirect_to user_dashboard
+    else
+      render user_dashboard
+    end
+  end
+
   private
 
   def business_params
-    params.require(:business).permit(:name, :location)
+    params.require(:business).permit(:name, :location, :status)
   end
 
   def target_business

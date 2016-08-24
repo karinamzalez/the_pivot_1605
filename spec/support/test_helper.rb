@@ -64,7 +64,7 @@ module TestHelper
     admin_2.roles << Role.find_by(name: "business_admin")
     admin_3.roles << Role.find_by(name: "business_admin")
   end
-  
+
   def create_platform_admin
     create_test_businesses
     create_roles
@@ -75,5 +75,12 @@ module TestHelper
     )
     platform_admin.roles << Role.find_by(name: "platform_admin")
     platform_admin
+  end
+
+  def create_new_business_applications
+    create_test_businesses
+    Business.all.take(5).each do |business|
+      business.update_attribute(:status, 0)
+    end
   end
 end
