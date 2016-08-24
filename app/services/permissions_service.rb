@@ -1,12 +1,12 @@
 class PermissionsService
   attr_reader :user
-  def initialize(user)
+  def initialize(user, _controller, _action)
     @user = user || User.new
-  end
-
-  def allow?(_controller, _action)
     @controller = _controller
     @action = _action
+  end
+
+  def allow?
     return platform_admin_permissions if user.platform_admin?
     return business_admin_permissions if user.business_admin?
     return registered_user_permissions if user.registered_user?
