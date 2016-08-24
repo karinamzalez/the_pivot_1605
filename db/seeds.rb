@@ -3,11 +3,13 @@ class Seed
     seed = Seed.new
     seed.generate_categories
     seed.generate_businesses
+    seed.generate_offline_businesses
     seed.generate_roles
     seed.generate_users
     seed.generate_platform_admin
     seed.generate_business_items
     seed.generate_orders
+    seed.generate_new_businesses
   end
 
   def generate_categories
@@ -31,6 +33,29 @@ class Seed
     puts "category Herbs created!"
     Category.create!(name: "Caffeine")
     puts "category Caffeine created!"
+  end
+
+  def generate_new_businesses
+    generate_businesses
+    Business.all.last(20).each do |business|
+      business.update_attribute(:status, 0)
+    end
+    puts "new businesses created successfully!"
+  end
+
+  def generate_offline_businesses
+    generate_businesses
+    Business.all.first(20).each do |business|
+      business.update_attribute(:status, 2)
+    end
+    puts "offline businesses created successfully!"
+  end
+
+  def generate_businesses
+    20.times do
+      FactoryGirl.create(:business)
+    end
+    puts "businesses created successfully!"
   end
 
   def generate_businesses

@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   end
 
   resources :items
-  resources :businesses, only: [:index, :new, :create, :edit, :update]
+  resources :businesses, only: [:index, :new, :create, :edit]
+  patch '/businesses/:id', to: 'businesses#update', as: :business
+  delete '/businesses/:id', to: 'businesses#destroy' 
   resources :cart_items, only: [:create, :update, :destroy]
   resources :users, only: [:new, :create, :edit, :update]
   resources :orders, only: [:index, :create, :show]
@@ -23,5 +25,8 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'users#show'
 
   get '/:business_slug', to: 'businesses#show', as: :business_slug
+
+  get '/auth/:provider/callback', to: 'sessions#create'
+
   get "*any", via: :all, to: "errors#not_found"
 end

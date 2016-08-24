@@ -43,9 +43,8 @@ describe 'Business admin can manage businesses other admins', type: :feature do
     page.set_rack_session(user_id: User.last.id)
 
     visit dashboard_path
-
-    click_link 'Manage Business Admins'
-    first('.admin').click_link('Demote Admin')
+    click_on 'Manage Business Admins'
+    click_on 'Demote Admin', match: :first
     expect(page).not_to have_content(admin_to_remove.username)
   end
 end

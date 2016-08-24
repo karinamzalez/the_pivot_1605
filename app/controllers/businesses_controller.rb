@@ -39,10 +39,17 @@ class BusinessesController < ApplicationController
     end
   end
 
+  def destroy
+    @business = Business.find(params[:id])
+    @business.destroy
+    flash[:notice] = "#{@business.name} declined."
+    redirect_to dashboard_path
+  end
+
   private
 
   def business_params
-    params.require(:business).permit(:name, :location)
+    params.require(:business).permit(:name, :location, :status)
   end
 
   def target_business
