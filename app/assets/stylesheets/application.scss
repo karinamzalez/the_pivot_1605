@@ -17,8 +17,9 @@
 
  */
 body {
-  background-image: url('https://snapshootergeb.files.wordpress.com/2012/06/dscn2089.jpg');
+  // background-image: url('https://snapshootergeb.files.wordpress.com/2012/06/dscn2089.jpg');
   background-attachment: auto;
+  background-color: transparent;
   background-width: 100%;
   background-repeat: no-repeat;
   background-size: cover !important;
@@ -222,12 +223,6 @@ footer h4 {
 
 footer {
   padding: 50px;
-}
-
-.top-bar {
-  padding: 0;
-  border-color: red;
-  border-bottom-width: thick;
 }
 
 .menu > li > a {

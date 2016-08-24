@@ -1,21 +1,15 @@
-// Docs at http://simpleweatherjs.com
+// v3.1.0
+//Docs at http://simpleweatherjs.com
 $(document).ready(function() {
   $.simpleWeather({
-    woeid: '2357536', //2357536
-    location: '',
+    location: 'Denver',
+    woeid: '',
     unit: 'f',
     success: function(weather) {
-      if(weather.temp > 75) {
-        $('body').animate({backgroundColor: '#F7AC57'}, 1500);
-      } else {
-        $('body').animate({backgroundColor: '#fff'}, 1500);
-      }
-
-      $("#display-location").html(weather.city+', '+weather.region);
-      $("#current-weather-column").html(weather.currently);
-
-      var timestamp = moment(weather.updated);
-      html += '<p class="updated">Updated '+moment(timestamp).fromNow()+'</p>';
+      html = '<h2><i class="icon-'+weather.code+'"></i> '+weather.temp+'&deg;'+weather.units.temp+'</h2>';
+      html += '<ul><li>'+weather.city+', '+weather.region+'</li>';
+      html += '<li class="currently">'+weather.currently+'</li>';
+      html += '<li>'+weather.wind.direction+' '+weather.wind.speed+' '+weather.units.speed+'</li></ul>';
 
       $("#weather").html(html);
     },
