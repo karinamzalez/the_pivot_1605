@@ -10,4 +10,8 @@ class Business < ActiveRecord::Base
   def business_slug
     self.slug = name.parameterize
   end
+  
+  def admins
+    users
+  end
 end

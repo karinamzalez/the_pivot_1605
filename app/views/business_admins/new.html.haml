@@ -2,6 +2,7 @@
 = form_tag(business_admins_path) do |f|
   %h5 'New Admin Email'
   = text_field_tag :email, nil, placeholder: "New Admin Email", class: 'button success hollow button'
+  = hidden_field_tag :id, @business.id
   %br/
   = submit_tag 'Submit New Business Admin', class: 'button success hollow button'
 %h5 'New Business Admin must already be a User with a valid email.'

@@ -1,10 +1,11 @@
 class BusinessAdminsController < ApplicationController
 
   def new
+    @business = Business.find(params[:id])
   end
 
   def create
-    @business = current_user.business
+    @business = target_business
     business_admin = User.find_by(email: params[:email])
     business_admin.set_business_admin(@business)
     redirect_to edit_business_admin_path(@business)
@@ -15,7 +16,7 @@ class BusinessAdminsController < ApplicationController
   end
 
   def destroy
-    @business = current_user.business
+    @business = target_business
     removed_admin = User.find_by(username: params[:removed_admin])
     removed_admin.remove_business_admin
     redirect_to edit_business_admin_path(@business)
