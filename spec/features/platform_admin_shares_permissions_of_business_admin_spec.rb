@@ -58,9 +58,8 @@ describe "Platform admin can update any business's information", type: :feature 
     page.set_rack_session(user_id: platform_admin.id)
     updated_business_name = 'New Business Name'
     updated_business_address = '123 New Street'
-    
+
     visit dashboard_path
-    save_and_open_page
     first(".business").click_on('Update Business Info')
     fill_in 'Business Name', with: updated_business_name
     fill_in 'Location', with: updated_business_address

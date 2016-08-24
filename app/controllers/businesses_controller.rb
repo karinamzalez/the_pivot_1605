@@ -29,7 +29,6 @@ class BusinessesController < ApplicationController
   end
 
   def update
-    require "pry"; binding.pry
     business = Business.find(target_business.id)
     if business.update(business_params)
       flash[:notice] = 'Business information updated successfully!'
