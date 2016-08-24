@@ -24,6 +24,7 @@ gem 'foundation-rails'
 gem 'unicorn'
 gem "paperclip", "~> 5.0.0"
 gem 'simplecov', :require => false, :group => :test
+gem 'omniauth-twitter'
 
 group :development, :test do
   gem 'byebug'

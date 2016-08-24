@@ -15,5 +15,6 @@
               = f.password_field :password, :class => "form-control", :placeholder => "Password"
               = f.submit "Login", class: 'button success'
               %br/
+              %h4= link_to "Login with Twitter", '/auth/twitter'
               %hr
               = link_to "Create New Account", new_user_path, :id => "create_account"
