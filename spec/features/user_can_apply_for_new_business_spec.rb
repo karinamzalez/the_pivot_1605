@@ -16,6 +16,7 @@ describe 'User can apply for a new business', type: :feature do
     click_on 'Submit Your Business for Approval'
 
     expect(current_path).to eq(dashboard_path)
+    expect(User.find(user.id)).not_to eq(nil)
     expect(page).to have_content("Thank you for applying to Worldwide Farmers Market! We will let you know if you have been approved shortly.")
   end
 

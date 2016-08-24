@@ -12,6 +12,7 @@ class BusinessesController < ApplicationController
   def create
     @business = Business.new(business_params)
     if @business.save
+      current_user.update_attribute(:business_id, @business.id)
       flash[:notice] = 'Thank you for applying to Worldwide Farmers Market! We will let you know if you have been approved shortly.'
       redirect_to dashboard_path
     else
