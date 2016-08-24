@@ -49,6 +49,7 @@ FactoryGirl.define do
   factory :business do
     name { Faker::Company.name }
     location city_names.sample
+    status 1
   end
 
   items = [

@@ -60,6 +60,8 @@ describe "Platform admin can update any business's information", type: :feature 
     updated_business_address = '123 New Street'
 
     visit dashboard_path
+
+    visit dashboard_path
     first(".business").click_on('Update Business Info')
     fill_in 'Business Name', with: updated_business_name
     fill_in 'Location', with: updated_business_address
@@ -82,6 +84,5 @@ describe "Platform admin can update any business's information", type: :feature 
     fill_in 'Location', with: ''
     click_button 'Update Business Info'
     expect(page).to have_content('Business information not updated successfully.')
-    expect(current_path).to eq (edit_business_path(business))
   end
 end

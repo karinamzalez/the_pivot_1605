@@ -94,6 +94,7 @@ GEM
       activesupport (>= 4.1.0)
     haml (4.0.7)
       tilt
+    hashie (3.4.4)
     httpclient (2.8.2.2)
     i18n (0.7.0)
     jbuilder (2.6.0)
@@ -126,6 +127,16 @@ GEM
       pkg-config (~> 1.1.7)
     nyan-cat-formatter (0.11)
       rspec (>= 2.99, >= 2.14.2, < 4)
+    oauth (0.5.1)
+    omniauth (1.3.1)
+      hashie (>= 1.2, < 4)
+      rack (>= 1.0, < 3)
+    omniauth-oauth (1.1.0)
+      oauth
+      omniauth (~> 1.0)
+    omniauth-twitter (1.2.1)
+      json (~> 1.3)
+      omniauth-oauth (~> 1.1)
     paperclip (5.0.0)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
@@ -272,6 +283,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   nyan-cat-formatter
+  omniauth-twitter
   paperclip (~> 5.0.0)
   pg (~> 0.15)
   pry-rails
