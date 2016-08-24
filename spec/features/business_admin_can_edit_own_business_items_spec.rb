@@ -67,7 +67,14 @@ RSpec.feature "Business Admin Sees All Business Items" do
 
       click_on("New Item")
 
-      expect(current_path).to eq("/admin/items/")
+      expect(current_path).to eq("/admin/items/new")
+
+      fill_in "Name",  with: 'orange'
+      click_on "Create Item"
+
+      expect(current_path).to eq("/dashboard")
+
+      expect(page).to have_content("orange")
     end
   end
 end
