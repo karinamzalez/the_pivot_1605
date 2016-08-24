@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   root to: 'businesses#index'
 
   resources :items
-  resources :businesses, only: [:index, :new, :create, :edit, :update]
+  resources :businesses, only: [:index, :new, :create, :edit]
+  patch '/businesses/:id', to: 'businesses#update', as: :business 
   resources :cart_items, only: [:create, :update, :destroy]
   resources :users, only: [:new, :create, :edit, :update]
   resources :orders, only: [:index, :create, :show]

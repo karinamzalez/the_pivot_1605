@@ -18,7 +18,7 @@
   %div.new_business
     %h4 New Business Name: #{business.name}
     %h5 New Business Location: #{business.location}
-    -# = button_to "Approve New Business"
+    = button_to "Approve New Business", business_path(business), {:method => :patch, :params => {:business => {:status => 'online'}}} 
 
 %h3 Offline Businesses:
 - offline_businesses.each do |business|
