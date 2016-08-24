@@ -22,7 +22,6 @@ class BusinessesController < ApplicationController
   end
 
   def show
-    require 'pry'; binding.pry
     @business = Business.find_by(slug: params[:business_slug])
   end
 
