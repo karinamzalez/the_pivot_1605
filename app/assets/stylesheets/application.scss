@@ -10,15 +10,16 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require bootstrap.min
  *= require_tree .
  *= require_self
- *= require bootstrap.min
  *= require foundation_and_overrides
 
  */
 body {
   background-image: url('https://snapshootergeb.files.wordpress.com/2012/06/dscn2089.jpg');
-  background-attachment: fixed;
+  background-attachment: auto;
+  background-width: 100%;
   background-repeat: no-repeat;
   background-size: cover !important;
 }

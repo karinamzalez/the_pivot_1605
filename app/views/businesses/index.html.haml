@@ -1,0 +1,12 @@
+.row.wrap
+  .row
+    %h3.text-center.panel Worldwide Farmer's Market - All Businesses
+  .row
+    =@businesses.each do |business|
+      .large-4.medium-6.columns
+        %h4.text-center.panel "#{business.name}"
+        %p
+          %img(src="http://lorempixel.com/400/400/food/#{rand(10)}")
+        .span
+          =link_to "Shop Here", business_path(business.slug), class: "button"
+        
