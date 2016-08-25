@@ -52,15 +52,22 @@ class Seed
   end
 
   def generate_businesses
+    city_names = [
+      "London",
+      "Paris",
+      "Shanghai",
+      "Dubai",
+      "Sydney",
+      "San Francisco",
+      "New York",
+      "Austin"
+    ]
     20.times do
-      FactoryGirl.create(:business)
-    end
-    puts "businesses created successfully!"
-  end
-
-  def generate_businesses
-    20.times do
-      FactoryGirl.create(:business)
+      Business.create!(
+        name: Faker::Company.name,
+        location: city_names.sample,
+        status: 1
+      )
     end
     puts "businesses created successfully!"
   end

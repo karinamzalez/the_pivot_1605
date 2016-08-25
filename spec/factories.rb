@@ -43,7 +43,8 @@ FactoryGirl.define do
     "Dubai",
     "Sydney",
     "San Francisco",
-    "New York"
+    "New York",
+    "Austin"
   ]
 
   factory :business do
