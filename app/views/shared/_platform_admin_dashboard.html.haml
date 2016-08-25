@@ -1,10 +1,6 @@
-- new_businesses = @businesses.select { |business| business.status == 'new_business' }
-- online_businesses = @businesses.select { |business| business.status == 'online' }
-- offline_businesses = @businesses.select { |business| business.status == 'offline' }
-
 %div.online-businesses
   %h3 Online Businesses:
-  - online_businesses.each do |business|
+  - @businesses.find_online_businesses.each do |business|
     %div.business
       %h4 Business Name: #{business.name}
       %h5 Business Location: #{business.location}
@@ -16,7 +12,7 @@
 
 %div.new-businesses
   %h3 New Businesses To Approve:
-  - new_businesses.each do |business|
+  - @businesses.find_new_businesses.each do |business|
     %div.new-business
       %h4 New Business Name: #{business.name}
       %h5 New Business Location: #{business.location}
@@ -25,7 +21,7 @@
 
 %div.offline-businesses
   %h3 Offline Businesses:
-  - offline_businesses.each do |business|
+  - @businesses.find_offline_businesses.each do |business|
     %div.offline-business
       %h4 Offline Business Name: #{business.name}
       %h5 Offline Business Location: #{business.location}

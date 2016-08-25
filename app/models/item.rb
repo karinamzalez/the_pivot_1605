@@ -7,7 +7,6 @@ class Item < ActiveRecord::Base
   validates :name, presence: true
   validates :price, presence: true, numericality: true
   validates :description, presence: true
-  validates :category_id, presence: true
   validates :image_url, presence: true
 
   def to_param
