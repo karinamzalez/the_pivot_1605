@@ -1,7 +1,16 @@
-<h1><%= @category.name %></h1>
-<br>
-<% @category.items.each do |item| %>
-  <%= item.name %> - <%= item.price %>
-  Sold By <%= link_to item.businesses.first.name, business_slug_path(item.businesses.first.slug) %>
-  <br>
-<% end %>
+<div class="container">
+  <div class="details col-sm-6">
+    <h2><%= @category.name %></h2>
+      <div class="col-sm-12">
+        <% @category.items.each do |item| %>
+          <%= item.name %> - <%= item.price %>
+          Sold By <%= link_to item.businesses.first.name, business_slug_path(item.businesses.first.slug) %>
+        <% end %>
+      </div>
+  </div>
+
+  <div class="col-sm-6">
+    <h1></h1>
+    <%= image_tag "#{@category.name}.jpg", class: "img-responsive" %>
+  </div>
+</div>

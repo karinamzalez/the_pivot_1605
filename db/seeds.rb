@@ -17,26 +17,24 @@ class Seed
     puts "category Fruits created!"
     Category.create!(name: "Vegetables")
     puts "category Vegetables created!"
-    Category.create!(name: "Home Goods")
-    puts "category Home Goods created!"
-    # Category.create!(name: "Drinks")
-    # puts "category Drinks created!"
-    # Category.create!(name: "Plants")
-    # puts "category Plants created!"
-    # Category.create!(name: "Jewelry")
-    # puts "category Jewelry created!"
-    # Category.create!(name: "Crafts")
-    # puts "category Crafts created!"
-    # Category.create!(name: "Dairy")
-    # puts "category Dairy created!"
-    # Category.create!(name: "Baked Goods")
-    # puts "category Baked Goods created!"
-    # Category.create!(name: "Meats")
-    # puts "category Meats created!"
-    # Category.create!(name: "Herbs")
-    # puts "category Herbs created!"
-    # Category.create!(name: "Caffeine")
-    # puts "category Caffeine created!"
+    Category.create!(name: "Drinks")
+    puts "category Drinks created!"
+    Category.create!(name: "Plants")
+    puts "category Plants created!"
+    Category.create!(name: "Jewelry")
+    puts "category Jewelry created!"
+    Category.create!(name: "Crafts")
+    puts "category Crafts created!"
+    Category.create!(name: "Dairy")
+    puts "category Dairy created!"
+    Category.create!(name: "Baked Goods")
+    puts "category Baked Goods created!"
+    Category.create!(name: "Meats")
+    puts "category Meats created!"
+    Category.create!(name: "Herbs")
+    puts "category Herbs created!"
+    Category.create!(name: "Caffeine")
+    puts "category Caffeine created!"
   end
 
   def generate_new_businesses
@@ -83,7 +81,7 @@ class Seed
           name: [Faker::Commerce.color.capitalize, Faker::Name.home_good].join(" "),
           description: Faker::Lorem.paragraph,
           image_url: "http://loremflickr.com/400/400/market",
-          category_id: Category.find_by(name: "Home Goods"),
+          category_id: Category.find_by(name: "Drinks"),
           price: Faker::Commerce.price,
           status: true
         )
@@ -123,7 +121,7 @@ class Seed
     jorge = User.create!(username: 'jorge', email: 'jorge@turing.io', password: "password", business_id: 1)
     jorge.set_business_admin(Business.find(1))
     puts "jorge created!"
-    
+
     chris = User.create!(username: 'seen_on_trail', email: 'chris@students.turing.io', password: "password")
     puts "seen_on_trail created!"
   end
