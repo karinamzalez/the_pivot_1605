@@ -4,6 +4,7 @@
       <% if current_user %>
         <%= link_to 'Dashboard', dashboard_path, class:"link" %>
       <% end %>
+      <%= link_to "Cart", cart_path, class:"panel-login"%>
       <%= link_to "Markets", businesses_path, class:"panel-login"%>
       <div class="dropdown">
         <span class="panel-login">Categories</span>
