@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      @user.roles << Role.find_by(name: "registered_user")
       session[:user_id] = @user.id
       redirect_to check_cart
     else
