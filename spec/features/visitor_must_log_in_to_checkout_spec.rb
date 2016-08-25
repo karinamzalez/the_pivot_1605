@@ -36,6 +36,7 @@ describe 'Visitor must log in to checkout', type: :feature do
 
     scenario 'and is redirected to the cart view once account is created' do
       item_one, item_two = create_list(:item, 2)
+      user = create(:user, :as_registered_user)
       page.set_rack_session(cart: {item_one.id => 1,
                                    item_two.id => 2})
 
