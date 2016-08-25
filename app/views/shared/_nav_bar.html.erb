@@ -2,8 +2,21 @@
   <div class="navbar-inner">
     <div class="top-bar-left">
       <% if current_user %>
-        <%= link_to 'Dashboard', dashboard_path, class:"link link:hover" %>
+        <%= link_to 'Dashboard', dashboard_path, class:"link" %>
       <% end %>
+      <%= link_to "Markets", businesses_path, class:"panel-login"%>
+      <div class="dropdown">
+        <span class="panel-login">Categories</span>
+        <div class="dropdown-content">
+          <% if @categories %>
+            <% @categories.each do |category| %>
+              <p>
+                <%= link_to category.name, category_path(category), class:"categories-drop" %>
+              </p>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
     <div class="top-bar-right">
       <% if current_user %>

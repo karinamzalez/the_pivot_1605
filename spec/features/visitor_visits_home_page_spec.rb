@@ -7,9 +7,9 @@ RSpec.feature "Visitor Sees All Businesses" do
 
       visit root_path
 
-      click_on "All Businesses"
+      click_on "Markets"
 
-      expect(current_path).to eq(root_path)
+      expect(current_path).to eq(businesses_path)
 
       within("p.#{business_1.slug}") do
         expect(page).to have_link(business_1.name)
@@ -24,7 +24,7 @@ RSpec.feature "Visitor Sees All Businesses" do
       end
 
       within("p.#{business_1.slug}") do
-        click_link business_1.name
+        click_link "Shop Here"
       end
 
       expect(current_path).to eq(business_slug_path(business_1.slug))
