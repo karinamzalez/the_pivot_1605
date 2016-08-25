@@ -1,24 +1,22 @@
 require 'rails_helper'
 
+include TestHelper
 describe 'Visitor can view category pages', type: :feature do
   scenario 'visitor clicks link to category page from homepage' do
     category_1, category_2 = create_list(:category, 2)
-    # As a visitor
-    # when I visit the home page
+    create_test_businesses
+    create_test_business_items
+
     visit root_path
-    # and I click on the categories dropdown
-    # I see a list of categories
-    click_on 'Categories'
-    # when I select a category
-    within(:css, "div#more") do
+
+    within("div.dropdown-content") do
       click_on category_1.name
     end
-    # I am taken to the category page
+
     expect(current_path).to eq category_path(category_1)
     expect(page).to have_content("#{category_1.name}")
 
-    click_on 'Categories'
-    within(:css, "div#more") do
+    within("div.dropdown-content") do
       click_on category_2.name
     end
 
