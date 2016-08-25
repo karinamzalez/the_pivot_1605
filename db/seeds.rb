@@ -77,9 +77,37 @@ class Seed
 
   def generate_business_items
     Business.all.each do |business|
-      2.times do
+      8.times do
         business.items << Item.create!(
           name: [Faker::Commerce.color.capitalize, Faker::Name.home_good].join(" "),
+          description: Faker::Lorem.paragraph,
+          image_url: "http://loremflickr.com/400/400/market",
+          category_id: rand(1..10),
+          price: Faker::Commerce.price,
+          status: true
+        )
+        puts "#{Item.last.name} added to #{business.name}!"
+      end
+    end
+    
+    Business.all.each do |business|
+      15.times do
+        business.items << Item.create!(
+          name: [Faker::Commerce.color.capitalize, Faker::Name.fruit].join(" "),
+          description: Faker::Lorem.paragraph,
+          image_url: "http://loremflickr.com/400/400/market",
+          category_id: rand(1..10),
+          price: Faker::Commerce.price,
+          status: true
+        )
+        puts "#{Item.last.name} added to #{business.name}!"
+      end
+    end
+    
+    Business.all.each do |business|
+      10.times do
+        business.items << Item.create!(
+          name: [Faker::Commerce.color.capitalize, Faker::Name.vegetable].join(" "),
           description: Faker::Lorem.paragraph,
           image_url: "http://loremflickr.com/400/400/market",
           category_id: rand(1..10),
