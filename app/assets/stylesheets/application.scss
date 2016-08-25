@@ -292,9 +292,13 @@ footer {
 }
 
 li a {
-  color: black;
+  color: #87b7b8;
   font-family: fantasy;
   font-size: 20px;
+}
+
+li a:hover {
+  color: white;
 }
 
 .sticky {
@@ -423,7 +427,7 @@ li a {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: transparent;
+    background-color: #484a49;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 12px 16px;
@@ -440,4 +444,33 @@ li a {
 
 .categories-drop:hover {
   color: #fdbd2c;
+}
+
+.photo {
+    margin-top: 20px;
+    height: 400px;
+    width: 500px;
+}
+
+h2.categories {
+  color: white;
+  font-size: 40px;
+}
+
+.list-box {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  width: 450px;
+  height: 800px;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  overflow: scroll;
+}
+
+.list-group-item {
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  font-size: 15px;
 }

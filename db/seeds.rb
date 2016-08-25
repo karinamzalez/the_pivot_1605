@@ -8,6 +8,7 @@ class Seed
     seed.generate_users
     seed.generate_platform_admin
     seed.generate_business_items
+    seed.generate_category_business_items
     seed.generate_orders
     seed.generate_new_businesses
   end
@@ -17,26 +18,24 @@ class Seed
     puts "category Fruits created!"
     Category.create!(name: "Vegetables")
     puts "category Vegetables created!"
-    Category.create!(name: "Home Goods")
-    puts "category Home Goods created!"
-    # Category.create!(name: "Drinks")
-    # puts "category Drinks created!"
-    # Category.create!(name: "Plants")
-    # puts "category Plants created!"
-    # Category.create!(name: "Jewelry")
-    # puts "category Jewelry created!"
-    # Category.create!(name: "Crafts")
-    # puts "category Crafts created!"
-    # Category.create!(name: "Dairy")
-    # puts "category Dairy created!"
-    # Category.create!(name: "Baked Goods")
-    # puts "category Baked Goods created!"
-    # Category.create!(name: "Meats")
-    # puts "category Meats created!"
-    # Category.create!(name: "Herbs")
-    # puts "category Herbs created!"
-    # Category.create!(name: "Caffeine")
-    # puts "category Caffeine created!"
+    Category.create!(name: "Drinks")
+    puts "category Drinks created!"
+    Category.create!(name: "Plants")
+    puts "category Plants created!"
+    Category.create!(name: "Jewelry")
+    puts "category Jewelry created!"
+    Category.create!(name: "Crafts")
+    puts "category Crafts created!"
+    Category.create!(name: "Dairy")
+    puts "category Dairy created!"
+    Category.create!(name: "Bakery")
+    puts "category Baked Goods created!"
+    Category.create!(name: "Meats")
+    puts "category Meats created!"
+    Category.create!(name: "Herbs")
+    puts "category Herbs created!"
+    Category.create!(name: "Caffeine")
+    puts "category Caffeine created!"
   end
 
   def generate_new_businesses
@@ -78,42 +77,35 @@ class Seed
 
   def generate_business_items
     Business.all.each do |business|
-      rand(0..8).times do
+      2.times do
         business.items << Item.create!(
           name: [Faker::Commerce.color.capitalize, Faker::Name.home_good].join(" "),
           description: Faker::Lorem.paragraph,
           image_url: "http://loremflickr.com/400/400/market",
-          category_id: Category.find_by(name: "Home Goods"),
-          price: Faker::Commerce.price,
-          status: true
-        )
-        puts "#{Item.last.name} added to #{business.name}!"
-      end
-      rand(0..15).times do
-        business.items << Item.create!(
-          name: [Faker::Commerce.color.capitalize, Faker::Name.fruit].join(" "),
-          description: Faker::Lorem.paragraph,
-          image_url: "http://loremflickr.com/400/400/fruit",
-          category_id: Category.find_by(name: "Fruits"),
-          price: Faker::Commerce.price,
-          status: true
-        )
-        puts "#{Item.last.name} added to #{business.name}!"
-      end
-      rand(0..15).times do
-        business.items << Item.create!(
-          name: [Faker::Commerce.color.capitalize, Faker::Name.vegetable].join(" "),
-          description: Faker::Lorem.paragraph,
-          image_url: "http://loremflickr.com/400/400/vegetable",
-          category_id: Category.find_by(name: "Vegetables"),
+          category_id: rand(1..10),
           price: Faker::Commerce.price,
           status: true
         )
         puts "#{Item.last.name} added to #{business.name}!"
       end
     end
-    puts "business items created successfully!"
   end
+
+  def generate_category_business_items
+    Category.all.each do |category|
+      50.times do
+        Business.find(rand(1..20)).items << Item.create!(
+        name: [Faker::Commerce.color.capitalize, Faker::Name.home_good].join(" "),
+        description: Faker::Lorem.paragraph,
+        image_url: "http://loremflickr.com/400/400/market",
+        category_id: category.id,
+        price: Faker::Commerce.price,
+        status: true
+      )
+      puts "#{Item.last.name} added to #{category.name}!"
+    end
+  end
+end
 
   def generate_users
     100.times do |i|
@@ -123,7 +115,7 @@ class Seed
     jorge = User.create!(username: 'jorge', email: 'jorge@turing.io', password: "password", business_id: 1)
     jorge.set_business_admin(Business.find(1))
     puts "jorge created!"
-    
+
     chris = User.create!(username: 'seen_on_trail', email: 'chris@students.turing.io', password: "password")
     puts "seen_on_trail created!"
   end
@@ -135,6 +127,7 @@ class Seed
       password: "password"
     )
     platform_admin.roles << Role.find_by(name: "platform_admin")
+    puts "Platform admin created!"
   end
 
   def generate_roles
