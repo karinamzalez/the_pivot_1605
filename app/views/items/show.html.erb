@@ -1,5 +1,8 @@
 <h1><%= @item.name %></h1></br>
 
-<%= @item.price %></br>
-<img src='<%= "#{@item.image_url}" %>'>
+<h3><%= @item.price %></h3></br>
+<img class="" src=<%= @item.image_url %>>
+<p>
+  <%= @item.description %>
+</p>
 <%= button_to "Add to Cart", cart_items_path({item_id: @item.id}) %>

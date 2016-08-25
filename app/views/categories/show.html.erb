@@ -1,0 +1,7 @@
+<h1><%= @category.name %></h1>
+<br>
+<% @category.items.each do |item| %>
+  <%= item.name %> - <%= item.price %>
+  Sold By <%= link_to item.businesses.first.name, business_slug_path(item.businesses.first.slug) %>
+  <br>
+<% end %>

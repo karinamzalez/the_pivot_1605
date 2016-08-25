@@ -15,8 +15,6 @@
             = form_for(@user) do |f|
               = f.text_field :username, :class => "form-control", :placeholder => "Username"
               = f.password_field :password, :class => "form-control", :placeholder => "Password"
-              = f.email_field :email, :class => "form-control", :placeholder => "Email address"
-              = f.text_field :country_code, :class => "form-control", :placeholder => "Country code", id: "authy-countries"
-              = f.text_field :phone_number, :class => "form-control", :placeholder => "Phone number", id: "authy-cellphone"
+              = f.email_field :email, :class => "form-control", :placeholder => "Email Address"
               %br/
               = f.submit "Create Account", :class => "button success"

@@ -1,6 +1,19 @@
-%h5.user-greeting= current_user.username
+%h3.user-greeting
+  Welcome, #{current_user.username}
+
+%h4.user-greeting Current User Information:
+%p.user.greeting Username: #{current_user.username}
+%p.user.greeting Email address: #{current_user.email}
 
 %div.wrap-button
-  %h3= link_to "Buy some veggies!", businesses_path, class: "button success hollow button"
+  %h3= link_to "Past Orders", orders_path, class: "button success hollow button"
+  %h3= link_to "Edit Account Info", edit_user_path(@user.id), class: "button success hollow button"
+  %h3= link_to "Apply to Add My Business", new_business_path, class: "button success hollow button"
+  %h3= link_to "Buy something!", businesses_path, class: "button success hollow button"
 
-= render partial: 'shared/dashboard'
+- if current_user.platform_admin?
+  = render partial: 'shared/platform_admin_dashboard', locals: { businesses: @businesses }
+- elsif current_user.business_admin?
+  = render partial: 'shared/business_admin_dashboard', locals: { business: @business }
+- else
+  = render partial: 'shared/dashboard'

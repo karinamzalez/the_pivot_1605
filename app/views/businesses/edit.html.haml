@@ -1,0 +1,10 @@
+%h3 Update Business Info:
+= form_for(@business) do |f|
+  %h5 'Business Name'
+  = f.text_field :name, placeholder: 'Business Name', class: 'button success hollow button'
+  %h5 'Business Address'
+  = f.text_field :location, placeholder: 'Location', class: 'button success hollow button'
+  %br/
+  = f.submit 'Update Business Info', class: 'button success hollow button'
+
+%h3 Update Business Admins:
