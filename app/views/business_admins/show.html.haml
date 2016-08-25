@@ -1,0 +1,11 @@
+%div.wrap
+  %h3 Businesses Items:
+  - @business_items.each do |item|
+    %div.business
+      %h4 Item: #{item.name}
+      %h5 Price: $#{item.price}
+      %h5 Description: #{item.description}
+      %p= button_to "Edit", edit_admin_item_path(item), method: :get, class: "btn btn-warning btn-xs"
+      %p= button_to "Remove", admin_item_path(item), method: :delete, class: "btn btn-danger btn-xs"
+      %img{:src => "http://lorempixel.com/400/400/nature/#{rand(9)}"}/
+      %br/
