@@ -1,13 +1,13 @@
 %div.online-businesses
   %h3 Online Businesses:
   - @businesses.find_online_businesses.each do |business|
-    %div.business
+    %div.business{id: business.slug}
       %h4 Business Name: #{business.name}
       %h5 Business Location: #{business.location}
       %p= link_to "Update Business Info", edit_business_path(business), class: "button success hollow button"
       %p= link_to "Manage Business Admins", edit_business_admin_path(business), class: "button success hollow button"
       %p= link_to "View Business Items", business_admin_path(business), class: "button success hollow button"
-      = button_to "Take Business Offline", business_path(business), {:method => :patch, :params => {:business => {:status => 'offline'}}}
+      = button_to "Take Business Offline", business_path(business), {:method => :patch, class: "button success hollow button", :params => {:business => {:status => 'offline'}}}
       %p= "Admins:"
       = business.admins.map { |admin| admin.username }.join(", ")
 

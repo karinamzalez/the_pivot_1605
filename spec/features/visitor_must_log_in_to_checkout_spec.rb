@@ -1,4 +1,7 @@
 require 'rails_helper'
+require 'support/test_helper'
+
+include TestHelper
 
 describe 'Visitor must log in to checkout', type: :feature do
   scenario 'and sees button to log in to be able to checkout' do
@@ -43,6 +46,9 @@ describe 'Visitor must log in to checkout', type: :feature do
 
       expect(page).to have_content(item_one.name)
       expect(page).to have_content(item_two.price)
+      
+      create_roles
+      
       within('#checkout_button') do
         click_on 'Create Account'
       end

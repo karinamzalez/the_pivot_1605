@@ -1,7 +1,7 @@
+<%= content_tag "div", id: "weather", data: {city: @business.location} do %>
 <h1 class="outline_white"><%= @business.name %>
   <h3 class="outline_black"><%= @business.location %></h3>
 </h1>
-<%= content_tag "div", id: "weather", data: {city: @business.location} do %>
 <% end %>
 <% if @business.status == 'offline' %>
     <h3 class="outline_black"> This business is currently unavailable. </h3>
@@ -10,12 +10,13 @@
     <% @business.items.each_with_index do |item, index| %>
       <div class="container col-md-3 item-wrapper panel">
         <h5 class= '<%= item.slug %> outline_white'>
-          <%= link_to item.name, item_path(item.slug) %>, $<%= number_with_precision(item.price, precision: 2) %>
+          <%= link_to item.name, item_path(item.slug), class:"categories-drop" %>,
+          $<%= number_with_precision(item.price, precision: 2) %>
         </h5>
         <p>
           <img src=<%= item.image_url %>>
         </p>
-        <%= button_to "Add to Cart", cart_items_path({item_id: item.id}) %>
+        <%= button_to "Add to Cart", cart_items_path({item_id: item.id}), class:"btn-warning btn-xs" %>
       </br>
       </div>
       <% if index % 4 == 3 %>
