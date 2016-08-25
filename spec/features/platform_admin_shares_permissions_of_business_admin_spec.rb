@@ -43,9 +43,8 @@ describe "Platform admin can manage any business's admins", type: :feature do
     page.set_rack_session(user_id: platform_admin.id)
 
     visit dashboard_path
-
     first(".business").click_on("Manage Business Admins")
-    first('.admin').click_link('Demote Admin')
+    first('.admin').click_on('Demote Admin')
     expect(page).not_to have_content(admin_to_remove.username)
   end
 end
