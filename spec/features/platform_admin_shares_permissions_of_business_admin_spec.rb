@@ -12,6 +12,11 @@ describe "Platform admin can manage any business's admins", type: :feature do
 
     visit dashboard_path
     first(".business").click_on("Manage Business Admins")
+<<<<<<< Updated upstream
+=======
+    save_and_open_page
+    require "pry"; binding.pry
+>>>>>>> Stashed changes
     expect(page).to have_content(admin_1.username)
     expect(page).to have_content(admin_2.username)
   end
@@ -44,7 +49,13 @@ describe "Platform admin can manage any business's admins", type: :feature do
 
     visit dashboard_path
     first(".business").click_on("Manage Business Admins")
+<<<<<<< Updated upstream
     first('.admin').click_on('Demote Admin')
+=======
+    save_and_open_page
+    require "pry"; binding.pry
+    click_on 'Demote Admin', match: :first
+>>>>>>> Stashed changes
     expect(page).not_to have_content(admin_to_remove.username)
   end
 end
