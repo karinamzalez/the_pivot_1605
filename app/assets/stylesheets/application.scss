@@ -17,12 +17,30 @@
 
  */
 body {
-  // background-image: url('https://snapshootergeb.files.wordpress.com/2012/06/dscn2089.jpg');
-  background-attachment: auto;
+  background-image: url('https://snapshootergeb.files.wordpress.com/2012/06/dscn2089.jpg');
+  background-attachment: fixed;
   background-color: transparent;
   background-width: 100%;
   background-repeat: no-repeat;
   background-size: cover !important;
+}
+
+.outline_white {
+  color: white;
+  text-shadow:
+  -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000;  
+}
+
+.outline_black {
+  color: black;
+  text-shadow:
+  -1px -1px white,
+  1px -1px white,
+  -1px 1px white,
+  1px 1px white;  
 }
 .navbar {
   background-color: transparent;
