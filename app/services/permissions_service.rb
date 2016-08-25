@@ -29,7 +29,7 @@ class PermissionsService
 
   def platform_admin_permissions
     return true if controller == 'businesses' && action.in?(%w(index show new create edit update destroy))
-    return true if controller == 'business_admins' && action.in?(%w(new show create edit update destroy))
+    return true if controller == 'business_admins' && action.in?(%w(new create edit update destroy))
     return true if controller == 'cart_items' && action.in?(%w(create update destroy))
     return true if controller == 'cart' && action.in?(%w(show update))
     return true if controller == 'categories' && action.in?(%w(show))

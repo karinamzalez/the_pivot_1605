@@ -12,7 +12,6 @@ describe "Platform admin can manage any business's admins", type: :feature do
 
     visit dashboard_path
     first(".business").click_on("Manage Business Admins")
-
     expect(page).to have_content(admin_1.username)
     expect(page).to have_content(admin_2.username)
   end
