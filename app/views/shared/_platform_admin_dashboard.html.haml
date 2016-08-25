@@ -10,6 +10,7 @@
       %h5 Business Location: #{business.location}
       %p= link_to "Update Business Info", edit_business_path(business), class: "button success hollow button"
       %p= link_to "Manage Business Admins", edit_business_admin_path(business), class: "button success hollow button"
+      %p= link_to "View Business Items", business_admin_path(business), class: "button success hollow button"
       = button_to "Take Business Offline", business_path(business), {:method => :patch, :params => {:business => {:status => 'offline'}}}
       %p= "Admins:"
       = business.admins.map { |admin| admin.username }.join(", ")

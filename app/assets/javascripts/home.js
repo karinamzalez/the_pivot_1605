@@ -22,21 +22,6 @@ $(document).ready(function(){
     });
   });
 
-  $(window).on('scroll', function() {
-    if ($(this).scrollTop() > 1){
-      $('.navbar').addClass('sticky');
-      $('.navbar').find('.menu-text').fadeOut(50);
-      $('.top-bar-right').addClass('minify');
-      $('.navbar').find('.category-dropdown').fadeOut(50);
-    }
-    else {
-      $('.navbar').removeClass('sticky');
-      $('.navbar').find('.menu-text').fadeIn(50);
-      $('.top-bar-right').removeClass('minify');
-      $('.navbar').find('.category-dropdown').fadeIn(50);
-    }
-  });
-
   $('#bucket-link').on('mouseenter', function(){
     if ($('#bucket-link').find('.label').is(':hidden')){
       $('#bucket-link').find('.label').fadeIn(200);
