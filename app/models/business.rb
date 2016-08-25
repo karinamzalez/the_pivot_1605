@@ -8,10 +8,6 @@ class Business < ActiveRecord::Base
   validates :location, presence: true
 
   enum status: %w(new_business online offline)
-  #
-  # scope :online_businesses, where(status: 'online')
-  # scope :new_businesses, where(status: 'new_business')
-  # scope :offline_businesses, where(status: 'offline')
 
   def business_slug
     self.slug = name.parameterize
