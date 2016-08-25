@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :edit, :update]
   resources :orders, only: [:index, :create, :show]
   resources :categories, only: [:show]
-  resources :business_admins, only: [:new, :create, :edit, :update, :destroy]
+  resources :business_admins, only: [:new, :show, :create, :edit, :update, :destroy]
 
   get '/cart' => "cart#show"
   put '/cart' => "cart#update"

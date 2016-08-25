@@ -4,6 +4,11 @@ class BusinessAdminsController < ApplicationController
     @business = Business.find(params[:id])
   end
 
+  def show
+    @business = Business.find(params[:id])
+    @business_items = @business.items
+  end
+
   def create
     @business = target_business
     business_admin = User.find_by(email: params[:email])
