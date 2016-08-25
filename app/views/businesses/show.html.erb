@@ -12,6 +12,9 @@
       <p class= '<%= item.slug %>'>
         <%= link_to item.name, item_path(item.slug) %>, <%= item.price %></h4>
       </p>
+      <p>
+        <img src=<%= item.image_url %>>
+      </p>
       <%= button_to "Add to Cart", cart_items_path({item_id: item.id}) %>
     </div>
   <% end %>
