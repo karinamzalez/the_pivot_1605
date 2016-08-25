@@ -1,0 +1,6 @@
+    <% @businesses.each do |business| %>
+    <p class= '<%= business.slug %>'>
+      <img src="<%="http://lorempixel.com/400/400/nature/#{rand(9)}" %>" />
+        <%= link_to "Shop Here", business_slug_path(business.slug), class: "button" %>
+    </p>
+    <% end %>

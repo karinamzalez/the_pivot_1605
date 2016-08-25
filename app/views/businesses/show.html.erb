@@ -1,6 +1,14 @@
+<<<<<<< HEAD
 <h1 class="outline_white"><%= @business.name %>
   <h3 class="outline_black"><%= @business.location %></h3>
 </h1>
+=======
+<%= content_tag "div", id: "weather", data: {city: @business.location} do %>
+<% end %>
+
+
+<h1><%= @business.name %></h1></br>
+>>>>>>> 2be86123ebac7c0ce38a7e679c92176a9548b155
 
 <% if @business.status == 'offline' %>
     <h3 class="outline_black"> This business is currently unavailable. </h3>

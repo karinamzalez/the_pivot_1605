@@ -19,6 +19,7 @@
 body {
   background-image: url('https://snapshootergeb.files.wordpress.com/2012/06/dscn2089.jpg');
   background-attachment: fixed;
+  background-color: transparent;
   background-width: 100%;
   background-repeat: no-repeat;
   background-size: cover !important;
@@ -129,8 +130,13 @@ body {
 }
 
 .panel-login {
-  text-align: center;
+  font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  margin-left: 30px;
+  color: white;
+  font-size: 20px;
+  text-transform: uppercase;
 }
+
 .login-buttons {
   margin: 0 auto;
   width: 100px;
@@ -242,12 +248,6 @@ footer {
   padding: 50px;
 }
 
-.top-bar {
-  padding: 0;
-  border-color: red;
-  border-bottom-width: thick;
-}
-
 .menu > li > a {
   display: inline-block;
 }
@@ -309,11 +309,34 @@ li a {
   height: 48px;
   background-color: maroon;
 }
-.homepage-text {
-  font-family: fantasy;
-  font-size: 40px;
+
+.link {
+  text-transform: uppercase;
+  font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 30px;
   color: white;
   margin-top: 80px;
+}
+
+.login {
+  text-transform: uppercase;
+  font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  margin-top: 80px;
+}
+
+.link:hover {
+    color: grey;
+}
+
+.login:hover {
+    color: grey;
+}
+
+.panel-login:hover {
+    color: #87b7b8;
 }
 
 #error {
@@ -395,4 +418,31 @@ li a {
   color: white;
   font-weight: bold;
   font-size: 20px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: transparent;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.categories-drop {
+  color: white;
+  font-size: 20x;
+}
+
+.categories-drop:hover {
+  color: #fdbd2c;
 }

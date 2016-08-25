@@ -20,8 +20,8 @@ class ApplicationController < ActionController::Base
   end
 
   def populate_nav
-    @categories = Category.all unless Category.all.empty?
-    @businesses = Business.all unless Business.all.empty?
+   @categories = Category.all unless Category.all.empty?
+   @businesses = Business.all unless Business.all.empty?
   end
 
   def check_cart
