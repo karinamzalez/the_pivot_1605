@@ -7,28 +7,27 @@ RSpec.feature "Visitor Sees All Businesses" do
 
       visit root_path
 
-      click_on "All Businesses"
+      click_on "Markets"
 
-      expect(current_path).to eq(root_path)
+      expect(current_path).to eq(businesses_path)
 
       within("p.#{business_1.slug}") do
-        expect(page).to have_link(business_1.name)
+        expect(page).to have_link("Shop Here")
       end
 
       within("p.#{business_2.slug}") do
-        expect(page).to have_link(business_2.name)
+        expect(page).to have_link("Shop Here")
       end
 
       within("p.#{business_3.slug}") do
-        expect(page).to have_link(business_3.name)
+        expect(page).to have_link("Shop Here")
       end
 
       within("p.#{business_1.slug}") do
-        click_link business_1.name
+        click_link "Shop Here"
       end
 
       expect(current_path).to eq(business_slug_path(business_1.slug))
-      expect(page).to have_content(business_1.location)
     end
   end
 end

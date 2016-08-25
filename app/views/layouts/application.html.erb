@@ -10,16 +10,11 @@
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
   </head>
 
   <body class="row">
-    <% if platform_admin? %>
-      <%= render partial: 'shared/registered_user_nav_bar', locals: { businesses: @businesses, categories: @categories } %>
-    <% elsif business_admin? %>
-      <%= render partial: 'shared/registered_user_nav_bar', locals: { businesses: @businesses, categories: @categories } %>
-    <% else %>
-      <%= render partial: 'shared/registered_user_nav_bar', locals: { businesses: @businesses, categories: @categories } %>
-    <% end %>
+    <%= render partial: 'shared/nav_bar'%>
 
   <section class="main">
     <% flash.each do |type, message| %>
@@ -32,6 +27,6 @@
 
   </section>
 
-    <!-- <%= render partial: 'shared/footer' %> -->
+    <%= render partial: 'shared/footer' %>
   </body>
 </html>

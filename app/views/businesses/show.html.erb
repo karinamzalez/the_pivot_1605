@@ -1,4 +1,6 @@
-<%= @business.location %>
+<%= content_tag "div", id: "weather", data: {city: @business.location} do %>
+<% end %>
+
 
 <h1><%= @business.name %></h1></br>
 
