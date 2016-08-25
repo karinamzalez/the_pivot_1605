@@ -545,6 +545,18 @@ h2.categories {
   font-size: 50px;
 }
 
+.white-tt {
+  color: #fdbd2c;
+  text-align: center;
+  font-size: 25px;
+}
+
+.white-ttt {
+  color: white;
+  text-align: center;
+  font-size: 25px;
+}
+
 .button-indigo {
   background-color: #87b7b8;
   color: white;
@@ -556,4 +568,13 @@ h2.categories {
 
 .item-wrapper {
   margin-left: 15px;
+}
+
+.final {
+  color: #fff;
+  font-size: 70px;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1.0;
+  text-transform: none;
 }

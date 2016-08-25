@@ -1,8 +1,13 @@
-<h1><%= @item.name %></h1></br>
+<h1 class="final"><%= @item.name %></h1></br>
 
-<h3><%= @item.price %></h3></br>
 <img class="" src=<%= @item.image_url %>>
-<p>
+<div class="col-sm-6 white-tt">
   <%= @item.description %>
 </p>
-<%= button_to "Add to Cart", cart_items_path({item_id: @item.id}) %>
+<div class="white-ttt">
+  $<%= @item.price %>
+</div>
+</br>
+<%= button_to "Add to Cart", cart_items_path({item_id: @item.id}), class:"btn-warning" %>
+</div>
+<p>
