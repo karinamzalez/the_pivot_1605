@@ -27,19 +27,19 @@ body {
 .outline_white {
   color: white;
   text-shadow:
-  -2px -2px 0 #000,
-  2px -2px 0 #000,
-  -2px 2px 0 #000,
-  2px 2px 0 #000;  
+  -1px -1px 0 #000,
+  1px -1px 0 #000,
+  -1px 1px 0 #000,
+  1px 1px 0 #000;  
 }
 
 .outline_black {
   color: black;
   text-shadow:
-  -2px -2px white,
-  2px -2px white,
-  -2px 2px white,
-  2px 2px white;  
+  -1px -1px white,
+  1px -1px white,
+  -1px 1px white,
+  1px 1px white;  
 }
 .navbar {
   background-color: transparent;
