@@ -474,3 +474,82 @@ h2.categories {
   color: white;
   font-size: 15px;
 }
+
+.list-box-2 {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  width: 800px;
+  height: 400px;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+ .white {
+  color: white;
+  font-size: 70px;
+  text-align: center;
+}
+
+ h2.white-text {
+  color: white;
+  font-size: 22px;
+  margin-bottom: -25px;
+}
+
+ .soft-text {
+  color: #a4d2d1;
+  font-size: 22px;
+  margin-bottom: -25px;
+}
+
+.white-texxt {
+  font-size: 22px;
+  color: white;
+}
+
+.jumbotron {
+    position: center;
+    color: white;
+    background: url("minimalist.jpg");
+    width: 1000px;
+    height: 500px;
+    background-size: cover !important;
+    overflow: scroll;
+    margin-left: 60px;
+    margin-right: 20px;
+}
+
+.box {
+  padding: 20px 0px;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-right: -10px;
+}
+
+.box-grey {
+  background: #2e2e2e;
+  min-height: 150px;
+}
+
+.box-blue {
+  background: #87b7b8;
+  margin-left: -20px;
+  min-height: 150px;
+}
+
+.white-t {
+  color: white;
+  text-align: center;
+  font-size: 50px;
+}
+
+.button-indigo {
+  background-color: #87b7b8;
+  color: white;
+}
+
+.rounded {
+  border-radius: 25px;
+}
