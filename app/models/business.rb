@@ -16,6 +16,4 @@ class Business < ActiveRecord::Base
   def admins
     users
   end
-
-
 end
