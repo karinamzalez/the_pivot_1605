@@ -8,6 +8,7 @@ class Seed
     seed.generate_users
     seed.generate_platform_admin
     seed.generate_business_items
+    seed.generate_category_business_items
     seed.generate_orders
     seed.generate_new_businesses
   end
@@ -76,130 +77,35 @@ class Seed
 
   def generate_business_items
     Business.all.each do |business|
-      rand(0..8).times do
+      2.times do
         business.items << Item.create!(
           name: [Faker::Commerce.color.capitalize, Faker::Name.home_good].join(" "),
           description: Faker::Lorem.paragraph,
           image_url: "http://loremflickr.com/400/400/market",
-          category_id: Category.find_by(name: "Drinks"),
-          price: Faker::Commerce.price,
-          status: true
-        )
-        puts "#{Item.last.name} added to #{business.name}!"
-      end
-      rand(0..8).times do
-        business.items << Item.create!(
-          name: [Faker::Commerce.color.capitalize, Faker::Name.home_good].join(" "),
-          description: Faker::Lorem.paragraph,
-          image_url: "http://loremflickr.com/400/400/market",
-          category_id: Category.find_by(name: "Plants"),
-          price: Faker::Commerce.price,
-          status: true
-        )
-        puts "#{Item.last.name} added to #{business.name}!"
-      end
-      rand(0..8).times do
-        business.items << Item.create!(
-          name: [Faker::Commerce.color.capitalize, Faker::Name.home_good].join(" "),
-          description: Faker::Lorem.paragraph,
-          image_url: "http://loremflickr.com/400/400/market",
-          category_id: Category.find_by(name: "Jewelry"),
-          price: Faker::Commerce.price,
-          status: true
-        )
-        puts "#{Item.last.name} added to #{business.name}!"
-      end
-      rand(0..8).times do
-        business.items << Item.create!(
-          name: [Faker::Commerce.color.capitalize, Faker::Name.home_good].join(" "),
-          description: Faker::Lorem.paragraph,
-          image_url: "http://loremflickr.com/400/400/market",
-          category_id: Category.find_by(name: "Crafts"),
-          price: Faker::Commerce.price,
-          status: true
-        )
-        puts "#{Item.last.name} added to #{business.name}!"
-      end
-      rand(0..8).times do
-        business.items << Item.create!(
-          name: [Faker::Commerce.color.capitalize, Faker::Name.home_good].join(" "),
-          description: Faker::Lorem.paragraph,
-          image_url: "http://loremflickr.com/400/400/market",
-          category_id: Category.find_by(name: "Dairy"),
-          price: Faker::Commerce.price,
-          status: true
-        )
-        puts "#{Item.last.name} added to #{business.name}!"
-      end
-      rand(0..8).times do
-        business.items << Item.create!(
-          name: [Faker::Commerce.color.capitalize, Faker::Name.home_good].join(" "),
-          description: Faker::Lorem.paragraph,
-          image_url: "http://loremflickr.com/400/400/market",
-          category_id: Category.find_by(name: "Bakery"),
-          price: Faker::Commerce.price,
-          status: true
-        )
-        puts "#{Item.last.name} added to #{business.name}!"
-      end
-      rand(0..8).times do
-        business.items << Item.create!(
-          name: [Faker::Commerce.color.capitalize, Faker::Name.home_good].join(" "),
-          description: Faker::Lorem.paragraph,
-          image_url: "http://loremflickr.com/400/400/market",
-          category_id: Category.find_by(name: "Meats"),
-          price: Faker::Commerce.price,
-          status: true
-        )
-        puts "#{Item.last.name} added to #{business.name}!"
-      end
-      rand(0..8).times do
-        business.items << Item.create!(
-          name: [Faker::Commerce.color.capitalize, Faker::Name.home_good].join(" "),
-          description: Faker::Lorem.paragraph,
-          image_url: "http://loremflickr.com/400/400/market",
-          category_id: Category.find_by(name: "Herbs"),
-          price: Faker::Commerce.price,
-          status: true
-        )
-        puts "#{Item.last.name} added to #{business.name}!"
-      end
-      rand(0..8).times do
-        business.items << Item.create!(
-          name: [Faker::Commerce.color.capitalize, Faker::Name.home_good].join(" "),
-          description: Faker::Lorem.paragraph,
-          image_url: "http://loremflickr.com/400/400/market",
-          category_id: Category.find_by(name: "Caffeine"),
-          price: Faker::Commerce.price,
-          status: true
-        )
-        puts "#{Item.last.name} added to #{business.name}!"
-      end
-      rand(0..15).times do
-        business.items << Item.create!(
-          name: [Faker::Commerce.color.capitalize, Faker::Name.fruit].join(" "),
-          description: Faker::Lorem.paragraph,
-          image_url: "http://loremflickr.com/400/400/fruit",
-          category_id: Category.find_by(name: "Fruits"),
-          price: Faker::Commerce.price,
-          status: true
-        )
-        puts "#{Item.last.name} added to #{business.name}!"
-      end
-      rand(0..15).times do
-        business.items << Item.create!(
-          name: [Faker::Commerce.color.capitalize, Faker::Name.vegetable].join(" "),
-          description: Faker::Lorem.paragraph,
-          image_url: "http://loremflickr.com/400/400/vegetable",
-          category_id: Category.find_by(name: "Vegetables"),
+          category_id: rand(1..10),
           price: Faker::Commerce.price,
           status: true
         )
         puts "#{Item.last.name} added to #{business.name}!"
       end
     end
-    puts "business items created successfully!"
   end
+
+  def generate_category_business_items
+    Category.all.each do |category|
+      50.times do
+        Business.find(rand(1..20)).items << Item.create!(
+        name: [Faker::Commerce.color.capitalize, Faker::Name.home_good].join(" "),
+        description: Faker::Lorem.paragraph,
+        image_url: "http://loremflickr.com/400/400/market",
+        category_id: category.id,
+        price: Faker::Commerce.price,
+        status: true
+      )
+      puts "#{Item.last.name} added to #{category.name}!"
+    end
+  end
+end
 
   def generate_users
     100.times do |i|
