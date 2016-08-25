@@ -116,6 +116,9 @@ class Seed
     jorge = User.create!(username: 'jorge', email: 'jorge@turing.io', password: "password", business_id: 1)
     jorge.set_business_admin(Business.find(1))
     puts "jorge created!"
+    
+    chris = User.create!(username: 'seen_on_trail', email: 'chris@students.turing.io', password: "password")
+    puts "seen_on_trail created!"
   end
 
   def generate_platform_admin
