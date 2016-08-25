@@ -1,22 +1,19 @@
-- new_businesses = @businesses.select { |business| business.status == 'new_business' }
-- online_businesses = @businesses.select { |business| business.status == 'online' }
-- offline_businesses = @businesses.select { |business| business.status == 'offline' }
-
 %div.online-businesses
   %h3 Online Businesses:
-  - online_businesses.each do |business|
-    %div.business
+  - @businesses.find_online_businesses.each do |business|
+    %div.business{id: business.slug}
       %h4 Business Name: #{business.name}
       %h5 Business Location: #{business.location}
       %p= link_to "Update Business Info", edit_business_path(business), class: "button success hollow button"
       %p= link_to "Manage Business Admins", edit_business_admin_path(business), class: "button success hollow button"
-      = button_to "Take Business Offline", business_path(business), {:method => :patch, :params => {:business => {:status => 'offline'}}}
+      %p= link_to "View Business Items", business_admin_path(business), class: "button success hollow button"
+      = button_to "Take Business Offline", business_path(business), {:method => :patch, class: "button success hollow button", :params => {:business => {:status => 'offline'}}}
       %p= "Admins:"
       = business.admins.map { |admin| admin.username }.join(", ")
 
 %div.new-businesses
   %h3 New Businesses To Approve:
-  - new_businesses.each do |business|
+  - @businesses.find_new_businesses.each do |business|
     %div.new-business
       %h4 New Business Name: #{business.name}
       %h5 New Business Location: #{business.location}
@@ -25,7 +22,7 @@
 
 %div.offline-businesses
   %h3 Offline Businesses:
-  - offline_businesses.each do |business|
+  - @businesses.find_offline_businesses.each do |business|
     %div.offline-business
       %h4 Offline Business Name: #{business.name}
       %h5 Offline Business Location: #{business.location}

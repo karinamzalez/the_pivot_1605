@@ -21,7 +21,7 @@ module TestHelper
 
   def create_test_business_items
     Business.all.each do |business|
-      rand(1..10).times do
+      rand(2..10).times do
         business.items << Item.create(
           name: Faker::Commerce.product_name,
           price: Faker::Number.decimal(2),

@@ -11,6 +11,11 @@ class BusinessAdminsController < ApplicationController
     redirect_to edit_business_admin_path(@business)
   end
 
+  def show
+    @business = Business.find(params[:id])
+    @business_items = @business.items
+  end
+
   def edit
     @business_admins = User.where(business_id: target_business.id)
   end
