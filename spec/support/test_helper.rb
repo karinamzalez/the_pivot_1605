@@ -79,9 +79,7 @@ module TestHelper
   end
 
   def create_new_businesses
-    5.times do
-      create_test_businesses
-    end
+    create_test_businesses
     Business.all.last(5).each do |business|
       business.update_attribute(:status, 0)
     end

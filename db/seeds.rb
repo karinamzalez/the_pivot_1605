@@ -13,26 +13,30 @@ class Seed
   end
 
   def generate_categories
-    Category.create!(name: "Produce")
-    puts "category Produce created!"
-    Category.create!(name: "Drinks")
-    puts "category Drinks created!"
-    Category.create!(name: "Plants")
-    puts "category Plants created!"
-    Category.create!(name: "Jewlery")
-    puts "category Jewlery created!"
-    Category.create!(name: "Crafts")
-    puts "category Crafts created!"
-    Category.create!(name: "Dairy")
-    puts "category Dairy created!"
-    Category.create!(name: "Baked Goods")
-    puts "category Baked Goods created!"
-    Category.create!(name: "Meats")
-    puts "category Meats created!"
-    Category.create!(name: "Herbs")
-    puts "category Herbs created!"
-    Category.create!(name: "Caffeine")
-    puts "category Caffeine created!"
+    Category.create!(name: "Fruits")
+    puts "category Fruits created!"
+    Category.create!(name: "Vegetables")
+    puts "category Vegetables created!"
+    Category.create!(name: "Home Goods")
+    puts "category Home Goods created!"
+    # Category.create!(name: "Drinks")
+    # puts "category Drinks created!"
+    # Category.create!(name: "Plants")
+    # puts "category Plants created!"
+    # Category.create!(name: "Jewelry")
+    # puts "category Jewelry created!"
+    # Category.create!(name: "Crafts")
+    # puts "category Crafts created!"
+    # Category.create!(name: "Dairy")
+    # puts "category Dairy created!"
+    # Category.create!(name: "Baked Goods")
+    # puts "category Baked Goods created!"
+    # Category.create!(name: "Meats")
+    # puts "category Meats created!"
+    # Category.create!(name: "Herbs")
+    # puts "category Herbs created!"
+    # Category.create!(name: "Caffeine")
+    # puts "category Caffeine created!"
   end
 
   def generate_new_businesses
@@ -74,16 +78,38 @@ class Seed
 
   def generate_business_items
     Business.all.each do |business|
-      rand(25..40).times do
+      rand(0..8).times do
         business.items << Item.create!(
-          name: Faker::Commerce.product_name,
+          name: [Faker::Commerce.color.capitalize, Faker::Name.home_good].join(" "),
           description: Faker::Lorem.paragraph,
-          image_url: "http://robohash.org/#{rand(500)}.png?set=set2&bgset=bg1&size=200x200",
-          category_id: rand(1..Category.all.count),
+          image_url: "http://loremflickr.com/400/400/market",
+          category_id: Category.find_by(name: "Home Goods"),
           price: Faker::Commerce.price,
           status: true
         )
-        puts "Item #{Item.last.id}: #{Item.last.name} created!"
+        puts "#{Item.last.name} added to #{business.name}!"
+      end
+      rand(0..15).times do
+        business.items << Item.create!(
+          name: [Faker::Commerce.color.capitalize, Faker::Name.fruit].join(" "),
+          description: Faker::Lorem.paragraph,
+          image_url: "http://loremflickr.com/400/400/fruit",
+          category_id: Category.find_by(name: "Fruits"),
+          price: Faker::Commerce.price,
+          status: true
+        )
+        puts "#{Item.last.name} added to #{business.name}!"
+      end
+      rand(0..15).times do
+        business.items << Item.create!(
+          name: [Faker::Commerce.color.capitalize, Faker::Name.vegetable].join(" "),
+          description: Faker::Lorem.paragraph,
+          image_url: "http://loremflickr.com/400/400/vegetable",
+          category_id: Category.find_by(name: "Vegetables"),
+          price: Faker::Commerce.price,
+          status: true
+        )
+        puts "#{Item.last.name} added to #{business.name}!"
       end
     end
     puts "business items created successfully!"

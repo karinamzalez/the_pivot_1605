@@ -12,6 +12,7 @@ class BusinessesController < ApplicationController
   def create
     @business = Business.new(business_params)
     if @business.save
+      current_user.update_attribute(:business_id, @business.id)
       flash[:notice] = 'Thank you for applying to Worldwide Farmers Market! We will let you know if you have been approved shortly.'
       redirect_to dashboard_path
     else
@@ -30,6 +31,7 @@ class BusinessesController < ApplicationController
 
   def update
     business = Business.find(target_business.id)
+    User.find_by(business_id: business.id).roles << Role.find_by(name: "business_admin") if params[:business][:add_business_admin]
     if business.update(business_params)
       flash[:notice] = 'Business information updated successfully!'
       redirect_to dashboard_path
