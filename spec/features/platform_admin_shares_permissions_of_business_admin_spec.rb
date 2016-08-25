@@ -47,6 +47,7 @@ describe "Platform admin can manage any business's admins", type: :feature do
 
     first("#" + target_business.slug).click_on("Manage Business Admins")
     first('.admin').click_link('Demote Admin')
+
     expect(page).not_to have_content(admin_to_remove.username)
   end
 end
