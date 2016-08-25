@@ -27,7 +27,7 @@ class Seed
     puts "category Crafts created!"
     Category.create!(name: "Dairy")
     puts "category Dairy created!"
-    Category.create!(name: "Baked Goods")
+    Category.create!(name: "Bakery")
     puts "category Baked Goods created!"
     Category.create!(name: "Meats")
     puts "category Meats created!"
@@ -87,6 +87,94 @@ class Seed
         )
         puts "#{Item.last.name} added to #{business.name}!"
       end
+      rand(0..8).times do
+        business.items << Item.create!(
+          name: [Faker::Commerce.color.capitalize, Faker::Name.home_good].join(" "),
+          description: Faker::Lorem.paragraph,
+          image_url: "http://loremflickr.com/400/400/market",
+          category_id: Category.find_by(name: "Plants"),
+          price: Faker::Commerce.price,
+          status: true
+        )
+        puts "#{Item.last.name} added to #{business.name}!"
+      end
+      rand(0..8).times do
+        business.items << Item.create!(
+          name: [Faker::Commerce.color.capitalize, Faker::Name.home_good].join(" "),
+          description: Faker::Lorem.paragraph,
+          image_url: "http://loremflickr.com/400/400/market",
+          category_id: Category.find_by(name: "Jewelry"),
+          price: Faker::Commerce.price,
+          status: true
+        )
+        puts "#{Item.last.name} added to #{business.name}!"
+      end
+      rand(0..8).times do
+        business.items << Item.create!(
+          name: [Faker::Commerce.color.capitalize, Faker::Name.home_good].join(" "),
+          description: Faker::Lorem.paragraph,
+          image_url: "http://loremflickr.com/400/400/market",
+          category_id: Category.find_by(name: "Crafts"),
+          price: Faker::Commerce.price,
+          status: true
+        )
+        puts "#{Item.last.name} added to #{business.name}!"
+      end
+      rand(0..8).times do
+        business.items << Item.create!(
+          name: [Faker::Commerce.color.capitalize, Faker::Name.home_good].join(" "),
+          description: Faker::Lorem.paragraph,
+          image_url: "http://loremflickr.com/400/400/market",
+          category_id: Category.find_by(name: "Dairy"),
+          price: Faker::Commerce.price,
+          status: true
+        )
+        puts "#{Item.last.name} added to #{business.name}!"
+      end
+      rand(0..8).times do
+        business.items << Item.create!(
+          name: [Faker::Commerce.color.capitalize, Faker::Name.home_good].join(" "),
+          description: Faker::Lorem.paragraph,
+          image_url: "http://loremflickr.com/400/400/market",
+          category_id: Category.find_by(name: "Bakery"),
+          price: Faker::Commerce.price,
+          status: true
+        )
+        puts "#{Item.last.name} added to #{business.name}!"
+      end
+      rand(0..8).times do
+        business.items << Item.create!(
+          name: [Faker::Commerce.color.capitalize, Faker::Name.home_good].join(" "),
+          description: Faker::Lorem.paragraph,
+          image_url: "http://loremflickr.com/400/400/market",
+          category_id: Category.find_by(name: "Meats"),
+          price: Faker::Commerce.price,
+          status: true
+        )
+        puts "#{Item.last.name} added to #{business.name}!"
+      end
+      rand(0..8).times do
+        business.items << Item.create!(
+          name: [Faker::Commerce.color.capitalize, Faker::Name.home_good].join(" "),
+          description: Faker::Lorem.paragraph,
+          image_url: "http://loremflickr.com/400/400/market",
+          category_id: Category.find_by(name: "Herbs"),
+          price: Faker::Commerce.price,
+          status: true
+        )
+        puts "#{Item.last.name} added to #{business.name}!"
+      end
+      rand(0..8).times do
+        business.items << Item.create!(
+          name: [Faker::Commerce.color.capitalize, Faker::Name.home_good].join(" "),
+          description: Faker::Lorem.paragraph,
+          image_url: "http://loremflickr.com/400/400/market",
+          category_id: Category.find_by(name: "Caffeine"),
+          price: Faker::Commerce.price,
+          status: true
+        )
+        puts "#{Item.last.name} added to #{business.name}!"
+      end
       rand(0..15).times do
         business.items << Item.create!(
           name: [Faker::Commerce.color.capitalize, Faker::Name.fruit].join(" "),
@@ -133,6 +221,7 @@ class Seed
       password: "password"
     )
     platform_admin.roles << Role.find_by(name: "platform_admin")
+    puts "Platform admin created!"
   end
 
   def generate_roles
