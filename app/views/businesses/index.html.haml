@@ -1,10 +1,10 @@
 .row.wrap
   .row
-    %h3.text-center.panel Worldwide Farmer's Market - All Businesses
+    %h2.text-center.outline_white Worldwide Farmer's Market - All Businesses
   .row
     -@businesses.each do |business|
       .large-4.medium-6.columns
-        %h4.text-center.panel "#{business.name}"
+        %h4.text-center.panel.outline_black "#{business.name}"
         %p
           %img(src="http://lorempixel.com/400/400/nature/#{rand(9)}")
         .span
