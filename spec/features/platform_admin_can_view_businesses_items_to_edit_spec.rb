@@ -12,7 +12,6 @@ describe 'Platform admin can view businesses items' do
     page.set_rack_session(user_id: admin.id)
 
     visit dashboard_path
-
     first('.business').click_on('View Business Items')
     expect(page).to have_content(item_1)
     expect(page).to have_content(item_2)
